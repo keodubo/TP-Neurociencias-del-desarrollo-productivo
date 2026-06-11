@@ -1,0 +1,124 @@
+{
+  "codigos_presentes": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "conteo": {
+    "0": 22,
+    "1": 28,
+    "2": 65,
+    "3": 44
+  },
+  "canales_usados": [
+    "C3"
+  ],
+  "metrics": {
+    "epocas_total": 159,
+    "minutos_total": 79.5,
+    "latencia_sueno_min": 4.0,
+    "primer_epoca_no_vigilia": 9,
+    "latencia_n2_min": 7.5,
+    "latencia_n3_min": 45.5,
+    "epocas_sueno": 137,
+    "minutos_sueno": 68.5,
+    "eficiencia_pct": 86.16352201257862,
+    "bloque_n3_desde_min": 45.5,
+    "bloque_n3_hasta_min": 68.0
+  },
+  "lights": {
+    "luz_off_min": 1.046,
+    "luz_on_min": 79.68166666666666
+  },
+  "calidad_canales": [
+    {
+      "canal": "C3",
+      "std_uv": 28.139078170032217,
+      "p2p_uv": 187.37955811681098,
+      "frac_saturacion": 0.0,
+      "flatline": false,
+      "malo": false,
+      "motivo": "ok"
+    },
+    {
+      "canal": "C4",
+      "std_uv": 513.2577697763629,
+      "p2p_uv": 5725.992942441986,
+      "frac_saturacion": 0.007142648244628182,
+      "flatline": false,
+      "malo": true,
+      "motivo": "std 513 uV > 150; saturacion 0.71%"
+    }
+  ],
+  "fases": [
+    {
+      "codigo": 0,
+      "fase": "Vigilia",
+      "epocas": 22,
+      "minutos": 11.0,
+      "pct_tiempo": 13.836477987421384,
+      "delta_abs": 534.5081255922636,
+      "delta_rel": 56.97411669270994,
+      "theta_abs": 11.35814900341222,
+      "theta_rel": 8.590807151382569,
+      "alpha_abs": 18.767980478793625,
+      "alpha_rel": 15.380566834146537,
+      "sigma_abs": 4.321651459998716,
+      "sigma_rel": 2.3102879615444136,
+      "beta_abs": 19.780230380337795,
+      "beta_rel": 14.331281741682277
+    },
+    {
+      "codigo": 1,
+      "fase": "S1",
+      "epocas": 28,
+      "minutos": 14.0,
+      "pct_tiempo": 17.61006289308176,
+      "delta_abs": 57.03565539623201,
+      "delta_rel": 55.08805050311679,
+      "theta_abs": 16.72829549444331,
+      "theta_rel": 18.56207871008462,
+      "alpha_abs": 7.07724912958336,
+      "alpha_rel": 9.182237356387821,
+      "sigma_abs": 2.5572722291737087,
+      "sigma_rel": 2.5358235768840296,
+      "beta_abs": 10.40883156723837,
+      "beta_rel": 11.26617923623851
+    },
+    {
+      "codigo": 2,
+      "fase": "S2",
+      "epocas": 65,
+      "minutos": 32.5,
+      "pct_tiempo": 40.88050314465409,
+      "delta_abs": 192.76768837884123,
+      "delta_rel": 68.63170610152952,
+      "theta_abs": 36.313245813479305,
+      "theta_rel": 15.485971925368213,
+      "alpha_abs": 11.525718845942395,
+      "alpha_rel": 4.930785082679411,
+      "sigma_abs": 11.634031992869197,
+      "sigma_rel": 5.224623610129126,
+      "beta_abs": 4.723369566907337,
+      "beta_rel": 2.5064853020259816
+    },
+    {
+      "codigo": 3,
+      "fase": "S3/SWS",
+      "epocas": 44,
+      "minutos": 22.0,
+      "pct_tiempo": 27.67295597484277,
+      "delta_abs": 840.210049111336,
+      "delta_rel": 91.58972611650665,
+      "theta_abs": 43.29466073214366,
+      "theta_rel": 4.983355049974178,
+      "alpha_abs": 14.443285472343268,
+      "alpha_rel": 1.657727304345782,
+      "sigma_abs": 4.998074205894215,
+      "sigma_rel": 0.5853983182839202,
+      "beta_abs": 1.7373855536861624,
+      "beta_rel": 0.19866620914769328
+    }
+  ]
+}

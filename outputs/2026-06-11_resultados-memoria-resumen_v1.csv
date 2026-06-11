@@ -1,0 +1,5 @@
+sujeto,condicion,palabra_objetivo,definicion,items,palabra_objetivo_pct,definicion_pct
+Sujeto 1,Vigilia,0,14,20,0.0,70.0
+Sujeto 2,Vigilia,14,20,20,70.0,100.0
+Sujeto 3,Vigilia,1,18,20,5.0,90.0
+Sujeto 4,Sueño,17,20,20,85.0,100.0

@@ -1,0 +1,81 @@
+palabra_objetivo,respuesta_palabra,definicion,respuesta_definicion,sujeto,condicion,palabra_correcta,definicion_correcta,nota_scoring_definicion
+NOMON,NORIA,Reloj De Sol,RELOJ SOLAR,Sujeto 1,Vigilia,False,True,reloj solar conserva el significado de reloj de sol
+ZORCICO,,Tipo De Música Española,DANZA DE ALGO,Sujeto 1,Vigilia,False,False,danza de algo es demasiado inespecifico
+MARMITÓN,,Ayudante De Cocina,AYUDANTE DE COCINA,Sujeto 1,Vigilia,False,True,ayudante de cocina exacto
+EPINICIO,,Canto De Victoria,GRITO DE VICTORIA,Sujeto 1,Vigilia,False,True,grito/canto de victoria conserva la idea central
+ERGOTINA,,Remedio Para Hemorragias,RECETA DE ALGO,Sujeto 1,Vigilia,False,False,receta de algo no recupera remedio para hemorragias
+RETEL,,Red Para Pescar,RED PARA CANGREJOS,Sujeto 1,Vigilia,False,True,red para cangrejos recupera la funcion
+CAURO,,Viento Del Noroeste,VIENTO DEL NOROESTE,Sujeto 1,Vigilia,False,True,viento del noroeste exacto
+QUIMA,,Rama Nueva De Un Árbol,RAMA DE ALGO,Sujeto 1,Vigilia,False,True,rama de algo recupera parcialmente la categoria
+PILTRO,,Habitación De Un Templo,HABITACION DE ALGO,Sujeto 1,Vigilia,False,False,habitacion de algo no especifica templo
+FISGA,,Arpón Para Pescar,ARPA DE ALGO,Sujeto 1,Vigilia,False,False,arpa de algo no recupera arpon para pescar
+POSMA,,Lentitud Para Hacer Algo,LENTITUD PARA HACER ALGO,Sujeto 1,Vigilia,False,True,lentitud para hacer algo exacto
+LASTO,,Recibo De Pago,RECIBO DE ALGO,Sujeto 1,Vigilia,False,True,recibo de algo conserva recibo/pago
+GREBA,,Armadura Para La Rodilla,ARMADURA PARA LA RODILLA,Sujeto 1,Vigilia,False,True,armadura para la rodilla exacto
+MAINEL,,Baranda De Una Escalera,BARANDA DE UNA ESCALERA,Sujeto 1,Vigilia,False,True,baranda de una escalera exacto
+JABARDO,,Aglomeración De Gente,,Sujeto 1,Vigilia,False,False,sin respuesta
+SAMARUGO,,Renacuajo De Una Rana,RENACUAJO DE SAPO,Sujeto 1,Vigilia,False,True,renacuajo de sapo conserva renacuajo
+BADINA,,Charco De Agua,CHARCO DE AGUA,Sujeto 1,Vigilia,False,True,charco de agua exacto
+TINELO,,Comedor Para La Servidumbre,,Sujeto 1,Vigilia,False,False,sin respuesta
+NENIA,,Poema Fúnebre,POEMA FUNEBRE,Sujeto 1,Vigilia,False,True,poema funebre exacto
+CÍTOLA,,Instrumento Musical Antiguo,INSTRUMENTO MUSICAL ANTIGUO,Sujeto 1,Vigilia,False,True,instrumento musical antiguo exacto
+NOMON,NOMON,Reloj De Sol,Reloj De Sol,Sujeto 2,Vigilia,True,True,exacto
+ZORCICO,ZORCICA,Tipo De Música Española,Tipo De Música Española,Sujeto 2,Vigilia,False,True,exacto
+MARMITÓN,MARMITÓN,Ayudante De Cocina,Ayudante De Cocina,Sujeto 2,Vigilia,True,True,exacto
+EPINICIO,EPINICIO,Canto De Victoria,celebracion De Victoria,Sujeto 2,Vigilia,True,True,celebracion de victoria conserva significado
+ERGOTINA,ERGOTINA,Remedio Para Hemorragias,Remedio Para Hemorragias,Sujeto 2,Vigilia,True,True,exacto
+RETEL,RETEL,Red Para Pescar,Red Para Pescar,Sujeto 2,Vigilia,True,True,red para pescar conserva funcion
+CAURO,CAURO,Viento Del Noroeste,Viento Del Noroeste,Sujeto 2,Vigilia,True,True,exacto
+QUIMA,QUIMIA,Rama Nueva De Un Árbol,Rama Nueva De Un Árbol,Sujeto 2,Vigilia,False,True,exacto
+PILTRO,PILTRO,Habitación De Un Templo,Habitación De Un Templo,Sujeto 2,Vigilia,True,True,exacto
+FISGA,FISGA,Arpón Para Pescar,Arpón Para Pescar,Sujeto 2,Vigilia,True,True,exacto
+POSMA,,Lentitud Para Hacer Algo,Lentitud Para Hacer las cosas,Sujeto 2,Vigilia,False,True,lentitud para hacer las cosas conserva significado
+LASTO,,Recibo De Pago,Recibo De Pago,Sujeto 2,Vigilia,False,True,exacto
+GREBA,GREBA,Armadura Para La Rodilla,Armadura Para La Rodilla,Sujeto 2,Vigilia,True,True,exacto
+MAINEL,,Baranda De Una Escalera,Baranda para la Escalera,Sujeto 2,Vigilia,False,True,baranda para la escalera conserva significado
+JABARDO,JABARDO,Aglomeración De Gente,Aglomeración De Gente,Sujeto 2,Vigilia,True,True,exacto
+SAMARUGO,SAMARUGO,Renacuajo De Una Rana,Renacuajo De Una Rana,Sujeto 2,Vigilia,True,True,exacto
+BADINA,BADINA,Charco De Agua,Charco De Agua,Sujeto 2,Vigilia,True,True,exacto
+TINELO,TINELO,Comedor Para La Servidumbre,Comedor Para La Servidumbre,Sujeto 2,Vigilia,True,True,exacto
+NENIA,NENIA,Poema Fúnebre,Poema de un entierro,Sujeto 2,Vigilia,True,True,poema de un entierro conserva significado
+CÍTOLA,CÍTALO,Instrumento Musical Antiguo,Instrumento Antiguo,Sujeto 2,Vigilia,False,True,instrumento antiguo conserva categoria suficiente
+NOMON,NOCITO,Reloj De Sol,Reloj De Sol,Sujeto 3,Vigilia,False,True,exacto
+ZORCICO,ZORNIA,Tipo De Música Española,Tipo De Música Española,Sujeto 3,Vigilia,False,True,exacto
+MARMITÓN,MARCEL,Ayudante De Cocina,Ayudante De Cocina,Sujeto 3,Vigilia,False,True,exacto
+EPINICIO,ENSITU,Canto De Victoria,festejo de victoria,Sujeto 3,Vigilia,False,True,festejo de victoria conserva significado
+ERGOTINA,ERINA,Remedio Para Hemorragias,Remedio Para las Hemorragias,Sujeto 3,Vigilia,False,True,remedio para hemorragias exacto
+RETEL,RELIR,Red Para Pescar cangrejos,Red Para Pescar cangrejos,Sujeto 3,Vigilia,False,True,exacto
+CAURO,CAUTO,Viento Del Noroeste,Viento Del Noroeste,Sujeto 3,Vigilia,False,True,exacto
+QUIMA,QUISO,Rama Nueva De Un Árbol,Rama Nueva De Un Árbol,Sujeto 3,Vigilia,False,True,exacto
+PILTRO,PILSAR,Habitación De Un Templo,Habitación De Un Templo,Sujeto 3,Vigilia,False,True,exacto
+FISGA,FISUTO,Arpón Para Pescar,tridente,Sujeto 3,Vigilia,False,False,tridente no equivale de forma suficiente a arpon para pescar
+POSMA,POSTIL,Lentitud Para Hacer Algo,lentitud en hacer algo,Sujeto 3,Vigilia,False,True,lentitud en hacer algo conserva significado
+LASTO,LASATO,Recibo De Pago,Recibo De Pago,Sujeto 3,Vigilia,False,True,exacto
+GREBA,GREBA,Armadura Para La Rodilla,armadura de rodilla,Sujeto 3,Vigilia,True,True,armadura de rodilla conserva significado
+MAINEL,MAIQUI,Baranda De Una Escalera,baranda de una escalera,Sujeto 3,Vigilia,False,True,exacto
+JABARDO,JAQUITO,Aglomeración De Gente,conglomeradp de gente,Sujeto 3,Vigilia,False,True,conglomerado de gente conserva aglomeracion
+SAMARUGO,SABAL,Renacuajo De Una Rana,Renacuajo De sapo,Sujeto 3,Vigilia,False,True,renacuajo de sapo conserva renacuajo
+BADINA,BALTO,Charco De Agua,Charco De Agua,Sujeto 3,Vigilia,False,True,exacto
+TINELO,TIRAL,Comedor Para La Servidumbre,Comedor de La Servidumbre,Sujeto 3,Vigilia,False,True,comedor de la servidumbre conserva significado
+NENIA,NEGAL,Poema Fúnebre,Poema de entierro,Sujeto 3,Vigilia,False,True,poema de entierro conserva significado
+CÍTOLA,CITO,Instrumento Musical Antiguo,Instrumento de la antigüedad,Sujeto 3,Vigilia,False,False,instrumento de la antiguedad omite que es musical
+NOMON,NOMON,Reloj De Sol,Reloj De Sol,Sujeto 4,Sueño,True,True,exacto
+ZORCICO,ZORCICO,Tipo De Música Española,Tipo De Música Española,Sujeto 4,Sueño,True,True,exacto
+MARMITÓN,MARMITÓN,Ayudante De Cocina,Ayudante De Cocina,Sujeto 4,Sueño,True,True,exacto
+EPINICIO,EPINICIO,Canto De Victoria,Canto De Victoria,Sujeto 4,Sueño,True,True,exacto
+ERGOTINA,ERGOTINA,Remedio Para Hemorragias,Remedio Para Hemorragias,Sujeto 4,Sueño,True,True,exacto
+RETEL,RETEL,Red Para Pescar,Red Para Pescar,Sujeto 4,Sueño,True,True,red para pescar conserva funcion
+CAURO,CAURO,Viento Del Noroeste,Viento Del Noroeste,Sujeto 4,Sueño,True,True,exacto
+QUIMA,QUIMA,Rama Nueva De Un Árbol,Rama Nueva De Un Árbol,Sujeto 4,Sueño,True,True,exacto
+PILTRO,PILTRO,Habitación De Un Templo,Habitación De Un Templo,Sujeto 4,Sueño,True,True,exacto
+FISGA,FISGA,Arpón Para Pescar,Arpón Para Pescar,Sujeto 4,Sueño,True,True,exacto
+POSMA,POSMA,Lentitud Para Hacer Algo,Hacer algo con lentitud,Sujeto 4,Sueño,True,True,hacer algo con lentitud conserva significado
+LASTO,LASTO,Recibo De Pago,Recibo De compra,Sujeto 4,Sueño,True,True,recibo de compra conserva categoria de recibo
+GREBA,GREBA,Armadura Para La Rodilla,Armadura Para La Rodilla,Sujeto 4,Sueño,True,True,exacto
+MAINEL,MAINEL,Baranda De Una Escalera,Baranda De Una Escalera,Sujeto 4,Sueño,True,True,exacto
+JABARDO,JABARDO,Aglomeración De Gente,Aglomeración De Gente,Sujeto 4,Sueño,True,True,exacto
+SAMARUGO,,Renacuajo De Una Rana,Renacuajo De Una Rana,Sujeto 4,Sueño,False,True,exacto
+BADINA,BADINA,Charco De Agua,Charco De Agua,Sujeto 4,Sueño,True,True,exacto
+TINELO,TIBELO,Comedor Para La Servidumbre,cuarto de la servidumbre,Sujeto 4,Sueño,False,True,cuarto de la servidumbre conserva contexto funcional
+NENIA,NEINA,Poema Fúnebre,Poema Fúnebre,Sujeto 4,Sueño,False,True,exacto
+CÍTOLA,CÍTOLA,Instrumento Musical Antiguo,Instrumento Musical Antiguo,Sujeto 4,Sueño,True,True,exacto

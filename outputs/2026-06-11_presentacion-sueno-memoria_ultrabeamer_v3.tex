@@ -1,0 +1,482 @@
+% =============================================================================
+%  TP Neurociencias del Desarrollo Productivo
+%  Presentacion: Sueno, memoria y analisis de senales fisiologicas (v3)
+%  Tema beamer limpio y profesional. Compilar con pdflatex (dos pasadas).
+%  Nota: los nombres de archivo (includegraphics/texttt) van SIN acentos a proposito.
+% =============================================================================
+\documentclass[aspectratio=169,11pt,t]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{amsmath}
+
+% --- Paleta -----------------------------------------------------------------
+\definecolor{navy}{HTML}{1F3B63}
+\definecolor{steel}{HTML}{3F72AF}
+\definecolor{amber}{HTML}{E08A2E}
+\definecolor{ink}{HTML}{1E293B}
+\definecolor{muted}{HTML}{6B7280}
+\definecolor{paper}{HTML}{F5F7FA}
+\definecolor{good}{HTML}{2E7D5B}
+\definecolor{warn}{HTML}{B4451F}
+
+% --- Tema -------------------------------------------------------------------
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{normal text}{fg=ink}
+\setbeamercolor{structure}{fg=navy}
+\setbeamercolor{itemize item}{fg=amber}
+\setbeamercolor{itemize subitem}{fg=steel}
+\setbeamertemplate{itemize item}{\small\raise0.5pt\hbox{\textbullet}}
+\setbeamertemplate{itemize subitem}{\footnotesize\raise0.5pt\hbox{--}}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries}
+
+\setbeamercolor{block title}{bg=navy,fg=white}
+\setbeamercolor{block body}{bg=navy!6,fg=ink}
+\setbeamercolor{block title alerted}{bg=amber,fg=white}
+\setbeamercolor{block body alerted}{bg=amber!10,fg=ink}
+\setbeamercolor{block title example}{bg=good,fg=white}
+\setbeamercolor{block body example}{bg=good!8,fg=ink}
+
+% Frametitle con regla de acento
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \vskip0.55em%
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.9cm,rightskip=0.9cm]{}%
+    {\color{navy}\bfseries\large\insertframetitle}%
+    \ifx\insertframesubtitle\@empty\else%
+      \par\vskip1pt{\color{muted}\small\insertframesubtitle}%
+    \fi\par%
+    \vskip3pt{\color{amber}\rule{\dimexpr\paperwidth-1.8cm\relax}{1.1pt}}%
+  \end{beamercolorbox}%
+  \vskip2pt%
+}
+
+% Footline minimal (sin equipo): titulo corto + numero de slide
+\setbeamertemplate{footline}{%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.75\paperwidth,ht=2.2ex,dp=1.0ex,leftskip=0.9cm]{}%
+      {\color{muted}\scriptsize Sueño y memoria \,$\cdot$\, TP Neurociencias del Desarrollo Productivo}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.2ex,dp=1.0ex,rightskip=0.9cm]{}%
+      \hfill{\color{muted}\scriptsize \insertframenumber/\inserttotalframenumber}%
+    \end{beamercolorbox}%
+  }\vskip2pt%
+}
+
+\graphicspath{{figures/}{figures/deck-assets/}{../assets/}}
+
+% Franja-claim de ancho completo (mensaje central de la slide)
+\newcommand{\claim}[1]{%
+  \begin{beamercolorbox}[wd=\textwidth,sep=7pt,rounded=true,shadow=false]{block title}%
+    \centering\bfseries #1%
+  \end{beamercolorbox}}
+
+% Etiqueta de fase del diseno experimental
+\newcommand{\fase}[2]{%
+  \begin{beamercolorbox}[wd=\linewidth,sep=6pt,center,rounded=true]{#1}%
+    \bfseries #2%
+  \end{beamercolorbox}}
+\setbeamercolor{faseA}{bg=navy,fg=white}
+\setbeamercolor{faseB}{bg=amber,fg=white}
+\setbeamercolor{faseG}{bg=muted,fg=white}
+
+\title{Sueño, memoria y análisis de señales fisiológicas}
+\subtitle{Consolidación de memoria declarativa durante el sueño}
+\date{18/6/2026}
+
+% =============================================================================
+\begin{document}
+
+% ---------- 0. PORTADA -------------------------------------------------------
+{\setbeamertemplate{footline}{}
+\begin{frame}[plain]
+  \vfill
+  \begin{beamercolorbox}[wd=\paperwidth,sep=16pt,leftskip=1.1cm,rightskip=1.1cm]{}
+    {\color{amber}\rule{3.2cm}{2pt}}\par\vskip10pt
+    {\color{navy}\bfseries\Large Sueño, memoria y análisis de señales fisiológicas}\par
+    \vskip6pt
+    {\color{ink}\large ¿Mejora el sueño la consolidación de la memoria declarativa?}\par
+    \vskip18pt
+    {\color{muted}\normalsize Trabajo práctico \,$\cdot$\, Neurociencias del Desarrollo Productivo}\par
+  \end{beamercolorbox}
+  \vfill
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=1.1cm,rightskip=1.1cm]{}
+    {\color{ink}\normalsize\textbf{Integrantes:} Keoni Dubovitsky \,\textbullet\, Joaquín Pelufo \,\textbullet\, Sergio Tenoch Sil Cruz}\par
+    \vskip4pt
+    {\color{muted}\small Fecha de exposición: 18/6/2026}\par
+  \end{beamercolorbox}
+  \vskip12pt
+\end{frame}}
+
+% ---------- 1. RESUMEN -------------------------------------------------------
+\begin{frame}{El sueño se asocia, de forma descriptiva, a mejor memoria declarativa}{Resumen del estudio}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.54\textwidth}
+      \begin{itemize}\setlength\itemsep{5pt}
+        \item \textbf{Pregunta.} ¿El sueño favorece la consolidación declarativa?
+        \item \textbf{Diseño.} Aprender asociaciones (TR); un grupo duerme una siesta y un \textbf{grupo control} sigue en vigilia; se reevalúa (TS).
+        \item \textbf{Señales.} EEG de un \emph{dataset secundario} de quien sí durmió (el sujeto propio con OpenBCI no concilió el sueño).
+        \item \textbf{Hallazgo.} En sueño se recordó más; el EEG muestra arquitectura NREM con sueño profundo.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \claim{La evidencia apoya \emph{descriptivamente} la hipótesis, pero no la confirma de forma estadística ni causal.}
+      \vskip6pt
+      {\footnotesize\color{muted} Memoria y EEG son fuentes distintas: se integran a nivel teórico, no se correlacionan directamente.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------- 2. INTRODUCCION --------------------------------------------------
+\begin{frame}{Por qué estudiamos memoria declarativa y sueño}{Introducción}
+  \begin{itemize}\setlength\itemsep{5pt}
+    \item La \textbf{memoria declarativa} (hechos, asociaciones de palabras) se aprende rápido pero queda \textbf{frágil}: necesita \textbf{consolidarse}.
+    \item El \textbf{sueño} es la ventana donde esa consolidación se vuelve más eficaz.
+    \item \textbf{En este TP} lo ponemos a prueba: aprendemos asociaciones de palabras y comparamos el recuerdo \textbf{con y sin sueño}.
+  \end{itemize}
+  \vskip6pt
+  \claim{Hipótesis de trabajo: el sueño mejora la consolidación de la memoria declarativa.}
+\end{frame}
+
+% ---------- 3. MARCO TEORICO APLICADO ---------------------------------------
+\begin{frame}{Cómo el sueño consolida -- y qué buscamos por eso en el TP}{Marco teórico aplicado}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.58\textwidth}
+      \begin{itemize}\setlength\itemsep{4pt}
+        \item \textbf{Consolidación activa:} en sueño profundo (\textbf{SWS}) se reactivan memorias y se transfieren del hipocampo a la neocorteza.
+        \item Se apoya en el acople de \textbf{ondas lentas} (delta), \textbf{husos} (sigma, propios de S2) y \textbf{ripples} hipocampales.
+        \item \textbf{Homeostasis sináptica:} el NREM hace un \emph{downscaling} que mejora la señal/ruido.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{block}{Por eso, en el TP buscamos...}
+        \begin{itemize}\setlength\itemsep{2pt}
+          \item \textbf{mejor recuerdo} tras dormir (TR vs TS);
+          \item \textbf{SWS} en el hipnograma;
+          \item \textbf{delta} y \textbf{husos/sigma} en el EEG.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------- 4. HIPOTESIS -----------------------------------------------------
+\begin{frame}{Hipótesis y predicciones contrastables}{Diseñadas para poder apoyarse o rechazarse}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.5\textwidth}
+      \textbf{\color{navy}Hipótesis principal}\par\vskip2pt
+      El sueño mejora la consolidación de la memoria declarativa.
+      \vskip10pt
+      \textbf{\color{navy}Predicciones}\par\vskip2pt
+      \begin{itemize}\setlength\itemsep{4pt}
+        \item \textbf{Conductual:} mejor recuerdo en TS (post-sueño) que en condición vigilia.
+        \item \textbf{Fisiológica:} arquitectura NREM con SWS y ritmos de consolidación.
+        \item \textbf{Mecanística:} ondas lentas, husos y ripples sostienen la consolidación.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Criterio de decisión (definido a priori)}
+        \begin{itemize}\setlength\itemsep{3pt}
+          \item Se \textbf{apoya} si el patrón conductual y la fisiología son compatibles.
+          \item No se ``demuestra'': $n$ pequeño y fuentes separadas.
+          \item Lenguaje: ``compatible con'' / ``apoya descriptivamente''.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------- 5. DISENO DEL EXPERIMENTO ---------------------------------------
+\begin{frame}{Diseño: aprender, esperar (dormir o no) y volver a evaluar}{Dos condiciones y tres etapas}
+  \vskip4pt
+  \begin{columns}[c,onlytextwidth]
+    \begin{column}{0.18\textwidth}\fase{faseA}{TR}\end{column}
+    \begin{column}{0.05\textwidth}\centering$\Longrightarrow$\end{column}
+    \begin{column}{0.44\textwidth}
+      \fase{faseB}{Sueño: siesta de 90 min}
+      \vskip5pt
+      \fase{faseG}{Control: vigilia (despiertos)}
+    \end{column}
+    \begin{column}{0.05\textwidth}\centering$\Longrightarrow$\end{column}
+    \begin{column}{0.18\textwidth}\fase{faseA}{TS}\end{column}
+  \end{columns}
+  \vskip12pt
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.30\textwidth}
+      {\footnotesize\textbf{TR.} Ambos grupos aprenden y recuerdan las \textbf{asociaciones de palabras} (línea de base).}
+    \end{column}
+    \begin{column}{0.38\textwidth}
+      {\footnotesize\textbf{Intervalo.} El grupo \textbf{sueño} duerme 90 min (\textbf{consolidación}); el \textbf{control} permanece despierto.}
+    \end{column}
+    \begin{column}{0.30\textwidth}
+      {\footnotesize\textbf{TS.} Ambos vuelven a evaluar: se compara cuánto se \textbf{consolidó} entre condiciones.}
+    \end{column}
+  \end{columns}
+  \vskip12pt
+  \claim{Comparar sueño vs.\ control en vigilia aísla el efecto del sueño sobre la consolidación.}
+\end{frame}
+
+% ---------- 6. PROCEDENCIA DE DATOS -----------------------------------------
+\begin{frame}{Dos fuentes de datos que NO se mezclan}{Procedencia de datos}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.6\textwidth}
+      {\color{navy}\bfseries Fuente A -- Memoria (conductual).}\\
+      Planilla de la tarea de palabras (TR/TS), 4 sujetos: 3 en \textbf{vigilia} (grupo control) y 1 en \textbf{sueño}.
+      \vskip8pt
+      {\color{navy}\bfseries Fuente B -- EEG (fisiológica).}\\
+      BrainVision de una \textbf{persona que sí durmió} (dataset secundario de la cátedra).
+      \vskip10pt
+      \begin{itemize}\setlength\itemsep{5pt}
+        \item El sujeto propio (OpenBCI) \textbf{no durmió}: se usa como limitación y discusión.
+        \item Memoria y EEG son \textbf{sujetos distintos}: no se correlacionan directamente.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \centering
+      \includegraphics[height=0.54\textheight]{foto_electrodos_v3.jpg}\\[2pt]
+      {\scriptsize\color{muted} Colocación del gorro de electrodos (OpenBCI).}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------- 7. METODOS CONDUCTUALES -----------------------------------------
+\begin{frame}{Tarea de palabras: recuerdo formal vs.\ recuerdo semántico}{Métodos conductuales}
+  \begin{itemize}\setlength\itemsep{5pt}
+    \item En TR/TS cada sujeto trabaja con 20 \textbf{asociaciones} palabra rara--definición.
+    \item Dos puntajes independientes por sujeto:
+      \begin{itemize}\setlength\itemsep{2pt}
+        \item \textbf{Palabra objetivo:} coincidencia \emph{formal} exacta (normalizando mayúsculas/acentos).
+        \item \textbf{Definición:} scoring \emph{semántico} binario, documentado ítem por ítem.
+      \end{itemize}
+    \item Análisis \textbf{descriptivo}: la condición sueño tiene \textbf{$n=1$}.
+  \end{itemize}
+  \vskip3pt
+  \begin{block}{Por qué dos puntajes}
+    Recuperar la \textbf{forma exacta} de una pseudopalabra es más exigente que recuperar su \textbf{significado}: separa la dificultad de la tarea.
+  \end{block}
+\end{frame}
+
+% ---------- 8. METODOS EEG ---------------------------------------------------
+\begin{frame}{EEG con MNE: filtrar antes de medir y revisar la calidad de canal}{Métodos de señales fisiológicas}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.58\textwidth}
+      \begin{itemize}\setlength\itemsep{4pt}
+        \item Lectura BrainVision con \textbf{MNE} (10 canales, 250 Hz).
+        \item \textbf{Filtros} antes del análisis: \textbf{notch 50 Hz} + \textbf{pasa banda 0.3--35 Hz} (quita deriva/DC y ruido).
+        \item \textbf{Épocas de 30 s} sin solapamiento, alineadas 1:1 con el scoring.
+        \item Canales centrales \textbf{C3/C4}; potencia por banda con Welch.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{block}{Control de calidad}
+        \footnotesize
+        \begin{tabular}{lrl}
+          \toprule
+          Canal & std (uV) & Estado\\
+          \midrule
+          C3 & 28 & \textbf{\color{good}OK}\\
+          C4 & 513 & \textbf{\color{warn}descartado}\\
+          \bottomrule
+        \end{tabular}\par\vskip4pt
+        C4 tenía artefactos y saturación: se \textbf{descarta} y se analiza \textbf{C3}.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------- 9. SCORING -------------------------------------------------------
+\begin{frame}{Scoring de sueño: el registro llegó hasta sueño profundo (S3/SWS)}{Códigos y fases}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \footnotesize
+      \begin{tabular}{cl}
+        \toprule
+        Código & Fase\\
+        \midrule
+        0 & Vigilia / transición\\
+        1 & S1 (sueño liviano)\\
+        2 & S2 (husos / complejos K)\\
+        3 & \textbf{S3 / SWS} (ondas lentas)\\
+        \bottomrule
+      \end{tabular}
+      \vskip6pt
+      \normalsize Descenso NREM consecutivo \textbf{0$\to$1$\to$2$\to$3}, en épocas de 30 s.
+    \end{column}
+    \begin{column}{0.54\textwidth}
+      \begin{block}{Qué implica}
+        \begin{itemize}\setlength\itemsep{2pt}
+          \item Se llegó a \textbf{S3/SWS}, la fase clave para la consolidación.
+          \item Por la duración (~90 min) podía esperarse \textbf{S4} o \textbf{REM}, pero \textbf{no aparecen}.
+          \item Comparamos las fases por profundidad; el foco es \textbf{S3/SWS}.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------- 10. RESULTADOS CONDUCTUALES -------------------------------------
+\begin{frame}{Resultados conductuales: mejor recuerdo formal en la condición sueño}{Tarea de palabras (TR/TS)}
+  \begin{columns}[c,onlytextwidth]
+    \begin{column}{0.62\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{2026-06-11_memoria_scores_v1.png}
+    \end{column}
+    \begin{column}{0.38\textwidth}
+      \begin{itemize}\setlength\itemsep{3pt}
+        \item \textbf{Palabra objetivo:} sueño \textbf{17/20} vs.\ vigilia \textbf{5/20} promedio.
+        \item \textbf{Definición:} alta en casi todos (menos exigente).
+        \item Cautela: un sujeto en vigilia también rindió alto (14/20).
+      \end{itemize}
+      \vskip4pt
+      \claim{Patrón compatible con la hipótesis; $n=1$ en sueño.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------- 11. HIPNOGRAMA ---------------------------------------------------
+\begin{frame}{La persona que durmió recorrió un descenso NREM completo hasta S3/SWS}{Arquitectura del sueño: hipnograma}
+  \centering
+  \includegraphics[width=0.96\linewidth]{2026-06-11_eeg_hipnograma_mne_v3.png}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.5\textwidth}
+      {\footnotesize $\bullet$ Latencia de sueño: \textbf{4 min} \quad $\bullet$ Latencia a S3: \textbf{45.5 min}}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      {\footnotesize $\bullet$ Bloque S3/SWS sostenido: \textbf{45.5--68 min} \quad $\bullet$ Sin REM}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------- 12. DISTRIBUCION DE FASES ---------------------------------------
+\begin{frame}{Predomina el NREM, con casi 28\% del tiempo en sueño profundo}{Tiempo por fase y latencias}
+  \begin{columns}[c,onlytextwidth]
+    \begin{column}{0.56\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{2026-06-11_eeg_porcentaje-fases_v3.png}
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \begin{itemize}\setlength\itemsep{5pt}
+        \item S2: \textbf{40.9\%} (32.5 min) -- la fase más larga.
+        \item S3/SWS: \textbf{27.7\%} (22 min) -- sueño profundo presente.
+        \item Vigilia 13.8\% + S1 17.6\%: sueño liviano/transición.
+        \item Eficiencia de sueño: \textbf{86\%} del registro.
+      \end{itemize}
+      \vskip8pt
+      {\footnotesize\color{muted} Arquitectura compatible con una \textbf{siesta} con buena proporción de NREM profundo.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------- 13. POTENCIA POR BANDA ------------------------------------------
+\begin{frame}{Delta crece hacia S3 y los husos (sigma) tienen su pico en S2}{Potencia por banda y fase (C3)}
+  \centering
+  \includegraphics[width=0.82\linewidth]{2026-06-11_eeg_potencia-bandas-por-fase_v3.png}\\[3pt]
+  {\footnotesize Delta relativa sube de 57\% (Vigilia) a \textbf{92\% en S3}; la sigma (husos) es máxima en \textbf{S2}.}
+\end{frame}
+
+% ---------- 14. ESPECTROGRAMA + HUSOS/MEMORIA -------------------------------
+\begin{frame}{Husos y memoria: integramos el mecanismo, no inventamos una correlación}{Qué podemos y qué no podemos concluir}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      \includegraphics[width=\linewidth]{2026-06-11_eeg_espectrograma_c3-c4_mne_v3.png}\\[1pt]
+      {\scriptsize\color{muted} El bloque S3 (45--68 min) concentra la potencia lenta.}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \begin{block}{Sí podemos decir}
+        \footnotesize Hay husos (sigma) en S2 y ondas lentas en S3: los ritmos que la teoría liga a la consolidación.
+      \end{block}
+      \begin{alertblock}{No podemos decir}
+        \footnotesize ``Los husos de \emph{este} EEG explican la memoria de \emph{esos} sujetos'': EEG y memoria son \textbf{fuentes distintas}.
+      \end{alertblock}
+      {\scriptsize\color{muted} Sigma = proxy; detector de husos = trabajo futuro.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------- 15. VARIABLES EXTERNAS ------------------------------------------
+\begin{frame}{Por qué el sujeto propio pudo no dormir: variables que modulan el descanso}{Discusión de factores contextuales}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.62\textwidth}
+      \begin{itemize}\setlength\itemsep{4pt}
+        \item \textbf{Cronotipo / Proceso C:} una siesta a las 16:00 va a contra-fase.
+        \item \textbf{Café:} bloquea la adenosina, sube la latencia y baja el SWS.
+        \item \textbf{Recuperatorio previo / estrés:} cortisol y noradrenalina dificultan conciliar.
+        \item \textbf{Pantallas / luz:} retrasan la fase de sueño.
+        \item \textbf{Ambiente y dispositivo:} lugar no habitual, electrodos incómodos.
+      \end{itemize}
+      \vskip6pt
+      {\footnotesize\color{muted} \textbf{Variables plausibles}, no causas confirmadas.}
+    \end{column}
+    \begin{column}{0.38\textwidth}
+      \centering
+      \includegraphics[height=0.52\textheight]{foto_pre-siesta-listo_v3.jpg}\\[2pt]
+      {\scriptsize\color{muted} Sujeto propio listo para la siesta (OpenBCI).}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------- 16. DISCUSION INTEGRADA -----------------------------------------
+\begin{frame}{Discusión integrada: resultados, teoría y límites}{Cómo se sostiene el trabajo}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.5\textwidth}
+      \textbf{\color{navy}Lo que encaja}
+      \begin{itemize}\setlength\itemsep{2pt}
+        \item Mejor recuerdo formal en sueño (TR$\to$TS).
+        \item Arquitectura NREM con SWS y husos en S2.
+        \item Coherente con consolidación activa + homeostasis sináptica.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{\color{warn}Limitaciones}
+      \begin{itemize}\setlength\itemsep{2pt}
+        \item $n=1$ en sueño; sin estadística.
+        \item EEG y memoria de \textbf{sujetos distintos}.
+        \item El registro no llegó a S4 ni REM.
+        \item Sigma como proxy, sin detector de husos.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vskip5pt
+  \claim{Integramos el mecanismo de la materia sin sobre-afirmar lo que los datos no permiten.}
+\end{frame}
+
+% ---------- 17. CONCLUSION ---------------------------------------------------
+\begin{frame}{Conclusión}{Respuesta directa a la pregunta}
+  \begin{itemize}\setlength\itemsep{5pt}
+    \item Los resultados son \textbf{compatibles} con la hipótesis: en condición sueño se recordó más y el EEG muestra la arquitectura esperable del sueño NREM con sueño profundo.
+    \item La hipótesis queda \textbf{apoyada de forma descriptiva/parcial}, no demostrada: tamaño muestral pequeño, fuentes separadas y registro que no llegó a S4/REM.
+    \item El caso del sujeto que no durmió se transforma en una \textbf{discusión rica} sobre cronotipo, cafeína, estrés, ambiente e higiene del sueño.
+  \end{itemize}
+  \vskip6pt
+  \claim{El sueño aparece como un aliado de la memoria declarativa; lo afirmamos con la cautela que los datos exigen.}
+\end{frame}
+
+% ---------- APENDICE ---------------------------------------------------------
+\appendix
+\begin{frame}{Apéndice -- PSD promedio por fase (C3)}{Material de respaldo}
+  \centering
+  \includegraphics[width=0.66\linewidth]{2026-06-11_eeg_psd-por-fase_v3.png}\\[2pt]
+  {\footnotesize En S2 se aprecia el ``bump'' de husos en 12--15 Hz; S3 muestra la mayor potencia lenta.}
+\end{frame}
+
+\begin{frame}{Apéndice -- Ficha técnica del análisis}{Reproducibilidad}
+  \footnotesize
+  \begin{itemize}\setlength\itemsep{3pt}
+    \item \textbf{Señal:} BrainVision, 10 canales, 250 Hz; canal usado \textbf{C3} (C4 descartado por artefactos).
+    \item \textbf{Filtros:} notch 50 Hz + pasa banda 0.3--35 Hz (FIR).
+    \item \textbf{Épocas:} 159 de 30 s, sin solapamiento, alineadas al scoring (1.ª columna).
+    \item \textbf{Bandas:} delta 0.5--4, theta 4--8, alfa 8--12, sigma 12--15, beta 15--30 Hz.
+    \item \textbf{Fases observadas:} Vigilia, S1, S2, S3/SWS (sin S4 ni REM).
+  \end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,38 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 CourierNewPSMT;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15600\viewh11420\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 .txt -> scoring\
+	Cada nuemro indica cada epoca de sueno, solo debemos tener en cuenta la primer columna, la segunda la ignoramos, las columnas estan separadas por un espacio.\
+	Con MNE podemos plotear cada 30 seg y plotear usando el scoring. Es la manera estandar de guardar las epocas de sueno.\
+	0 es Wait (transicion)\
+	1 es S1\
+	2 es S3\
+	4 es S4\
+	5 es REM\
+	8 es MT (movement time)\
+\
+	La idea es agrupar por epocas del mismo fase de sueno y analizarlas para ver como el sueno afecta la consolidacion en el aprendizaje de nuevas palabaras. Nos importa mas que nada (en base a las clases) las fases 3 y 4 de sueno profundo (SWS) o tambien NREM vs REM. La eleccion de como agruparlas es nuestra. \
+\
+	Vamos agarrando en ventanas de 30s sin solapar ya que el scoring se hizo sin solapar. Las etapas W no nos van a importar para ver nuestra hipotesis, pero si las otras, por ejemplo agrupar todo el set de fase 1 y asi para cada una, asi luego hacemos una curva para cada fase de sueno. O sino combinarlas, por ejemplo fase 3 y 4 serian SWS. Analizamos la potencia de banda de cada una. Podemos hacer la potencia absoluta, o la potencia relativa de cada banda y vemos como se distribuye en las bandas. \
+	\
+	Otro analisis es analizar el txt independientemente para ver el porcentaje total de sueno en una fase. Para estudiar como el sueno afecta la consolidacion. Podemos analizar las potencias en theta y rem, etc. Tambein scar latencias de sueno, hacer un hipnograma. O cuanto tiempo paso hasta dormirse\
+\
+	Tener en cuenta que hay que agregar filtros para hacer el analisis., como un pasa bandas en 0.3 y un notch en 50, estos filtros se aplican para tener en cuenta el ruido, y hay que aplicarlos antes del analisis. \
+\
+	Tener en cuenta que hay varios canales, y hay que elegir algunos y ver uno que sirva, ya que puede haber senales malas, podemos hacer el promedio de los canales, eso queda a eleccion nuestra.\
+\
+	En nuestros datos se ve que solo llego a fase 3 (en el txt) explicar tambien que esperabamos que llegue a sws ya que eran 90mins y talvez a rem.\
+\
+	Mi profesora me recomienda usar MNE para analizar los datos:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 .vhdr\
+.vmrk\
+.eeg\
+\
+	En base a como plotemos las senales podemos interpretar cosas que si lo graficamos distinto interpretamos otra cosa, por ejemplo si ploteamos cada 30s u 8h es distinto. Si una senal es mala descartala y explicar. En base a las senales podemos elegir cuales nos conviene como solo C3 y C4, los centrales. Los graficos pueden hacerse en escala lineal o logaritmica.\
+\
+}

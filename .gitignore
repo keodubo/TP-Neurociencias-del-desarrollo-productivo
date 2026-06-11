@@ -6,6 +6,8 @@ __MACOSX/
 .env.*
 .venv/
 venv/
+node_modules/
+node_modules
 
 # Python / notebooks
 __pycache__/

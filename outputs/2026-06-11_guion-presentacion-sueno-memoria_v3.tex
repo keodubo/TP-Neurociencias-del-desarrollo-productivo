@@ -1,0 +1,477 @@
+% =============================================================================
+%  Guion formal de la presentacion: Sueno, memoria y senales fisiologicas (v3)
+%  Documento de exposicion. Compilar con pdflatex (dos pasadas por el indice).
+%  Nota: las rutas/nombres en \texttt{} van SIN acentos (son archivos reales).
+% =============================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+% --- Paleta -----------------------------------------------------------------
+\definecolor{navy}{HTML}{1F3B63}
+\definecolor{steel}{HTML}{3F72AF}
+\definecolor{amber}{HTML}{E08A2E}
+\definecolor{ink}{HTML}{1E293B}
+\definecolor{muted}{HTML}{6B7280}
+\definecolor{warn}{HTML}{B4451F}
+\definecolor{good}{HTML}{2E7D5B}
+\color{ink}
+
+% --- Titulos ----------------------------------------------------------------
+\titleformat{\section}{\Large\bfseries\color{navy}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries\color{steel}}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{14pt}{6pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+% --- Encabezado / pie -------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\footnotesize\color{muted} Guion -- Sueño y memoria}
+\fancyhead[R]{\footnotesize\color{muted} TP Neurociencias del Desarrollo Productivo}
+\fancyfoot[C]{\footnotesize\color{muted}\thepage}
+
+% --- Cajas (barra lateral + tinte via colortbl) -----------------------------
+\newcommand{\cajaW}{\dimexpr\linewidth-3pt-2\tabcolsep-1pt\relax}
+\newenvironment{narracion}{%
+  \par\smallskip\noindent
+  \begin{tabular}{@{}!{\color{navy}\vrule width 3pt}>{\columncolor{navy!6}\color{ink}}p{\cajaW}@{}}}%
+  {\end{tabular}\par\smallskip}
+\newenvironment{clavebox}{%
+  \par\smallskip\noindent
+  \begin{tabular}{@{}!{\color{amber}\vrule width 3pt}>{\columncolor{amber!10}\color{ink}}p{\cajaW}@{}}}%
+  {\end{tabular}\par\smallskip}
+\newenvironment{avisobox}{%
+  \par\smallskip\noindent
+  \begin{tabular}{@{}!{\color{warn}\vrule width 3pt}>{\columncolor{warn!8}\color{ink}}p{\cajaW}@{}}}%
+  {\end{tabular}\par\smallskip}
+
+\newcommand{\pregunta}[1]{\vspace{4pt}\noindent\textbf{\color{navy}P. #1}\par\nopagebreak}
+\newcommand{\respuesta}[1]{\noindent\textbf{R.} #1\par}
+\newcommand{\slidehdr}[2]{\subsection*{\color{steel}Slide #1 \,\textbar\, #2}\addcontentsline{toc}{subsection}{Slide #1 -- #2}}
+
+\setlist[itemize]{leftmargin=1.4em, topsep=2pt, itemsep=1.5pt}
+\setlist[enumerate]{leftmargin=1.6em, topsep=2pt, itemsep=2pt}
+
+% =============================================================================
+\begin{document}
+
+% ---------- PORTADA ----------------------------------------------------------
+\thispagestyle{empty}
+\begin{center}
+  \vspace*{2.0cm}
+  {\color{amber}\rule{4cm}{2pt}}\\[10pt]
+  {\Huge\bfseries\color{navy} Guion de presentación}\\[10pt]
+  {\LARGE\color{ink} Sueño, memoria y análisis de señales fisiológicas}\\[8pt]
+  {\large\color{muted} Consolidación de memoria declarativa durante el sueño}\\[24pt]
+  {\large Trabajo práctico -- Neurociencias del Desarrollo Productivo}\\[10pt]
+  {\large\textbf{Integrantes:} Keoni Dubovitsky \,\textbullet\, Joaquín Pelufo \,\textbullet\, Sergio Tenoch Sil Cruz}\\[6pt]
+  {\large\color{muted} Fecha de exposición: 18/6/2026}\\[20pt]
+  \colorbox{navy!6}{\parbox{0.80\textwidth}{\medskip\centering\normalsize
+    \textbf{Tesis oral.} El sueño mejora la consolidación de la memoria declarativa.
+    Con los datos del práctico la hipótesis queda \textbf{apoyada de forma descriptiva},
+    no demostrada estadística ni causalmente.\medskip}}
+  \vfill
+  {\small\color{muted} Documento de exposición -- versión 3.\\
+   Acompaña a \texttt{2026-06-11\_presentacion-sueno-memoria\_ultrabeamer\_v3.pdf}.
+   Duración objetivo: 12--15 minutos.}
+\end{center}
+\newpage
+
+\tableofcontents
+\newpage
+
+% ---------- 1. OBJETIVO ------------------------------------------------------
+\section{Objetivo y alcance}
+El objetivo del trabajo es estudiar la relación entre el \textbf{sueño} y la
+\textbf{consolidación de la memoria declarativa}, integrando dos tipos de datos: una
+\textbf{tarea de palabras} (memoria) y un \textbf{registro fisiológico} de sueño
+(EEG/EOG/EMG). El práctico se usa como punto de partida para pensar críticamente la
+relación entre sueño, memoria, actividad fisiológica y las variables que modulan el
+descanso y la consolidación.
+
+\begin{avisobox}
+\textbf{Restricción metodológica central.} El sujeto propio registrado con OpenBCI
+\textbf{no concilió el sueño}. Por indicación de la cátedra, el análisis fisiológico de
+sueño se hace sobre un \textbf{dataset secundario} de una persona que sí durmió. Por eso
+\textbf{no se mezclan} ambas fuentes como si fueran el mismo sujeto, ni se correlaciona
+directamente el EEG con la tarea de memoria.
+\end{avisobox}
+
+\subsection{Diseño del experimento}
+El experimento tiene tres etapas y \textbf{dos condiciones}:
+\begin{enumerate}
+  \item \textbf{TR} -- etapa inicial: todos los participantes aprenden y recuerdan las
+        \textbf{asociaciones de palabras} (línea de base).
+  \item \textbf{Intervalo} -- acá se separan las condiciones: la condición \textbf{sueño}
+        duerme una \textbf{siesta de 90 min} (etapa de consolidación), mientras que el
+        \textbf{grupo control} permanece en \textbf{vigilia} (despierto).
+  \item \textbf{TS} -- test final: ambos vuelven a evaluar el recuerdo, y se compara
+        cuánto se consolidó la asociación de palabras entre condiciones.
+\end{enumerate}
+El contraste \textbf{sueño vs.\ control en vigilia} (y el cambio TR$\to$TS) es lo que
+permite aislar el efecto del sueño sobre la consolidación declarativa.
+
+% ---------- 2. HIPOTESIS -----------------------------------------------------
+\section{Hipótesis y predicciones}
+\textbf{Hipótesis principal.} El sueño mejora la consolidación de la memoria declarativa.
+
+\begin{itemize}
+  \item \textbf{Predicción conductual:} la condición con sueño debería mostrar mejor
+        recuerdo posterior (TS) que el grupo control en vigilia.
+  \item \textbf{Predicción fisiológica:} el sueño debería mostrar arquitectura NREM,
+        idealmente con sueño de ondas lentas (SWS), y ritmos relevantes para la consolidación.
+  \item \textbf{Predicción mecanística:} ondas lentas, husos de sueño y ripples
+        hipocampales sostienen la consolidación activa.
+\end{itemize}
+
+\begin{clavebox}
+\textbf{Criterio de decisión (definido a priori).} La hipótesis se considera
+\emph{apoyada} si el patrón conductual y la arquitectura fisiológica son compatibles con
+ella. No se busca ``demostrar'': el tamaño muestral es pequeño ($n=1$ en condición sueño)
+y las fuentes de memoria y EEG están separadas. El lenguaje correcto es ``compatible con''
+o ``apoya descriptivamente'', nunca ``queda demostrado''.
+\end{clavebox}
+
+% ---------- 3. QUE ESPERABAMOS ENCONTRAR -------------------------------------
+\section{Qué esperábamos encontrar y con qué criterio analizamos}
+Esta sección explicita, antes de mostrar resultados, \textbf{qué anticipábamos observar}
+y \textbf{qué decisiones metodológicas} tomamos y por qué. Sirve para mostrar que el
+análisis siguió un criterio y no se ajustó a los resultados.
+
+\subsection{Lo que esperábamos encontrar}
+\begin{itemize}
+  \item \textbf{En la tarea (conductual):} mejor recuerdo en la condición sueño que en el
+        control en vigilia, sobre todo en la recuperación más exigente (la forma exacta de
+        las palabras).
+  \item \textbf{En el hipnograma:} un descenso ordenado de vigilia a NREM. Como el registro
+        dura cerca de 90 minutos (un ciclo de sueño), esperábamos \emph{poder} llegar al
+        sueño profundo (SWS) e incluso a un primer episodio de \textbf{REM}.
+  \item \textbf{En el espectro:} potencia \textbf{delta} máxima en SWS, presencia de
+        \textbf{husos} (banda sigma 12--15 Hz) en S2 y más \textbf{alfa/beta} en vigilia.
+  \item \textbf{En el mecanismo:} ritmos compatibles con la consolidación activa.
+\end{itemize}
+
+\begin{clavebox}
+\textbf{Qué encontramos realmente.} El registro \textbf{sí} llegó a S3/SWS (bloque
+sostenido de 45,5 a 68 min), pero \textbf{no mostró S4 ni REM}. Por eso el análisis se
+centra en la comparación entre fases NREM (Vigilia, S1, S2, S3) y en el sueño profundo,
+sin forzar una comparación con REM que los datos no permiten.
+\end{clavebox}
+
+\subsection{Qué criterio utilizamos y por qué}
+\begin{enumerate}
+  \item \textbf{Separación de fuentes.} La memoria (planilla, 4 sujetos) y el EEG (dataset
+        secundario) se analizan por separado. \emph{Por qué:} el sujeto propio no durmió y
+        la cátedra indicó usar datos secundarios; mezclarlos induciría conclusiones
+        causales inválidas.
+  \item \textbf{Interpretación del scoring.} El archivo solo contiene los códigos
+        \textbf{0, 1, 2 y 3} = Vigilia, S1, S2 y \textbf{S3/SWS}, un descenso NREM
+        consecutivo. El registro \textbf{llegó hasta S3} (sueño profundo); no hay S4 ni
+        REM. \emph{Por qué:} es la lectura coherente con la nota de cátedra
+        (``solo llegó a fase 3'') y con la fisiología; usamos solo la primera columna del
+        \texttt{.txt} y la segunda se ignora.
+  \item \textbf{Filtrado antes de medir.} Pasa banda 0,3--35 Hz + notch 50 Hz. \emph{Por
+        qué:} la deriva/DC y el ruido de línea distorsionan el espectro; sin filtrar, la
+        potencia delta aparecía inflada en todas las fases.
+  \item \textbf{Épocas de 30 s sin solapamiento.} \emph{Por qué:} el scoring fue hecho en
+        épocas de 30 s sin solapamiento; las ventanas de análisis se alinean 1:1.
+  \item \textbf{Control de calidad de canal.} Comparamos C3 y C4. \textbf{Descartamos C4}
+        (desvío de 513 uV, $\sim$18 veces el de C3, con saturación) y analizamos
+        \textbf{C3}. \emph{Por qué:} promediar C4 contaminaba el espectro e invertía el
+        patrón de delta entre fases.
+  \item \textbf{Sigma como proxy de husos.} Medimos la banda sigma 12--15 Hz, pero
+        \emph{no} corrimos un detector formal de husos. \emph{Por qué:} sin un método de
+        detección no afirmamos ``hay husos''; hablamos de la banda sigma como proxy y
+        proponemos el detector como trabajo futuro.
+  \item \textbf{Lenguaje prudente.} Reportamos resultados descriptivos y separamos
+        inferencias causales. \emph{Por qué:} $n=1$ en sueño y fuentes separadas no
+        permiten estadística ni causalidad.
+\end{enumerate}
+
+% ---------- 4. RESUMEN POR SLIDE ---------------------------------------------
+\section{Resumen ejecutivo por slide}
+\renewcommand{\arraystretch}{1.25}
+\begin{longtable}{@{}p{0.7cm}p{6.1cm}p{8.5cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Slide} & \textbf{Mensaje central (claim)} \\
+\midrule
+0 & Portada & Pregunta, hipótesis e integrantes. \\
+1 & Resumen & La evidencia apoya descriptivamente la hipótesis, no la demuestra. \\
+2 & Introducción & La memoria declarativa necesita consolidarse; el sueño es la ventana. \\
+3 & Marco teórico aplicado & Consolidación activa, ondas lentas, husos y ripples: qué buscamos en el TP. \\
+4 & Hipótesis & Hipótesis y predicciones contrastables + criterio de decisión. \\
+5 & Diseño del experimento & TR $\to$ (sueño 90 min / control vigilia) $\to$ TS. \\
+6 & Procedencia de datos & Dos fuentes (memoria y EEG) que no se mezclan. \\
+7 & Métodos conductuales & Recuerdo formal vs.\ semántico; condición sueño $n=1$. \\
+8 & Métodos EEG & Filtrar antes de medir; C4 descartado, se usa C3. \\
+9 & Scoring & El registro llegó hasta S3/SWS; sin S4 ni REM. \\
+10 & Resultados memoria & Mejor recuerdo formal en sueño (17/20 vs 5/20). \\
+11 & Hipnograma & Descenso NREM completo hasta S3/SWS, sin REM. \\
+12 & Fases y latencias & Predomina NREM; $\sim$28\% en sueño profundo. \\
+13 & Potencia por banda & Delta crece hacia S3; husos (sigma) pico en S2. \\
+14 & Husos y memoria & Integramos el mecanismo; no inventamos una correlación. \\
+15 & Variables externas & Cronotipo, cafeína, estrés, pantallas, ambiente. \\
+16 & Discusión & Lo que encaja y las limitaciones, sin sobre-afirmar. \\
+17 & Conclusión & El sueño como aliado de la memoria, con cautela. \\
+\bottomrule
+\end{longtable}
+
+% ---------- 5. GUION DETALLADO -----------------------------------------------
+\section{Guion detallado por slide (texto sugerido)}
+
+\slidehdr{0}{Portada}
+\begin{narracion}
+``Buenos días. Somos Keoni, Joaquín y Sergio. Vamos a presentar nuestro trabajo sobre
+sueño, memoria y señales fisiológicas. La pregunta que organiza todo es simple: ¿el sueño
+mejora la consolidación de la memoria declarativa?''
+\end{narracion}
+
+\slidehdr{1}{Resumen}
+\begin{narracion}
+``En 45 segundos: aprendimos asociaciones de palabras, comparando una condición que durmió
+una siesta con un grupo control que se mantuvo en vigilia. El EEG de sueño viene de un
+dataset secundario de una persona que sí durmió. La condición sueño recordó más, y el EEG
+muestra una arquitectura NREM con sueño profundo. Conclusión cauta: la evidencia apoya la
+hipótesis de forma descriptiva, pero no la confirma, porque memoria y EEG son fuentes
+distintas y el grupo sueño tiene un solo sujeto.''
+\end{narracion}
+
+\slidehdr{2}{Introducción}
+\begin{narracion}
+``La memoria declarativa son hechos y asociaciones que podemos expresar; se aprende rápido
+pero queda frágil y necesita consolidarse. El sueño es la ventana donde esa consolidación
+es más eficaz. En este TP lo ponemos a prueba: aprendemos asociaciones de palabras y
+comparamos el recuerdo con y sin sueño.''
+\end{narracion}
+
+\slidehdr{3}{Marco teórico aplicado}
+\begin{narracion}
+``No vamos a re-explicar toda la teoría, sino a conectarla con el TP. La consolidación
+activa dice que en sueño profundo se reactivan las memorias y se transfieren del hipocampo
+a la neocorteza, gracias al acople de ondas lentas, husos y ripples. La homeostasis
+sináptica agrega que el NREM mejora la relación señal/ruido. Por eso, en el TP buscamos tres
+cosas concretas: mejor recuerdo tras dormir, presencia de sueño profundo en el hipnograma, y
+delta y husos en el EEG.''
+\end{narracion}
+
+\slidehdr{4}{Hipótesis y predicciones}
+\begin{narracion}
+``Nuestra hipótesis: el sueño mejora la consolidación declarativa. De ahí tres predicciones:
+conductual (mejor recuerdo en la condición sueño que en el control), fisiológica
+(arquitectura NREM con SWS) y mecanística (ondas lentas, husos y ripples). Fijamos el
+criterio de antemano: la hipótesis se apoya si los patrones son compatibles; no la
+'demostramos' por el tamaño muestral y la separación de fuentes.''
+\end{narracion}
+
+\slidehdr{5}{Diseño del experimento}
+\begin{narracion}
+``El diseño tiene tres etapas y dos condiciones. Primero, la etapa TR: todos aprenden y
+recuerdan las asociaciones de palabras, como línea de base. Después viene el intervalo, y
+acá se separan las condiciones: una persona duerme una siesta de 90 minutos, que es la etapa
+de consolidación, mientras que el grupo control se queda despierto, en vigilia. Por último,
+la etapa TS: todos vuelven a evaluar el recuerdo. Comparar la condición sueño contra el
+control en vigilia es lo que nos permite aislar el efecto del sueño sobre la consolidación.''
+\end{narracion}
+
+\slidehdr{6}{Procedencia de datos}
+\begin{narracion}
+``Tenemos dos fuentes que no se mezclan. Fuente A: la planilla de la tarea de palabras, con
+cuatro sujetos, tres en vigilia como grupo control y uno en sueño. Fuente B: un registro
+BrainVision de una persona que sí durmió, que la cátedra nos dio como dataset secundario.
+Importante: nuestro sujeto propio con OpenBCI no logró dormir, así que ese caso lo usamos
+como limitación y tema de discusión, no como dato de sueño.''
+\end{narracion}
+
+\slidehdr{7}{Métodos conductuales}
+\begin{narracion}
+``En TR y TS cada sujeto trabaja con 20 asociaciones de una palabra rara con su definición.
+Medimos dos cosas por separado: la palabra objetivo, que es la coincidencia formal exacta, y
+la definición, con un scoring semántico. Separar ambas nos deja ver que recuperar la forma
+exacta es más exigente que recuperar el significado. El análisis es descriptivo: la condición
+sueño tiene un solo sujeto.''
+\end{narracion}
+
+\slidehdr{8}{Métodos EEG}
+\begin{narracion}
+``El EEG lo procesamos con MNE. Antes de medir, filtramos: un notch de 50 Hz y un pasa banda
+de 0,3 a 35 Hz, para sacar deriva y ruido. Cortamos en épocas de 30 segundos alineadas al
+scoring. Y revisamos la calidad de canal: C4 tenía artefactos enormes y saturación, así que
+lo descartamos y trabajamos con C3. Este control es clave: promediar C4 distorsionaba todo el
+espectro e invertía el patrón de delta.''
+\end{narracion}
+
+\slidehdr{9}{Scoring de sueño}
+\begin{narracion}
+``El archivo de scoring tiene 159 épocas de 30 segundos, con códigos del 0 al 3: vigilia, S1,
+S2 y S3, que es el sueño profundo o de ondas lentas. El registro llegó hasta S3. Por la
+duración, cerca de 90 minutos, podíamos haber esperado llegar a S4 o a un primer REM, pero no
+aparecen en estos datos. Así que comparamos las fases por profundidad, con foco en el sueño
+profundo S3.''
+\end{narracion}
+
+\slidehdr{10}{Resultados conductuales}
+\begin{narracion}
+``El resultado central para la hipótesis: en palabra objetivo, el sujeto en sueño obtuvo
+17 de 20, frente a un promedio de 5 de 20 en el grupo control en vigilia. En definiciones casi
+todos rinden alto, porque es menos exigente. Somos honestos: un sujeto control también rindió
+alto, 14 de 20. Por eso lo presentamos como un patrón compatible con la hipótesis, con
+$n=1$ en sueño.''
+\end{narracion}
+
+\slidehdr{11}{Hipnograma}
+\begin{narracion}
+``Este es el hipnograma de la persona que durmió. Se ve un descenso NREM completo: de vigilia
+a S1, S2 y un bloque sostenido de S3, el sueño profundo, entre los minutos 45 y 68. La
+latencia de sueño fue de 4 minutos y a S3 de 45 minutos. No hay REM.''
+\end{narracion}
+
+\slidehdr{12}{Tiempo por fase y latencias}
+\begin{narracion}
+``En la distribución predomina el NREM: S2 es la fase más larga con casi 41\% del tiempo, y el
+sueño profundo S3 ocupa cerca del 28\%. La eficiencia de sueño es alta, 86\% del registro. Es
+una arquitectura compatible con una siesta con buena proporción de NREM profundo.''
+\end{narracion}
+
+\slidehdr{13}{Potencia por banda y fase}
+\begin{narracion}
+``Acá está la firma espectral. La potencia delta crece con la profundidad: de 57\% en vigilia
+a 92\% en S3. Y los husos: la banda sigma absoluta tiene su pico claro en S2, justo donde la
+teoría ubica los husos de sueño. Es exactamente el patrón de libro.''
+\end{narracion}
+
+\slidehdr{14}{Husos y memoria}
+\begin{narracion}
+``Y acá la honestidad metodológica. Lo que sí podemos decir: este registro muestra husos en
+S2 y ondas lentas en S3, los ritmos que la teoría liga a la consolidación. Lo que no podemos
+decir: que los husos de este EEG expliquen la memoria de esos sujetos, porque son fuentes
+distintas. Por eso integramos el mecanismo a nivel teórico, no calculamos una correlación
+directa. Además, la sigma es un proxy: un detector formal de husos queda como trabajo futuro.''
+\end{narracion}
+
+\slidehdr{15}{Variables externas}
+\begin{narracion}
+``¿Por qué nuestro sujeto pudo no dormir? Lo discutimos con la teoría: el cronotipo y el
+proceso circadiano (una siesta a las cuatro de la tarde va a contra-fase), el café que bloquea
+la adenosina y baja el sueño profundo, el estrés del recuperatorio previo, las pantallas y el
+ambiente no habitual con electrodos incómodos. Algunas las reportó el sujeto; otras son
+plausibles. Sin mediciones directas, no son causas confirmadas.''
+\end{narracion}
+
+\slidehdr{16}{Discusión integrada}
+\begin{narracion}
+``Integrando todo: lo que encaja es el mejor recuerdo en sueño, la arquitectura NREM con sueño
+profundo y husos en S2, y la coherencia con consolidación activa y homeostasis sináptica. Las
+limitaciones son el $n=1$, las fuentes separadas, que el registro no llegó a S4 ni REM, y la
+sigma como proxy. La idea es integrar el mecanismo de la materia sin sobre-afirmar lo que los
+datos no permiten.''
+\end{narracion}
+
+\slidehdr{17}{Conclusión}
+\begin{narracion}
+``Cerramos con una respuesta directa: los resultados son compatibles con la hipótesis. El sueño
+aparece como un aliado de la memoria declarativa, y lo afirmamos con la cautela que los datos
+exigen: apoyo descriptivo y parcial, no demostración. Y el sujeto que no durmió, lejos de
+arruinar el trabajo, nos dio la mejor discusión sobre cronotipo, cafeína, estrés y ambiente.
+Gracias.''
+\end{narracion}
+
+% ---------- 6. PREGUNTAS -----------------------------------------------------
+\section{Preguntas esperables de la profesora y respuestas}
+
+\pregunta{¿La hipótesis se acepta o se rechaza?}
+\respuesta{Se \textbf{apoya de forma descriptiva}. Los datos son compatibles (mejor recuerdo en
+sueño + arquitectura NREM con sueño profundo), pero no se puede \emph{confirmar} estadística ni
+causalmente: la condición sueño tiene $n=1$ y el EEG proviene de otra fuente.}
+
+\pregunta{¿Había grupo control?}
+\respuesta{Sí. El diseño tiene dos condiciones: la condición \textbf{sueño} (siesta de 90 min)
+y un \textbf{grupo control en vigilia} (3 sujetos despiertos). Ambos hacen TR y TS; la
+comparación entre condiciones es la que prueba el efecto del sueño.}
+
+\pregunta{¿Por qué no pueden correlacionar directamente husos y memoria?}
+\respuesta{Porque el EEG (dataset secundario de quien durmió) y la tarea de memoria (otros
+sujetos) \textbf{no pertenecen al mismo sujeto ni sesión}. Una correlación directa supondría
+que son la misma persona. Integramos el vínculo husos--memoria a nivel \textbf{teórico}.}
+
+\pregunta{¿Qué significa SWS y por qué importa?}
+\respuesta{SWS es el sueño de ondas lentas, equivalente a S3/N3, la fase más profunda del NREM,
+dominada por actividad delta de alta amplitud. Importa porque es donde la teoría de
+consolidación activa ubica la \textbf{reactivación hipocampo-cortical} de las memorias
+declarativas. En nuestro registro aparece como un bloque sostenido de 45,5 a 68 minutos.}
+
+\pregunta{¿Qué aporta la banda sigma?}
+\respuesta{La banda sigma (12--15 Hz) es el rango de los \textbf{husos de sueño}, típicos de S2,
+asociados a plasticidad y consolidación declarativa. En nuestros datos la sigma absoluta tiene
+su \textbf{pico en S2}, lo esperable. La usamos como \textbf{proxy descriptivo}: no aplicamos un
+detector formal de husos.}
+
+\pregunta{¿Por qué el sujeto propio no durmió?}
+\respuesta{No lo sabemos con certeza porque no lo medimos. Lo discutimos como convergencia
+plausible de factores: fase circadiana y cronotipo (siesta a las 16:00), cafeína, estrés del
+recuperatorio previo, pantallas y un ambiente no habitual con electrodos incómodos. Son
+\textbf{variables moduladoras plausibles}, no causas confirmadas.}
+
+\pregunta{¿Qué rol tienen cronotipo, estrés y cafeína?}
+\respuesta{Son moduladores del dormir y de la consolidación. El \textbf{cronotipo} y el proceso
+circadiano determinan cuándo es fácil dormir. La \textbf{cafeína} antagoniza la adenosina,
+aumenta la latencia y reduce el SWS. El \textbf{estrés} eleva cortisol y noradrenalina,
+dificulta conciliar y puede perjudicar la consolidación declarativa en el sueño temprano.}
+
+\pregunta{¿Qué limitaciones tiene el scoring?}
+\respuesta{Trabajamos solo con la primera columna del archivo (la segunda se ignora). El
+registro no incluye épocas de S4 ni REM, así que la comparación NREM vs REM no es posible.
+Hablamos de fases según el scoring provisto, no de una polisomnografía clínica formal.}
+
+\pregunta{¿Por qué usar C3/C4?}
+\respuesta{Son derivaciones \textbf{centrales}, estándar para la estadificación del sueño: captan
+bien husos y ondas lentas. En nuestro caso \textbf{C4 estaba artefactado} (desvío $\sim$18 veces
+mayor y saturación), así que lo descartamos y analizamos \textbf{C3}, con señal limpia.}
+
+\pregunta{¿Qué cambiarían en un próximo experimento?}
+\respuesta{(1) Registrar EEG y memoria en el \textbf{mismo sujeto} para poder correlacionar.
+(2) Asegurar condiciones de sueño (horario, ambiente, control de cafeína). (3) Aumentar el
+\textbf{n}. (4) Aplicar un \textbf{detector formal de husos} y de ondas lentas. (5) Documentar
+cronotipo y variables contextuales.}
+
+% ---------- 7. CIERRE METODOLOGICO -------------------------------------------
+\section{Cierre metodológico (recordatorio para nosotros)}
+\noindent{\bfseries\color{warn}Reglas que no se negocian durante la exposición:}
+\begin{itemize}[leftmargin=1.5em]
+  \item No afirmar que el sujeto propio OpenBCI durmió.
+  \item No presentar el dataset secundario como si fuera el mismo sujeto o sesión.
+  \item Recordar que la memoria en condición sueño tiene $n=1$.
+  \item No calcular correlación directa husos--memoria con fuentes separadas.
+  \item Los husos/sigma se integran como mecanismo teórico y análisis descriptivo.
+  \item Cafeína, estrés, pantallas, cronotipo y ambiente son variables plausibles, no causas
+        demostradas.
+  \item Mantener el lenguaje: ``compatible con'', ``apoya descriptivamente''.
+\end{itemize}
+
+% ---------- 8. FUENTES -------------------------------------------------------
+\section{Material de la cátedra usado}
+\begin{itemize}
+  \item Clase 3 -- Sueño y memoria (consolidación activa, oscilaciones, homeostasis sináptica,
+        polisomnografía y bandas EEG).
+  \item Clase 6 -- Estrés (eje HPA, cortisol, efectos sobre memoria y sueño).
+  \item Clase 7 -- Ritmos circadianos e higiene del sueño (Proceso S y C, cronotipo).
+  \item Clase 8 -- Fármacos (cafeína y adenosina; acetilcolina y consolidación).
+  \item Clase 9 -- EEG (polisomnografía: EEG/EOG/EMG, ritmos, fases, hipnograma).
+  \item Enunciado oficial del trabajo práctico.
+\end{itemize}
+
+\end{document}
