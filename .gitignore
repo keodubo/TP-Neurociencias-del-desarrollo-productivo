@@ -1,0 +1,24 @@
+.DS_Store
+__MACOSX/
+
+# Entornos locales
+.env
+.env.*
+.venv/
+venv/
+
+# Python / notebooks
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Salidas temporales
+tmp/
+*.tmp
+*.log
+
+# Sistema / editores
+.idea/
+.vscode/
+*.swp
