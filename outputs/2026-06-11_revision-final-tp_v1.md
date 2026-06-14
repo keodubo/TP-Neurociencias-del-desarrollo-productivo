@@ -17,6 +17,11 @@ Se revisaron los entregables generados para el TP de sueño, memoria y analisis 
 - `outputs/2026-06-11_presentacion-sueno-memoria-spec_v1.md`
 - `outputs/2026-06-11_guion-presentacion-sueno-memoria_v1.md`
 - `outputs/2026-06-11_presentacion-sueno-memoria_v1.pptx`
+- `outputs/2026-06-11_presentacion-sueno-memoria_ultrabeamer_v3.tex`
+- `outputs/2026-06-11_guion-presentacion-sueno-memoria_v3.tex`
+- `deliverables/presentacion.pdf`
+- `deliverables/presentacion.pptx`
+- `deliverables/guion.pdf`
 - figuras y assets derivados en `outputs/figures/`
 
 ## Consistencia metodologica
@@ -40,6 +45,16 @@ Se revisaron los entregables generados para el TP de sueño, memoria y analisis 
 - Se agrego `analysis/requirements.txt` para documentar dependencias instaladas localmente.
 - Se agrego `node_modules` a `.gitignore` para mantener fuera el enlace local al runtime Node.
 
+## Correcciones de blindaje metodologico aplicadas el 2026-06-14
+
+- Se agrego tabla de cambio formal `TR -> TS` para no presentar consolidacion solo como desempeño final.
+- Se reemplazo "aisla el efecto" por lenguaje descriptivo: en un diseño ideal estimaria el efecto; en este TP se interpreta descriptivamente.
+- Se cambio "husos" como hallazgo directo por "potencia sigma compatible con husos" cuando corresponde a resultados.
+- Se explicito que la codificacion `0/1/2/3` del scoring es una lectura asumida/descriptiva, no estadificacion clinica.
+- Se distinguio protocolo de siesta previsto (~90 min) de registro util analizado (79.5 min).
+- Se suavizaron cafeina, estres, pantallas y cronotipo como variables plausibles, no causas confirmadas.
+- Se regeneraron `deliverables/presentacion.pdf`, `deliverables/presentacion.pptx` y `deliverables/guion.pdf`.
+
 ## Verificaciones ejecutadas
 
 | Verificacion | Resultado |
@@ -47,17 +62,21 @@ Se revisaron los entregables generados para el TP de sueño, memoria y analisis 
 | `analysis/.venv/bin/python analysis/analyze_memory.py` | OK, genero informe y figura de memoria |
 | `analysis/.venv/bin/python analysis/analyze_eeg.py` | OK, genero informe y figuras EEG |
 | `analysis/.venv/bin/python analysis/build_presentation.py` | OK, genero PPTX y guion |
-| Conteo de slides con `python-pptx` | OK, 19 slides |
+| Conteo de slides con `python-pptx` sobre PPTX inicial | OK, 19 slides |
 | `unzip -t outputs/2026-06-11_presentacion-sueno-memoria_v1.pptx` | OK, sin errores |
-| `git diff -- data` | OK, sin salida |
+| `git diff -- data docs` | OK, sin salida |
 | Busqueda de nombre propio y claims fisiologicos fuertes | OK, sin coincidencias en entregables principales |
+| `analysis/.venv/bin/python analysis/analyze_memory.py` tras correcciones | OK, genero CSV de cambio TR->TS |
+| `pdflatex` x2 sobre presentacion Beamer v3 | OK, 20 paginas, sin overfull/underfull |
+| `pdflatex` x2 sobre guion v3 | OK, 10 paginas; advertencia menor de bookmark de `hyperref` |
+| Regeneracion de PPTX desde PDF final | OK, 20 slides full-bleed |
+| QA visual con contact sheet | OK, sin solapamientos relevantes tras corregir slide de scoring |
 
 ## Pendiente antes de entregar
 
-- Completar integrantes y fecha de exposicion en la slide 0 del PPTX.
 - Confirmar consentimiento para usar fotos propias si se comparten fuera del grupo/catedra.
 - Si la catedra provee clave oficial de `S3PRACTICA.txt`, actualizar interpretacion de codigos.
-- Si se quiere una version PDF/LaTeX ultrabeamer, puede generarse desde el guion y las figuras actuales.
+- Si la catedra cuestiona scoring, responder que se uso como lectura descriptiva y que la clave oficial debe confirmarse.
 
 ## Estado Git al cierre
 
@@ -65,39 +84,46 @@ Estado observado:
 
 ```bash
 ## main...origin/main
- M .gitignore
-?? analysis/
-?? assets/
-?? outputs/
+ M analysis/analyze_memory.py
+ M deliverables/guion.pdf
+ M deliverables/presentacion.pdf
+ M deliverables/presentacion.pptx
+ M outputs/2026-06-11_guion-presentacion-sueno-memoria_v3.pdf
+ M outputs/2026-06-11_guion-presentacion-sueno-memoria_v3.tex
+ M outputs/2026-06-11_notas-reanalisis-v3.md
+ M outputs/2026-06-11_presentacion-sueno-memoria_ultrabeamer_v3.pdf
+ M outputs/2026-06-11_presentacion-sueno-memoria_ultrabeamer_v3.tex
+ M outputs/2026-06-11_resultados-memoria-detalle_v1.csv
+ M outputs/2026-06-11_resultados-memoria_v1.md
+ M outputs/2026-06-11_revision-final-tp_v1.md
+?? outputs/2026-06-11_resultados-memoria-cambio-tr-ts_v1.csv
 ```
 
 Notas:
 
-- `assets/` ya aparecia como no trackeado al inicio de la tarea y se uso como fuente visual existente pedida por la consigna del usuario.
-- `analysis/.venv/` y `node_modules` quedan ignorados; no deben integrarse como entregables.
+- `data/` y `docs/` no tienen diff.
+- Los auxiliares de LaTeX y previews de QA generados para la revision no quedan como entregables.
 - No se hizo commit ni push.
 
 ## Diff-like
 
 ### Agregado
 
-- Scripts reproducibles en `analysis/`.
-- Dependencias documentadas en `analysis/requirements.txt`.
-- Informes intermedios y finales en `outputs/`.
-- Figuras en `outputs/figures/`.
-- Presentacion final editable en `outputs/2026-06-11_presentacion-sueno-memoria_v1.pptx`.
-- Guion en `outputs/2026-06-11_guion-presentacion-sueno-memoria_v1.md`.
+- `outputs/2026-06-11_resultados-memoria-cambio-tr-ts_v1.csv`: tabla formal TR, TS y Delta.
 
 ### Actualizado
 
-- `.gitignore`: ignora `node_modules`.
-- `outputs/2026-06-11_presentacion-sueno-memoria-spec_v1.md`: anonimizado y alineado con resultados reproducibles.
+- `analysis/analyze_memory.py`: calcula y exporta cambio TR->TS.
+- `outputs/2026-06-11_presentacion-sueno-memoria_ultrabeamer_v3.tex`: lenguaje causal suavizado, tabla TR/TS/Delta, sigma como proxy, scoring asumido.
+- `outputs/2026-06-11_guion-presentacion-sueno-memoria_v3.tex`: narrativa oral alineada con las correcciones.
+- `outputs/2026-06-11_notas-reanalisis-v3.md`: notas de defensa actualizadas.
+- `outputs/2026-06-11_resultados-memoria_v1.md`: agrega seccion de cambio TR->TS.
+- `deliverables/`: PDFs y PPTX finales regenerados.
 
 ### No modificado
 
 - `data/`: sin cambios.
 - `docs/`: sin cambios.
-- Fotos originales en `assets/`: sin modificaciones; solo se generaron derivados comprimidos en `outputs/figures/deck-assets/`.
 
 ### Removido
 

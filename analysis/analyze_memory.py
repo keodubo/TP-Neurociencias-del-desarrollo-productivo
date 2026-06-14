@@ -117,22 +117,48 @@ def normalize(value: object) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-def parse_sheet(path: Path, sheet: str) -> tuple[pd.DataFrame, str]:
+def parse_sheet(path: Path, sheet: str) -> tuple[pd.DataFrame, pd.DataFrame, str, str]:
     df = pd.read_excel(path, sheet_name=sheet, header=None)
     sujeto = str(df.iloc[0, 0]).strip().title()
     condicion = str(df.iloc[1, 0]).replace("CONDICION", "").strip().title()
+    training_block = df.iloc[4:24, 0:4].copy()
+    training_block.columns = ["palabra_objetivo", "respuesta_palabra", "definicion", "respuesta_definicion"]
+    training_block["sujeto"] = sujeto
+    training_block["condicion"] = condicion
+    training_block["momento"] = "TR"
     eval_block = df.iloc[27:47, 0:4].copy()
     eval_block.columns = ["palabra_objetivo", "respuesta_palabra", "definicion", "respuesta_definicion"]
     eval_block["sujeto"] = sujeto
     eval_block["condicion"] = condicion
-    return eval_block, sujeto
+    eval_block["momento"] = "TS"
+    return training_block, eval_block, sujeto, condicion
 
 
-def build_results() -> tuple[pd.DataFrame, pd.DataFrame]:
+def build_results() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     rows: list[pd.DataFrame] = []
+    change_rows: list[dict[str, object]] = []
     for sheet in pd.ExcelFile(DATA).sheet_names:
-        block, sujeto = parse_sheet(DATA, sheet)
-        rows.append(block)
+        training_block, eval_block, sujeto, condicion = parse_sheet(DATA, sheet)
+        rows.append(eval_block)
+
+        tr_score = sum(
+            normalize(row.palabra_objetivo) == normalize(row.respuesta_palabra)
+            for row in training_block.itertuples(index=False)
+        )
+        ts_score = sum(
+            normalize(row.palabra_objetivo) == normalize(row.respuesta_palabra)
+            for row in eval_block.itertuples(index=False)
+        )
+        change_rows.append(
+            {
+                "sujeto": sujeto,
+                "condicion": condicion,
+                "palabra_objetivo_TR": tr_score,
+                "palabra_objetivo_TS": ts_score,
+                "delta_TS_menos_TR": ts_score - tr_score,
+                "items": len(eval_block),
+            }
+        )
     detail = pd.concat(rows, ignore_index=True)
     detail["palabra_correcta"] = detail.apply(
         lambda row: normalize(row["palabra_objetivo"]) == normalize(row["respuesta_palabra"]),
@@ -159,7 +185,8 @@ def build_results() -> tuple[pd.DataFrame, pd.DataFrame]:
     )
     summary["palabra_objetivo_pct"] = summary["palabra_objetivo"] / summary["items"] * 100
     summary["definicion_pct"] = summary["definicion"] / summary["items"] * 100
-    return detail, summary
+    change = pd.DataFrame(change_rows)
+    return detail, summary, change
 
 
 def save_figure(summary: pd.DataFrame) -> Path:
@@ -203,12 +230,14 @@ def save_figure(summary: pd.DataFrame) -> Path:
     return fig_path
 
 
-def save_markdown(detail: pd.DataFrame, summary: pd.DataFrame, fig_path: Path) -> Path:
+def save_markdown(detail: pd.DataFrame, summary: pd.DataFrame, change: pd.DataFrame, fig_path: Path) -> Path:
     output = OUTPUTS / "2026-06-11_resultados-memoria_v1.md"
     detail_csv = OUTPUTS / "2026-06-11_resultados-memoria-detalle_v1.csv"
     summary_csv = OUTPUTS / "2026-06-11_resultados-memoria-resumen_v1.csv"
+    change_csv = OUTPUTS / "2026-06-11_resultados-memoria-cambio-tr-ts_v1.csv"
     detail.to_csv(detail_csv, index=False)
     summary.to_csv(summary_csv, index=False)
+    change.to_csv(change_csv, index=False)
 
     condition_summary = (
         summary.groupby("condicion", sort=False)
@@ -229,7 +258,7 @@ def save_markdown(detail: pd.DataFrame, summary: pd.DataFrame, fig_path: Path) -
         "",
         "- Fuente: `data/PRÁCTICO LABORATORIO EQUIPO 1.xlsx`.",
         "- Hojas leidas: cuatro sujetos, con condicion indicada en cada hoja.",
-        "- Derivados generados: este informe, CSV de detalle, CSV de resumen y figura en `outputs/figures/`.",
+        "- Derivados generados: este informe, CSV de detalle, CSV de resumen, CSV de cambio TR -> TS y figura en `outputs/figures/`.",
         "",
         "## Metodo de scoring",
         "",
@@ -245,13 +274,29 @@ def save_markdown(detail: pd.DataFrame, summary: pd.DataFrame, fig_path: Path) -
         "",
         condition_summary.to_markdown(index=False, floatfmt=".1f"),
         "",
+        "## Cambio formal TR -> TS",
+        "",
+        change[
+            [
+                "sujeto",
+                "condicion",
+                "palabra_objetivo_TR",
+                "palabra_objetivo_TS",
+                "delta_TS_menos_TR",
+                "items",
+            ]
+        ].to_markdown(index=False),
+        "",
+        "Lectura: el sujeto en condicion sueño tuvo el desempeño final mas alto en palabra objetivo, pero ya partia de una linea de base alta y su cambio fue +2. Por eso este resultado se reporta como desempeño final alto y mejora descriptiva, no como evidencia causal de mayor consolidacion.",
+        "",
         "## Figura",
         "",
         f"![Resultados de memoria](figures/{fig_path.name})",
         "",
         "## Lectura prudente",
         "",
-        "- En palabra objetivo, el sujeto en condicion sueño conserva mas formas lexicales correctas que los sujetos en vigilia.",
+        "- En palabra objetivo, el sujeto en condicion sueño obtuvo el desempeño final mas alto y mostro una mejora TR -> TS de +2.",
+        "- El grupo vigilia fue heterogeneo: un sujeto paso de 10/20 a 14/20 y eleva el promedio final del grupo.",
         "- En definicion, el rendimiento es alto en casi todos los sujetos; esto sugiere que la recuperacion semantica fue menos exigente que la recuperacion formal de pseudopalabras.",
         "- La diferencia observada no debe atribuirse causalmente al sueño sin aclarar el tamaño muestral y el caracter descriptivo del practico.",
         "",
@@ -259,6 +304,7 @@ def save_markdown(detail: pd.DataFrame, summary: pd.DataFrame, fig_path: Path) -
         "",
         f"- `outputs/{detail_csv.name}`",
         f"- `outputs/{summary_csv.name}`",
+        f"- `outputs/{change_csv.name}`",
         f"- `outputs/figures/{fig_path.name}`",
     ]
     output.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -266,9 +312,9 @@ def save_markdown(detail: pd.DataFrame, summary: pd.DataFrame, fig_path: Path) -
 
 
 def main() -> None:
-    detail, summary = build_results()
+    detail, summary, change = build_results()
     fig_path = save_figure(summary)
-    md_path = save_markdown(detail, summary, fig_path)
+    md_path = save_markdown(detail, summary, change, fig_path)
     print(f"wrote {md_path.relative_to(ROOT)}")
     print(f"wrote {fig_path.relative_to(ROOT)}")
 

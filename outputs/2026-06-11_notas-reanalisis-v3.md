@@ -13,21 +13,21 @@ S2 y S3. La v3 corrige esto y suma el diseno experimental y el grupo control.
 
 Tres etapas, **dos condiciones**:
 1. **TR** -- todos aprenden/recuerdan las asociaciones de palabras (linea de base).
-2. **Intervalo** -- condicion **sueno**: siesta de 90 min (consolidacion); **grupo
+2. **Intervalo** -- condicion **sueno**: siesta prevista de ~90 min (consolidacion); **grupo
    control**: permanece en **vigilia** (3 sujetos despiertos).
-3. **TS** -- ambos vuelven a evaluar; se compara la consolidacion entre condiciones.
+3. **TS** -- ambos vuelven a evaluar; se compara desempeño final y cambio TR->TS entre condiciones.
 
 ## Decisiones clave (para defender en la exposicion)
 
-1. **Scoring.** El archivo `data/S3PRACTICA.txt` contiene los codigos `0,1,2,3` =
-   Vigilia, S1, S2, **S3/SWS** (descenso NREM consecutivo). El registro **llego hasta
-   S3** (sueno profundo). Por la duracion (~90 min) podia esperarse S4 o REM, pero **no
-   aparecen**. Solo se usa la primera columna del `.txt`.
+1. **Scoring.** El archivo `data/S3PRACTICA.txt` contiene los codigos `0,1,2,3`. Para
+   esta version se asume `0`=Vigilia, `1`=S1, `2`=S2, `3`=**S3/SWS** por el descenso NREM
+   consecutivo y la indicacion de que el registro llego hasta fase 3. Es scoring descriptivo,
+   no estadificacion clinica. Registro util: 79.5 min; no aparecen S4 ni REM.
 2. **Control de calidad de canal.** C4 resulto malo (std ~513 uV, ~18x C3, con
    saturacion). Se **descarta C4** y se analiza **C3**.
 3. **Filtros antes del analisis:** notch 50 Hz + pasa banda 0.3-35 Hz; epocas de 30 s
    sin solapamiento alineadas al scoring.
-4. **Husos:** sigma 12-15 Hz como **proxy descriptivo** (sin detector formal).
+4. **Sigma/husos:** sigma 12-15 Hz como **proxy descriptivo compatible con husos** (sin detector formal).
 5. **Sin correlacion husos-memoria:** EEG y memoria son fuentes/sujetos distintos; el
    vinculo se integra a nivel teorico.
 
@@ -37,8 +37,9 @@ Tres etapas, **dos condiciones**:
 - Latencias: sueno 4.0 min; S2 7.5 min; S3 45.5 min. Eficiencia 86%.
 - Bloque S3/SWS sostenido: 45.5-68.0 min.
 - Delta relativa crece con la profundidad: 57% (Vigilia) -> 92% (S3).
-- Husos: sigma absoluta maxima en S2 (11.6 uV^2).
-- Memoria: palabra objetivo sueno 17/20 vs control vigilia 5/20 promedio (descriptivo, n=1).
+- Sigma: potencia absoluta maxima en S2 (11.6 uV^2), compatible con husos pero no detector formal.
+- Memoria: palabra objetivo en sueno TR 15/20 -> TS 17/20 (Delta +2); vigilia heterogenea
+  con promedio TS 5/20. Descriptivo, n=1 en sueno.
 
 ## Entorno y reproduccion
 

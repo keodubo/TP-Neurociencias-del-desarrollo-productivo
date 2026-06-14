@@ -118,21 +118,22 @@ El experimento tiene tres etapas y \textbf{dos condiciones}:
   \item \textbf{TR} -- etapa inicial: todos los participantes aprenden y recuerdan las
         \textbf{asociaciones de palabras} (línea de base).
   \item \textbf{Intervalo} -- acá se separan las condiciones: la condición \textbf{sueño}
-        duerme una \textbf{siesta de 90 min} (etapa de consolidación), mientras que el
+        realiza una \textbf{siesta prevista de $\sim$90 min} (etapa de consolidación), mientras que el
         \textbf{grupo control} permanece en \textbf{vigilia} (despierto).
   \item \textbf{TS} -- test final: ambos vuelven a evaluar el recuerdo, y se compara
-        cuánto se consolidó la asociación de palabras entre condiciones.
+        el desempeño final y el cambio TR$\to$TS entre condiciones.
 \end{enumerate}
 El contraste \textbf{sueño vs.\ control en vigilia} (y el cambio TR$\to$TS) es lo que
-permite aislar el efecto del sueño sobre la consolidación declarativa.
+en un diseño controlado permitiría estimar el efecto del sueño. En este TP se interpreta
+de forma \textbf{descriptiva}, porque la condición sueño tiene $n=1$.
 
 % ---------- 2. HIPOTESIS -----------------------------------------------------
 \section{Hipótesis y predicciones}
 \textbf{Hipótesis principal.} El sueño mejora la consolidación de la memoria declarativa.
 
 \begin{itemize}
-  \item \textbf{Predicción conductual:} la condición con sueño debería mostrar mejor
-        recuerdo posterior (TS) que el grupo control en vigilia.
+  \item \textbf{Predicción conductual:} la condición con sueño debería mostrar mayor
+        retención TR$\to$TS o mejor desempeño final posterior que el grupo control en vigilia.
   \item \textbf{Predicción fisiológica:} el sueño debería mostrar arquitectura NREM,
         idealmente con sueño de ondas lentas (SWS), y ritmos relevantes para la consolidación.
   \item \textbf{Predicción mecanística:} ondas lentas, husos de sueño y ripples
@@ -155,14 +156,14 @@ análisis siguió un criterio y no se ajustó a los resultados.
 
 \subsection{Lo que esperábamos encontrar}
 \begin{itemize}
-  \item \textbf{En la tarea (conductual):} mejor recuerdo en la condición sueño que en el
-        control en vigilia, sobre todo en la recuperación más exigente (la forma exacta de
-        las palabras).
+  \item \textbf{En la tarea (conductual):} mayor retención TR$\to$TS o mejor desempeño final
+        en la condición sueño que en el control en vigilia, sobre todo en la recuperación más
+        exigente (la forma exacta de las palabras).
   \item \textbf{En el hipnograma:} un descenso ordenado de vigilia a NREM. Como el registro
-        dura cerca de 90 minutos (un ciclo de sueño), esperábamos \emph{poder} llegar al
+        estaba planificado como siesta de alrededor de 90 minutos, esperábamos \emph{poder} llegar al
         sueño profundo (SWS) e incluso a un primer episodio de \textbf{REM}.
   \item \textbf{En el espectro:} potencia \textbf{delta} máxima en SWS, presencia de
-        \textbf{husos} (banda sigma 12--15 Hz) en S2 y más \textbf{alfa/beta} en vigilia.
+        \textbf{potencia sigma compatible con husos} (12--15 Hz) en S2 y más \textbf{alfa/beta} en vigilia.
   \item \textbf{En el mecanismo:} ritmos compatibles con la consolidación activa.
 \end{itemize}
 
@@ -182,9 +183,10 @@ sin forzar una comparación con REM que los datos no permiten.
   \item \textbf{Interpretación del scoring.} El archivo solo contiene los códigos
         \textbf{0, 1, 2 y 3} = Vigilia, S1, S2 y \textbf{S3/SWS}, un descenso NREM
         consecutivo. El registro \textbf{llegó hasta S3} (sueño profundo); no hay S4 ni
-        REM. \emph{Por qué:} es la lectura coherente con la nota de cátedra
+        REM. \emph{Por qué:} es una lectura fisiológicamente coherente con la nota de cátedra
         (``solo llegó a fase 3'') y con la fisiología; usamos solo la primera columna del
-        \texttt{.txt} y la segunda se ignora.
+        \texttt{.txt} y la segunda se ignora. Se presenta como scoring descriptivo, no como
+        estadificación clínica definitiva.
   \item \textbf{Filtrado antes de medir.} Pasa banda 0,3--35 Hz + notch 50 Hz. \emph{Por
         qué:} la deriva/DC y el ruido de línea distorsionan el espectro; sin filtrar, la
         potencia delta aparecía inflada en todas las fases.
@@ -213,18 +215,18 @@ sin forzar una comparación con REM que los datos no permiten.
 0 & Portada & Pregunta, hipótesis e integrantes. \\
 1 & Resumen & La evidencia apoya descriptivamente la hipótesis, no la demuestra. \\
 2 & Introducción & La memoria declarativa necesita consolidarse; el sueño es la ventana. \\
-3 & Marco teórico aplicado & Consolidación activa, ondas lentas, husos y ripples: qué buscamos en el TP. \\
+3 & Marco teórico aplicado & Consolidación activa, ondas lentas, sigma/husos y ripples: qué buscamos en el TP. \\
 4 & Hipótesis & Hipótesis y predicciones contrastables + criterio de decisión. \\
-5 & Diseño del experimento & TR $\to$ (sueño 90 min / control vigilia) $\to$ TS. \\
+5 & Diseño del experimento & TR $\to$ (siesta prevista / control vigilia) $\to$ TS. \\
 6 & Procedencia de datos & Dos fuentes (memoria y EEG) que no se mezclan. \\
 7 & Métodos conductuales & Recuerdo formal vs.\ semántico; condición sueño $n=1$. \\
 8 & Métodos EEG & Filtrar antes de medir; C4 descartado, se usa C3. \\
 9 & Scoring & El registro llegó hasta S3/SWS; sin S4 ni REM. \\
-10 & Resultados memoria & Mejor recuerdo formal en sueño (17/20 vs 5/20). \\
+10 & Resultados memoria & Desempeño final alto en sueño y cambio TR$\to$TS descriptivo. \\
 11 & Hipnograma & Descenso NREM completo hasta S3/SWS, sin REM. \\
 12 & Fases y latencias & Predomina NREM; $\sim$28\% en sueño profundo. \\
-13 & Potencia por banda & Delta crece hacia S3; husos (sigma) pico en S2. \\
-14 & Husos y memoria & Integramos el mecanismo; no inventamos una correlación. \\
+13 & Potencia por banda & Delta crece hacia S3; sigma, proxy compatible con husos, pico en S2. \\
+14 & Sigma y memoria & Integramos el mecanismo; no inventamos una correlación. \\
 15 & Variables externas & Cronotipo, cafeína, estrés, pantallas, ambiente. \\
 16 & Discusión & Lo que encaja y las limitaciones, sin sobre-afirmar. \\
 17 & Conclusión & El sueño como aliado de la memoria, con cautela. \\
@@ -243,12 +245,13 @@ mejora la consolidación de la memoria declarativa?''
 
 \slidehdr{1}{Resumen}
 \begin{narracion}
-``En 45 segundos: aprendimos asociaciones de palabras, comparando una condición que durmió
+``En 45 segundos: evaluamos descriptivamente la relación entre sueño, memoria declarativa y
+señales fisiológicas. Aprendimos asociaciones de palabras, comparando una condición que durmió
 una siesta con un grupo control que se mantuvo en vigilia. El EEG de sueño viene de un
-dataset secundario de una persona que sí durmió. La condición sueño recordó más, y el EEG
-muestra una arquitectura NREM con sueño profundo. Conclusión cauta: la evidencia apoya la
-hipótesis de forma descriptiva, pero no la confirma, porque memoria y EEG son fuentes
-distintas y el grupo sueño tiene un solo sujeto.''
+dataset secundario de una persona que sí durmió. El sujeto en condición sueño tuvo mayor
+desempeño final y una mejora TR a TS; el EEG muestra una arquitectura NREM con sueño profundo.
+Conclusión cauta: la evidencia apoya la hipótesis de forma descriptiva, pero no la confirma,
+porque memoria y EEG son fuentes distintas y el grupo sueño tiene un solo sujeto.''
 \end{narracion}
 
 \slidehdr{2}{Introducción}
@@ -265,15 +268,15 @@ comparamos el recuerdo con y sin sueño.''
 activa dice que en sueño profundo se reactivan las memorias y se transfieren del hipocampo
 a la neocorteza, gracias al acople de ondas lentas, husos y ripples. La homeostasis
 sináptica agrega que el NREM mejora la relación señal/ruido. Por eso, en el TP buscamos tres
-cosas concretas: mejor recuerdo tras dormir, presencia de sueño profundo en el hipnograma, y
-delta y husos en el EEG.''
+cosas concretas: mejor retención tras dormir, presencia de sueño profundo en el hipnograma, y
+delta y sigma compatible con husos en el EEG.''
 \end{narracion}
 
 \slidehdr{4}{Hipótesis y predicciones}
 \begin{narracion}
 ``Nuestra hipótesis: el sueño mejora la consolidación declarativa. De ahí tres predicciones:
-conductual (mejor recuerdo en la condición sueño que en el control), fisiológica
-(arquitectura NREM con SWS) y mecanística (ondas lentas, husos y ripples). Fijamos el
+conductual (mayor retención o mejor desempeño final en la condición sueño que en el control),
+fisiológica (arquitectura NREM con SWS) y mecanística (ondas lentas, husos y ripples). Fijamos el
 criterio de antemano: la hipótesis se apoya si los patrones son compatibles; no la
 'demostramos' por el tamaño muestral y la separación de fuentes.''
 \end{narracion}
@@ -282,10 +285,11 @@ criterio de antemano: la hipótesis se apoya si los patrones son compatibles; no
 \begin{narracion}
 ``El diseño tiene tres etapas y dos condiciones. Primero, la etapa TR: todos aprenden y
 recuerdan las asociaciones de palabras, como línea de base. Después viene el intervalo, y
-acá se separan las condiciones: una persona duerme una siesta de 90 minutos, que es la etapa
-de consolidación, mientras que el grupo control se queda despierto, en vigilia. Por último,
-la etapa TS: todos vuelven a evaluar el recuerdo. Comparar la condición sueño contra el
-control en vigilia es lo que nos permite aislar el efecto del sueño sobre la consolidación.''
+acá se separan las condiciones: una persona realiza una siesta prevista de alrededor de
+90 minutos, que es la etapa de consolidación, mientras que el grupo control se queda
+despierto, en vigilia. Por último, la etapa TS: todos vuelven a evaluar el recuerdo.
+En un diseño ideal, comparar sueño contra vigilia permitiría estimar el efecto del sueño;
+en nuestro TP lo interpretamos descriptivamente por el tamaño muestral.''
 \end{narracion}
 
 \slidehdr{6}{Procedencia de datos}
@@ -317,20 +321,21 @@ espectro e invertía el patrón de delta.''
 
 \slidehdr{9}{Scoring de sueño}
 \begin{narracion}
-``El archivo de scoring tiene 159 épocas de 30 segundos, con códigos del 0 al 3: vigilia, S1,
-S2 y S3, que es el sueño profundo o de ondas lentas. El registro llegó hasta S3. Por la
-duración, cerca de 90 minutos, podíamos haber esperado llegar a S4 o a un primer REM, pero no
-aparecen en estos datos. Así que comparamos las fases por profundidad, con foco en el sueño
-profundo S3.''
+``El archivo de scoring tiene 159 épocas de 30 segundos, con códigos del 0 al 3. Para este
+análisis asumimos la lectura vigilia, S1, S2 y S3, que es el sueño profundo o de ondas lentas.
+Lo presentamos como scoring descriptivo, no como estadificación clínica. El registro útil
+analizado dura 79,5 minutos; aunque el protocolo apuntaba a una siesta cercana a 90 minutos,
+no aparecen S4 ni REM. Así que comparamos las fases por profundidad, con foco en S3.''
 \end{narracion}
 
 \slidehdr{10}{Resultados conductuales}
 \begin{narracion}
-``El resultado central para la hipótesis: en palabra objetivo, el sujeto en sueño obtuvo
-17 de 20, frente a un promedio de 5 de 20 en el grupo control en vigilia. En definiciones casi
-todos rinden alto, porque es menos exigente. Somos honestos: un sujeto control también rindió
-alto, 14 de 20. Por eso lo presentamos como un patrón compatible con la hipótesis, con
-$n=1$ en sueño.''
+``El resultado conductual hay que leerlo en dos niveles. En desempeño final, el sujeto en
+sueño obtuvo 17 de 20, frente a un promedio de 5 de 20 en vigilia. Pero para consolidación
+también miramos el cambio desde la línea de base: sujeto 1 vigilia 0 a 0, sujeto 2 vigilia
+10 a 14, sujeto 3 vigilia 1 a 1 y sujeto 4 sueño 15 a 17. Entonces el sujeto sueño tuvo el
+TS más alto y una mejora de +2, pero ya partía alto. Por eso lo presentamos como patrón
+compatible con la hipótesis, no como prueba causal.''
 \end{narracion}
 
 \slidehdr{11}{Hipnograma}
@@ -350,14 +355,15 @@ una arquitectura compatible con una siesta con buena proporción de NREM profund
 \slidehdr{13}{Potencia por banda y fase}
 \begin{narracion}
 ``Acá está la firma espectral. La potencia delta crece con la profundidad: de 57\% en vigilia
-a 92\% en S3. Y los husos: la banda sigma absoluta tiene su pico claro en S2, justo donde la
-teoría ubica los husos de sueño. Es exactamente el patrón de libro.''
+a 92\% en S3. La banda sigma absoluta tiene su pico claro en S2, justo donde la teoría ubica
+los husos de sueño. Como no aplicamos un detector formal, lo formulamos como potencia sigma
+compatible con husos, no como husos confirmados.''
 \end{narracion}
 
-\slidehdr{14}{Husos y memoria}
+\slidehdr{14}{Sigma y memoria}
 \begin{narracion}
-``Y acá la honestidad metodológica. Lo que sí podemos decir: este registro muestra husos en
-S2 y ondas lentas en S3, los ritmos que la teoría liga a la consolidación. Lo que no podemos
+``Y acá la honestidad metodológica. Lo que sí podemos decir: este registro muestra potencia
+sigma compatible con husos en S2 y ondas lentas en S3, ritmos que la teoría liga a la consolidación. Lo que no podemos
 decir: que los husos de este EEG expliquen la memoria de esos sujetos, porque son fuentes
 distintas. Por eso integramos el mecanismo a nivel teórico, no calculamos una correlación
 directa. Además, la sigma es un proxy: un detector formal de husos queda como trabajo futuro.''
@@ -366,16 +372,17 @@ directa. Además, la sigma es un proxy: un detector formal de husos queda como t
 \slidehdr{15}{Variables externas}
 \begin{narracion}
 ``¿Por qué nuestro sujeto pudo no dormir? Lo discutimos con la teoría: el cronotipo y el
-proceso circadiano (una siesta a las cuatro de la tarde va a contra-fase), el café que bloquea
-la adenosina y baja el sueño profundo, el estrés del recuperatorio previo, las pantallas y el
+proceso circadiano (una siesta a las cuatro de la tarde podría ir a contra-fase), el café que
+podría bloquear adenosina y reducir sueño profundo, el estrés del recuperatorio previo, las pantallas y el
 ambiente no habitual con electrodos incómodos. Algunas las reportó el sujeto; otras son
 plausibles. Sin mediciones directas, no son causas confirmadas.''
 \end{narracion}
 
 \slidehdr{16}{Discusión integrada}
 \begin{narracion}
-``Integrando todo: lo que encaja es el mejor recuerdo en sueño, la arquitectura NREM con sueño
-profundo y husos en S2, y la coherencia con consolidación activa y homeostasis sináptica. Las
+``Integrando todo: lo que encaja es el mayor desempeño final en sueño con una mejora TR a TS
+descriptiva, la arquitectura NREM con sueño profundo y potencia sigma elevada en S2, y la
+coherencia con consolidación activa y homeostasis sináptica. Las
 limitaciones son el $n=1$, las fuentes separadas, que el registro no llegó a S4 ni REM, y la
 sigma como proxy. La idea es integrar el mecanismo de la materia sin sobre-afirmar lo que los
 datos no permiten.''
@@ -383,9 +390,11 @@ datos no permiten.''
 
 \slidehdr{17}{Conclusión}
 \begin{narracion}
-``Cerramos con una respuesta directa: los resultados son compatibles con la hipótesis. El sueño
-aparece como un aliado de la memoria declarativa, y lo afirmamos con la cautela que los datos
-exigen: apoyo descriptivo y parcial, no demostración. Y el sujeto que no durmió, lejos de
+``Cerramos con una respuesta directa: los resultados son compatibles con la hipótesis. El sujeto
+en sueño mostró el mayor desempeño final y una mejora descriptiva, y el EEG secundario mostró
+NREM con sueño profundo y sigma elevada en S2. El sueño aparece como un aliado de la memoria
+declarativa, pero lo afirmamos con la cautela que los datos exigen: apoyo descriptivo y parcial,
+no demostración. Y el sujeto que no durmió, lejos de
 arruinar el trabajo, nos dio la mejor discusión sobre cronotipo, cafeína, estrés y ambiente.
 Gracias.''
 \end{narracion}
@@ -394,14 +403,15 @@ Gracias.''
 \section{Preguntas esperables de la profesora y respuestas}
 
 \pregunta{¿La hipótesis se acepta o se rechaza?}
-\respuesta{Se \textbf{apoya de forma descriptiva}. Los datos son compatibles (mejor recuerdo en
-sueño + arquitectura NREM con sueño profundo), pero no se puede \emph{confirmar} estadística ni
-causalmente: la condición sueño tiene $n=1$ y el EEG proviene de otra fuente.}
+\respuesta{Se \textbf{apoya de forma descriptiva}. Los datos son compatibles (mayor desempeño
+final y mejora TR$\to$TS en sueño + arquitectura NREM con sueño profundo en el EEG secundario),
+pero no se puede \emph{confirmar} estadística ni causalmente: la condición sueño tiene $n=1$ y
+el EEG proviene de otra fuente.}
 
 \pregunta{¿Había grupo control?}
-\respuesta{Sí. El diseño tiene dos condiciones: la condición \textbf{sueño} (siesta de 90 min)
+\respuesta{Sí. El diseño tiene dos condiciones: la condición \textbf{sueño} (siesta prevista de $\sim$90 min)
 y un \textbf{grupo control en vigilia} (3 sujetos despiertos). Ambos hacen TR y TS; la
-comparación entre condiciones es la que prueba el efecto del sueño.}
+comparación permite una lectura descriptiva del efecto esperado del sueño, no una prueba causal fuerte.}
 
 \pregunta{¿Por qué no pueden correlacionar directamente husos y memoria?}
 \respuesta{Porque el EEG (dataset secundario de quien durmió) y la tarea de memoria (otros
@@ -420,6 +430,11 @@ asociados a plasticidad y consolidación declarativa. En nuestros datos la sigma
 su \textbf{pico en S2}, lo esperable. La usamos como \textbf{proxy descriptivo}: no aplicamos un
 detector formal de husos.}
 
+\pregunta{¿Están comparando desempeño final o consolidación TR$\to$TS?}
+\respuesta{Mostramos ambos. El desempeño final favorece al sujeto sueño (17/20), pero el cambio
+TR$\to$TS fue +2 porque ya partía de 15/20. Por eso hablamos de desempeño final alto y mejora
+descriptiva compatible con la hipótesis, no de una demostración causal de mayor consolidación.}
+
 \pregunta{¿Por qué el sujeto propio no durmió?}
 \respuesta{No lo sabemos con certeza porque no lo medimos. Lo discutimos como convergencia
 plausible de factores: fase circadiana y cronotipo (siesta a las 16:00), cafeína, estrés del
@@ -428,14 +443,16 @@ recuperatorio previo, pantallas y un ambiente no habitual con electrodos incómo
 
 \pregunta{¿Qué rol tienen cronotipo, estrés y cafeína?}
 \respuesta{Son moduladores del dormir y de la consolidación. El \textbf{cronotipo} y el proceso
-circadiano determinan cuándo es fácil dormir. La \textbf{cafeína} antagoniza la adenosina,
-aumenta la latencia y reduce el SWS. El \textbf{estrés} eleva cortisol y noradrenalina,
-dificulta conciliar y puede perjudicar la consolidación declarativa en el sueño temprano.}
+circadiano determinan cuándo es fácil dormir. La \textbf{cafeína} puede antagonizar la adenosina,
+aumentar la latencia y reducir el SWS. El \textbf{estrés} puede elevar activación fisiológica,
+dificultar conciliar y perjudicar la consolidación declarativa en el sueño temprano.}
 
 \pregunta{¿Qué limitaciones tiene el scoring?}
 \respuesta{Trabajamos solo con la primera columna del archivo (la segunda se ignora). El
 registro no incluye épocas de S4 ni REM, así que la comparación NREM vs REM no es posible.
-Hablamos de fases según el scoring provisto, no de una polisomnografía clínica formal.}
+Hablamos de fases según una lectura asumida del scoring provisto, no de una polisomnografía
+clínica formal. Si la cátedra pide la clave exacta, la respuesta correcta es que la codificación
+debe confirmarse oficialmente.}
 
 \pregunta{¿Por qué usar C3/C4?}
 \respuesta{Son derivaciones \textbf{centrales}, estándar para la estadificación del sueño: captan
@@ -456,7 +473,7 @@ cronotipo y variables contextuales.}
   \item No presentar el dataset secundario como si fuera el mismo sujeto o sesión.
   \item Recordar que la memoria en condición sueño tiene $n=1$.
   \item No calcular correlación directa husos--memoria con fuentes separadas.
-  \item Los husos/sigma se integran como mecanismo teórico y análisis descriptivo.
+  \item La sigma se integra como proxy compatible con husos y análisis descriptivo.
   \item Cafeína, estrés, pantallas, cronotipo y ambiente son variables plausibles, no causas
         demostradas.
   \item Mantener el lenguaje: ``compatible con'', ``apoya descriptivamente''.

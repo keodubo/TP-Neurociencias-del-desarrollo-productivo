@@ -6,7 +6,7 @@ Fecha: 2026-06-11
 
 - Fuente: `data/PRÁCTICO LABORATORIO EQUIPO 1.xlsx`.
 - Hojas leidas: cuatro sujetos, con condicion indicada en cada hoja.
-- Derivados generados: este informe, CSV de detalle, CSV de resumen y figura en `outputs/figures/`.
+- Derivados generados: este informe, CSV de detalle, CSV de resumen, CSV de cambio TR -> TS y figura en `outputs/figures/`.
 
 ## Metodo de scoring
 
@@ -30,13 +30,25 @@ Fecha: 2026-06-11
 | Vigilia     |   3 |                         5.0 |                  17.3 |
 | Sueño       |   1 |                        17.0 |                  20.0 |
 
+## Cambio formal TR -> TS
+
+| sujeto   | condicion   |   palabra_objetivo_TR |   palabra_objetivo_TS |   delta_TS_menos_TR |   items |
+|:---------|:------------|----------------------:|----------------------:|--------------------:|--------:|
+| Sujeto 1 | Vigilia     |                     0 |                     0 |                   0 |      20 |
+| Sujeto 2 | Vigilia     |                    10 |                    14 |                   4 |      20 |
+| Sujeto 3 | Vigilia     |                     1 |                     1 |                   0 |      20 |
+| Sujeto 4 | Sueño       |                    15 |                    17 |                   2 |      20 |
+
+Lectura: el sujeto en condicion sueño tuvo el desempeño final mas alto en palabra objetivo, pero ya partia de una linea de base alta y su cambio fue +2. Por eso este resultado se reporta como desempeño final alto y mejora descriptiva, no como evidencia causal de mayor consolidacion.
+
 ## Figura
 
 ![Resultados de memoria](figures/2026-06-11_memoria_scores_v1.png)
 
 ## Lectura prudente
 
-- En palabra objetivo, el sujeto en condicion sueño conserva mas formas lexicales correctas que los sujetos en vigilia.
+- En palabra objetivo, el sujeto en condicion sueño obtuvo el desempeño final mas alto y mostro una mejora TR -> TS de +2.
+- El grupo vigilia fue heterogeneo: un sujeto paso de 10/20 a 14/20 y eleva el promedio final del grupo.
 - En definicion, el rendimiento es alto en casi todos los sujetos; esto sugiere que la recuperacion semantica fue menos exigente que la recuperacion formal de pseudopalabras.
 - La diferencia observada no debe atribuirse causalmente al sueño sin aclarar el tamaño muestral y el caracter descriptivo del practico.
 
@@ -44,4 +56,5 @@ Fecha: 2026-06-11
 
 - `outputs/2026-06-11_resultados-memoria-detalle_v1.csv`
 - `outputs/2026-06-11_resultados-memoria-resumen_v1.csv`
+- `outputs/2026-06-11_resultados-memoria-cambio-tr-ts_v1.csv`
 - `outputs/figures/2026-06-11_memoria_scores_v1.png`

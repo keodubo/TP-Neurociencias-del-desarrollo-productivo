@@ -118,20 +118,20 @@
 \end{frame}}
 
 % ---------- 1. RESUMEN -------------------------------------------------------
-\begin{frame}{El sueño se asocia, de forma descriptiva, a mejor memoria declarativa}{Resumen del estudio}
+\begin{frame}{Objetivo: evaluar sueño, memoria declarativa y señales fisiológicas}{Resumen del estudio}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.54\textwidth}
-      \begin{itemize}\setlength\itemsep{5pt}
+      \begin{itemize}\setlength\itemsep{3pt}
         \item \textbf{Pregunta.} ¿El sueño favorece la consolidación declarativa?
-        \item \textbf{Diseño.} Aprender asociaciones (TR); un grupo duerme una siesta y un \textbf{grupo control} sigue en vigilia; se reevalúa (TS).
-        \item \textbf{Señales.} EEG de un \emph{dataset secundario} de quien sí durmió (el sujeto propio con OpenBCI no concilió el sueño).
-        \item \textbf{Hallazgo.} En sueño se recordó más; el EEG muestra arquitectura NREM con sueño profundo.
+        \item \textbf{Diseño.} Aprendizaje TR $\to$ siesta/vigilia $\to$ evaluación TS.
+        \item \textbf{Señales.} EEG de un \emph{dataset secundario}; el sujeto OpenBCI propio no durmió.
+        \item \textbf{Hallazgo.} Mayor TS y mejora leve en sueño; NREM con sueño profundo en EEG secundario.
       \end{itemize}
     \end{column}
     \begin{column}{0.44\textwidth}
-      \claim{La evidencia apoya \emph{descriptivamente} la hipótesis, pero no la confirma de forma estadística ni causal.}
-      \vskip6pt
-      {\footnotesize\color{muted} Memoria y EEG son fuentes distintas: se integran a nivel teórico, no se correlacionan directamente.}
+      \claim{Apoyo \emph{descriptivo}, no confirmación estadística ni causal.}
+      \vskip4pt
+      {\footnotesize\color{muted} Memoria y EEG son fuentes distintas: integración teórica, no correlación directa.}
     \end{column}
   \end{columns}
 \end{frame}
@@ -160,9 +160,9 @@
     \begin{column}{0.42\textwidth}
       \begin{block}{Por eso, en el TP buscamos...}
         \begin{itemize}\setlength\itemsep{2pt}
-          \item \textbf{mejor recuerdo} tras dormir (TR vs TS);
+          \item \textbf{mejor retención} tras dormir (cambio TR$\to$TS);
           \item \textbf{SWS} en el hipnograma;
-          \item \textbf{delta} y \textbf{husos/sigma} en el EEG.
+          \item \textbf{delta} y \textbf{sigma compatible con husos} en el EEG.
         \end{itemize}
       \end{block}
     \end{column}
@@ -175,17 +175,17 @@
     \begin{column}{0.5\textwidth}
       \textbf{\color{navy}Hipótesis principal}\par\vskip2pt
       El sueño mejora la consolidación de la memoria declarativa.
-      \vskip10pt
+      \vskip6pt
       \textbf{\color{navy}Predicciones}\par\vskip2pt
-      \begin{itemize}\setlength\itemsep{4pt}
-        \item \textbf{Conductual:} mejor recuerdo en TS (post-sueño) que en condición vigilia.
+      \begin{itemize}\setlength\itemsep{2pt}
+        \item \textbf{Conductual:} mayor retención TR$\to$TS o mejor TS post-sueño.
         \item \textbf{Fisiológica:} arquitectura NREM con SWS y ritmos de consolidación.
         \item \textbf{Mecanística:} ondas lentas, husos y ripples sostienen la consolidación.
       \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}
       \begin{block}{Criterio de decisión (definido a priori)}
-        \begin{itemize}\setlength\itemsep{3pt}
+        \begin{itemize}\setlength\itemsep{2pt}
           \item Se \textbf{apoya} si el patrón conductual y la fisiología son compatibles.
           \item No se ``demuestra'': $n$ pequeño y fuentes separadas.
           \item Lenguaje: ``compatible con'' / ``apoya descriptivamente''.
@@ -197,32 +197,32 @@
 
 % ---------- 5. DISENO DEL EXPERIMENTO ---------------------------------------
 \begin{frame}{Diseño: aprender, esperar (dormir o no) y volver a evaluar}{Dos condiciones y tres etapas}
-  \vskip4pt
+  \vskip1pt
   \begin{columns}[c,onlytextwidth]
     \begin{column}{0.18\textwidth}\fase{faseA}{TR}\end{column}
     \begin{column}{0.05\textwidth}\centering$\Longrightarrow$\end{column}
     \begin{column}{0.44\textwidth}
-      \fase{faseB}{Sueño: siesta de 90 min}
-      \vskip5pt
+      \fase{faseB}{Sueño: siesta prevista $\sim$90 min}
+      \vskip3pt
       \fase{faseG}{Control: vigilia (despiertos)}
     \end{column}
     \begin{column}{0.05\textwidth}\centering$\Longrightarrow$\end{column}
     \begin{column}{0.18\textwidth}\fase{faseA}{TS}\end{column}
   \end{columns}
-  \vskip12pt
+  \vskip7pt
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.30\textwidth}
-      {\footnotesize\textbf{TR.} Ambos grupos aprenden y recuerdan las \textbf{asociaciones de palabras} (línea de base).}
+      {\scriptsize\textbf{TR.} Línea de base: asociaciones de palabras.}
     \end{column}
     \begin{column}{0.38\textwidth}
-      {\footnotesize\textbf{Intervalo.} El grupo \textbf{sueño} duerme 90 min (\textbf{consolidación}); el \textbf{control} permanece despierto.}
+      {\scriptsize\textbf{Intervalo.} Siesta prevista $\sim$90 min vs.\ vigilia.}
     \end{column}
     \begin{column}{0.30\textwidth}
-      {\footnotesize\textbf{TS.} Ambos vuelven a evaluar: se compara cuánto se \textbf{consolidó} entre condiciones.}
+      {\scriptsize\textbf{TS.} Desempeño final + cambio \textbf{TR$\to$TS}.}
     \end{column}
   \end{columns}
-  \vskip12pt
-  \claim{Comparar sueño vs.\ control en vigilia aísla el efecto del sueño sobre la consolidación.}
+  \vskip8pt
+  \claim{En un diseño ideal estimaría el efecto del sueño; aquí el contraste se interpreta de forma descriptiva.}
 \end{frame}
 
 % ---------- 6. PROCEDENCIA DE DATOS -----------------------------------------
@@ -243,7 +243,7 @@
     \begin{column}{0.4\textwidth}
       \centering
       \includegraphics[height=0.54\textheight]{foto_electrodos_v3.jpg}\\[2pt]
-      {\scriptsize\color{muted} Colocación del gorro de electrodos (OpenBCI).}
+      {\scriptsize\color{muted} Foto del procedimiento propio (OpenBCI); no es el EEG de sueño analizado.}
     \end{column}
   \end{columns}
 \end{frame}
@@ -294,7 +294,7 @@
 \end{frame}
 
 % ---------- 9. SCORING -------------------------------------------------------
-\begin{frame}{Scoring de sueño: el registro llegó hasta sueño profundo (S3/SWS)}{Códigos y fases}
+\begin{frame}{Scoring de sueño: lectura asumida hasta sueño profundo (S3/SWS)}{Códigos y fases}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.46\textwidth}
       \footnotesize
@@ -304,18 +304,23 @@
         \midrule
         0 & Vigilia / transición\\
         1 & S1 (sueño liviano)\\
-        2 & S2 (husos / complejos K)\\
+        2 & S2 (sigma / complejos K)\\
         3 & \textbf{S3 / SWS} (ondas lentas)\\
         \bottomrule
       \end{tabular}
       \vskip6pt
       \normalsize Descenso NREM consecutivo \textbf{0$\to$1$\to$2$\to$3}, en épocas de 30 s.
+      \vskip4pt
+      \begin{minipage}{0.95\linewidth}
+        {\scriptsize\color{muted} Scoring descriptivo, no clínico. Confirmar clave oficial si la cátedra la solicita.}
+      \end{minipage}
     \end{column}
     \begin{column}{0.54\textwidth}
       \begin{block}{Qué implica}
         \begin{itemize}\setlength\itemsep{2pt}
           \item Se llegó a \textbf{S3/SWS}, la fase clave para la consolidación.
-          \item Por la duración (~90 min) podía esperarse \textbf{S4} o \textbf{REM}, pero \textbf{no aparecen}.
+          \item Protocolo previsto $\sim$90 min; registro útil analizado: \textbf{79.5 min}.
+          \item Podía esperarse \textbf{S4} o \textbf{REM}, pero \textbf{no aparecen} en el scoring usado.
           \item Comparamos las fases por profundidad; el foco es \textbf{S3/SWS}.
         \end{itemize}
       \end{block}
@@ -324,26 +329,37 @@
 \end{frame}
 
 % ---------- 10. RESULTADOS CONDUCTUALES -------------------------------------
-\begin{frame}{Resultados conductuales: mejor recuerdo formal en la condición sueño}{Tarea de palabras (TR/TS)}
+\begin{frame}{Resultados conductuales: desempeño final y cambio TR$\to$TS}{Tarea de palabras}
   \begin{columns}[c,onlytextwidth]
     \begin{column}{0.62\textwidth}
       \centering
       \includegraphics[width=\linewidth]{2026-06-11_memoria_scores_v1.png}
     \end{column}
     \begin{column}{0.38\textwidth}
-      \begin{itemize}\setlength\itemsep{3pt}
-        \item \textbf{Palabra objetivo:} sueño \textbf{17/20} vs.\ vigilia \textbf{5/20} promedio.
-        \item \textbf{Definición:} alta en casi todos (menos exigente).
-        \item Cautela: un sujeto en vigilia también rindió alto (14/20).
+      \footnotesize
+      \begin{tabular}{llrrr}
+        \toprule
+        Suj. & Cond. & TR & TS & $\Delta$\\
+        \midrule
+        1 & Vig. & 0 & 0 & 0\\
+        2 & Vig. & 10 & 14 & +4\\
+        3 & Vig. & 1 & 1 & 0\\
+        4 & Sueño & 15 & 17 & +2\\
+        \bottomrule
+      \end{tabular}
+      \vskip6pt
+      \begin{itemize}\setlength\itemsep{2pt}
+        \item Sueño tuvo mayor \textbf{TS} final, pero ya partía alto.
+        \item La mejora TR$\to$TS fue \textbf{+2}; el resultado es descriptivo.
       \end{itemize}
-      \vskip4pt
-      \claim{Patrón compatible con la hipótesis; $n=1$ en sueño.}
+      \vskip3pt
+      \claim{Compatible con la hipótesis, sin inferencia causal.}
     \end{column}
   \end{columns}
 \end{frame}
 
 % ---------- 11. HIPNOGRAMA ---------------------------------------------------
-\begin{frame}{La persona que durmió recorrió un descenso NREM completo hasta S3/SWS}{Arquitectura del sueño: hipnograma}
+\begin{frame}{El dataset secundario recorrió un descenso NREM completo hasta S3/SWS}{Arquitectura del sueño: hipnograma}
   \centering
   \includegraphics[width=0.96\linewidth]{2026-06-11_eeg_hipnograma_mne_v3.png}
   \begin{columns}[T,onlytextwidth]
@@ -357,7 +373,7 @@
 \end{frame}
 
 % ---------- 12. DISTRIBUCION DE FASES ---------------------------------------
-\begin{frame}{Predomina el NREM, con casi 28\% del tiempo en sueño profundo}{Tiempo por fase y latencias}
+\begin{frame}{Predomina el NREM, con casi 28\% del registro útil en sueño profundo}{Tiempo por fase y latencias}
   \begin{columns}[c,onlytextwidth]
     \begin{column}{0.56\textwidth}
       \centering
@@ -371,20 +387,20 @@
         \item Eficiencia de sueño: \textbf{86\%} del registro.
       \end{itemize}
       \vskip8pt
-      {\footnotesize\color{muted} Arquitectura compatible con una \textbf{siesta} con buena proporción de NREM profundo.}
+      {\footnotesize\color{muted} Dataset secundario BrainVision; registro útil analizado: \textbf{79.5 min}.}
     \end{column}
   \end{columns}
 \end{frame}
 
 % ---------- 13. POTENCIA POR BANDA ------------------------------------------
-\begin{frame}{Delta crece hacia S3 y los husos (sigma) tienen su pico en S2}{Potencia por banda y fase (C3)}
+\begin{frame}{Delta crece hacia S3 y la banda sigma tiene su pico en S2}{Potencia por banda y fase (C3)}
   \centering
   \includegraphics[width=0.82\linewidth]{2026-06-11_eeg_potencia-bandas-por-fase_v3.png}\\[3pt]
-  {\footnotesize Delta relativa sube de 57\% (Vigilia) a \textbf{92\% en S3}; la sigma (husos) es máxima en \textbf{S2}.}
+  {\footnotesize Delta relativa sube de 57\% (Vigilia) a \textbf{92\% en S3}; la sigma, \textbf{proxy compatible con husos}, es máxima en \textbf{S2}.}
 \end{frame}
 
 % ---------- 14. ESPECTROGRAMA + HUSOS/MEMORIA -------------------------------
-\begin{frame}{Husos y memoria: integramos el mecanismo, no inventamos una correlación}{Qué podemos y qué no podemos concluir}
+\begin{frame}{Sigma y memoria: integramos el mecanismo, no inventamos una correlación}{Qué podemos y qué no podemos concluir}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.55\textwidth}
       \includegraphics[width=\linewidth]{2026-06-11_eeg_espectrograma_c3-c4_mne_v3.png}\\[1pt]
@@ -392,7 +408,7 @@
     \end{column}
     \begin{column}{0.45\textwidth}
       \begin{block}{Sí podemos decir}
-        \footnotesize Hay husos (sigma) en S2 y ondas lentas en S3: los ritmos que la teoría liga a la consolidación.
+        \footnotesize Hay potencia sigma compatible con husos en S2 y ondas lentas en S3: ritmos que la teoría liga a la consolidación.
       \end{block}
       \begin{alertblock}{No podemos decir}
         \footnotesize ``Los husos de \emph{este} EEG explican la memoria de \emph{esos} sujetos'': EEG y memoria son \textbf{fuentes distintas}.
@@ -406,19 +422,19 @@
 \begin{frame}{Por qué el sujeto propio pudo no dormir: variables que modulan el descanso}{Discusión de factores contextuales}
   \begin{columns}[T,onlytextwidth]
     \begin{column}{0.62\textwidth}
-      \begin{itemize}\setlength\itemsep{4pt}
-        \item \textbf{Cronotipo / Proceso C:} una siesta a las 16:00 va a contra-fase.
-        \item \textbf{Café:} bloquea la adenosina, sube la latencia y baja el SWS.
-        \item \textbf{Recuperatorio previo / estrés:} cortisol y noradrenalina dificultan conciliar.
-        \item \textbf{Pantallas / luz:} retrasan la fase de sueño.
-        \item \textbf{Ambiente y dispositivo:} lugar no habitual, electrodos incómodos.
+      \begin{itemize}\setlength\itemsep{2pt}
+        \item \textbf{Cronotipo / Proceso C:} siesta 16:00 podría ir a contra-fase.
+        \item \textbf{Café:} podría bloquear adenosina y subir latencia.
+        \item \textbf{Estrés:} podría aumentar activación y dificultar conciliar.
+        \item \textbf{Pantallas / luz:} podrían retrasar fase.
+        \item \textbf{Ambiente/dispositivo:} laboratorio y electrodos incómodos.
       \end{itemize}
       \vskip6pt
       {\footnotesize\color{muted} \textbf{Variables plausibles}, no causas confirmadas.}
     \end{column}
     \begin{column}{0.38\textwidth}
       \centering
-      \includegraphics[height=0.52\textheight]{foto_pre-siesta-listo_v3.jpg}\\[2pt]
+      \includegraphics[height=0.48\textheight]{foto_pre-siesta-listo_v3.jpg}\\[2pt]
       {\scriptsize\color{muted} Sujeto propio listo para la siesta (OpenBCI).}
     \end{column}
   \end{columns}
@@ -430,8 +446,8 @@
     \begin{column}{0.5\textwidth}
       \textbf{\color{navy}Lo que encaja}
       \begin{itemize}\setlength\itemsep{2pt}
-        \item Mejor recuerdo formal en sueño (TR$\to$TS).
-        \item Arquitectura NREM con SWS y husos en S2.
+        \item Mayor desempeño final en sueño y mejora TR$\to$TS descriptiva.
+        \item Arquitectura NREM con SWS y potencia sigma elevada en S2.
         \item Coherente con consolidación activa + homeostasis sináptica.
       \end{itemize}
     \end{column}
@@ -451,10 +467,11 @@
 
 % ---------- 17. CONCLUSION ---------------------------------------------------
 \begin{frame}{Conclusión}{Respuesta directa a la pregunta}
-  \begin{itemize}\setlength\itemsep{5pt}
-    \item Los resultados son \textbf{compatibles} con la hipótesis: en condición sueño se recordó más y el EEG muestra la arquitectura esperable del sueño NREM con sueño profundo.
-    \item La hipótesis queda \textbf{apoyada de forma descriptiva/parcial}, no demostrada: tamaño muestral pequeño, fuentes separadas y registro que no llegó a S4/REM.
-    \item El caso del sujeto que no durmió se transforma en una \textbf{discusión rica} sobre cronotipo, cafeína, estrés, ambiente e higiene del sueño.
+  \begin{itemize}\setlength\itemsep{3pt}
+    \item Compatible con la hipótesis: mayor desempeño final y mejora TR$\to$TS descriptiva en sueño.
+    \item EEG secundario: NREM con sueño profundo y sigma elevada en S2.
+    \item Apoyo \textbf{descriptivo/parcial}, no demostración causal: $n$ pequeño, fuentes separadas, sin S4/REM.
+    \item El no-sueño del sujeto propio permite discutir cronotipo, cafeína, estrés, ambiente e higiene.
   \end{itemize}
   \vskip6pt
   \claim{El sueño aparece como un aliado de la memoria declarativa; lo afirmamos con la cautela que los datos exigen.}
@@ -465,7 +482,7 @@
 \begin{frame}{Apéndice -- PSD promedio por fase (C3)}{Material de respaldo}
   \centering
   \includegraphics[width=0.66\linewidth]{2026-06-11_eeg_psd-por-fase_v3.png}\\[2pt]
-  {\footnotesize En S2 se aprecia el ``bump'' de husos en 12--15 Hz; S3 muestra la mayor potencia lenta.}
+  {\footnotesize En S2 se aprecia un ``bump'' de sigma en 12--15 Hz compatible con husos; S3 muestra la mayor potencia lenta.}
 \end{frame}
 
 \begin{frame}{Apéndice -- Ficha técnica del análisis}{Reproducibilidad}

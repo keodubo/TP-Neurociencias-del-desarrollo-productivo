@@ -1,0 +1,5 @@
+sujeto,condicion,palabra_objetivo_TR,palabra_objetivo_TS,delta_TS_menos_TR,items
+Sujeto 1,Vigilia,0,0,0,20
+Sujeto 2,Vigilia,10,14,4,20
+Sujeto 3,Vigilia,1,1,0,20
+Sujeto 4,Sueño,15,17,2,20
