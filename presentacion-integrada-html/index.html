@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sueño, memoria y señales fisiológicas — TP Neurociencias</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="js/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="css/editorial.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+  <!-- ============ 1 · PORTADA ============ -->
+  <section class="cover" data-sec="Portada" data-transition="fade">
+    <div class="eyebrow">Trabajo práctico · Neurociencias del Desarrollo Productivo</div>
+    <h1>Sueño, memoria y señales fisiológicas</h1>
+    <p class="q">¿Favorece el sueño la consolidación de la memoria declarativa? Análisis de la evidencia conductual y electroencefalográfica.</p>
+    <div class="byline">
+      <div class="names">Keoni Dubovitsky&nbsp;&nbsp;·&nbsp;&nbsp;Joaquín Pelufo&nbsp;&nbsp;·&nbsp;&nbsp;Sergio Tenoch Sil Cruz</div>
+      <div class="meta">Fecha de exposición: 18/6/2026</div>
+    </div>
+    <canvas class="cover-eeg" data-eeg-stage="S3" data-eeg-mode="cover" data-eeg-color="#6366F1" aria-hidden="true"></canvas>
+  </section>
+
+  <!-- ============ 2 · RESPUESTA EN 30 SEGUNDOS ============ -->
+  <section data-sec="Síntesis" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Resumen ejecutivo</span>
+      <h2>Síntesis del estudio</h2>
+      <div class="subhead">Los datos resultan compatibles con un efecto del sueño sobre la consolidación de la memoria declarativa.</div>
+    </div>
+    <div class="cards two">
+      <div class="card">
+        <div class="t">Pregunta</div>
+        <p>¿Dormir después de aprender asociaciones palabra–definición mejora el recuerdo posterior?</p>
+      </div>
+      <div class="card teal">
+        <div class="t">Hallazgo</div>
+        <p>El sujeto que durmió alcanzó <strong>17/20</strong> en el test final (+2 desde la línea de base) y el EEG mostró <strong>NREM profundo hasta S4</strong>.</p>
+      </div>
+    </div>
+    <div class="band">Conclusión: los datos son compatibles con la consolidación durante el sueño, sin establecer causalidad.</div>
+    <aside class="notes">
+      Abrimos dando la respuesta de una. Somos Keoni, Joaquín y Sergio. La pregunta es si dormir tras aprender mejora el recuerdo. Nuestro hallazgo: el sujeto que durmió terminó alto (17/20) y el EEG llegó a sueño profundo. Pero lo decimos con cautela: el grupo sueño es n=1 y el EEG es de otra persona. Por eso hablamos de evidencia "compatible", nunca "demostrada".
+    </aside>
+  </section>
+
+  <!-- ============ 3 · OBJETIVO E HIPÓTESIS ============ -->
+  <section data-sec="Objetivo e hipótesis" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Objetivo del práctico</span>
+      <h2>Objetivo e hipótesis de trabajo</h2>
+    </div>
+    <div class="cols c2-wide">
+      <div class="col">
+        <p><strong>Objetivo.</strong> Evaluar si el sueño favorece la consolidación de la <span class="hl">memoria declarativa</span> (asociaciones palabra–definición), integrando dos miradas: el desempeño conductual y la fisiología del sueño por EEG.</p>
+        <div class="callout">
+          <span class="lbl">Hipótesis de trabajo</span>
+          El sueño mejora la consolidación de la memoria declarativa: esperamos mejor recuerdo tras dormir, sostenido por una arquitectura NREM con sueño profundo.
+        </div>
+      </div>
+      <div class="col">
+        <div class="card amber">
+          <div class="t">Criterio de decisión (a priori)</div>
+          <ul>
+            <li>Se <b>apoya</b> si el patrón conductual y la fisiología son <b>compatibles</b>.</li>
+            <li>No se "demuestra": n pequeño y fuentes separadas.</li>
+            <li>Lenguaje: "compatible con" / "apoyo descriptivo".</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      El objetivo es evaluar si el sueño ayuda a consolidar memoria declarativa, mirando a la vez conducta y fisiología. La hipótesis: dormir mejora el recuerdo. Y fijamos el criterio ANTES de ver los datos: lo damos por apoyado solo si conducta y fisiología son compatibles, y nos comprometemos con el lenguaje cauto. Esto conecta directo con la clase 1, memoria, y la clase 3, sueño y memoria.
+    </aside>
+  </section>
+
+  <!-- ============ 5 · QUÉ ESPERÁBAMOS ============ -->
+  <section data-sec="Predicciones" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Predicciones a priori</span>
+      <h2>Predicciones y resultado esperado bajo la condición de sueño</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="t">1 · Conducta</div>
+        <p>Mayor retención TR→TS o mejor desempeño final tras dormir.</p>
+      </div>
+      <div class="card teal">
+        <div class="t">2 · Fisiología</div>
+        <p>Arquitectura NREM con sueño profundo (SWS); en ~90 min, posiblemente algo de REM.</p>
+      </div>
+      <div class="card">
+        <div class="t">3 · Mecanismo</div>
+        <p>Delta, husos (sigma) y ripples como ritmos ligados a la consolidación activa.</p>
+      </div>
+    </div>
+    <div class="callout integracion">
+      <span class="lbl">Resultado esperado bajo una siesta consolidada</span>
+      Una siesta de ~90 min debería recorrer al menos un ciclo: descenso a SWS —donde se reactivan memorias dependientes del hipocampo— y, posiblemente, una ventana de REM. El sujeto propio <strong>no concilió el sueño</strong>; se analiza como limitación y como ilustración de los moduladores del descanso.
+    </div>
+    <aside class="notes">
+      Dejamos por escrito tres predicciones: a nivel conducta, mejor recuerdo tras dormir; a nivel fisiología, NREM con sueño profundo y tal vez REM en 90 minutos; y a nivel mecanismo, delta, husos y ripples. Y respondemos de antemano la pregunta de la consigna: si hubiera dormido bien, esperaríamos al menos un ciclo con SWS y quizá REM. Nuestro sujeto no durmió, y eso lo convertimos en discusión, no lo escondemos.
+    </aside>
+  </section>
+
+  <!-- ============ 6 · DISEÑO ============ -->
+  <section data-sec="Diseño" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Codificación, intervalo y evaluación</span>
+      <h2>Diseño: dos condiciones, tres etapas</h2>
+    </div>
+    <div class="flow" style="display:flex;align-items:center;justify-content:center;gap:18px;margin:0.5em 0 0.3em;">
+      <div class="card" style="border-top-color:var(--indigo);text-align:center;min-width:150px;">
+        <div class="t" style="color:var(--indigo-deep)">TR · Línea de base</div>
+        <p>Aprenden 20 asociaciones palabra–definición.</p>
+      </div>
+      <div style="font-size:1.6em;color:var(--line-2)">⟶</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="card teal" style="text-align:center;min-width:180px;padding:0.45em 0.7em;"><div class="t">Sueño · siesta ~90 min</div></div>
+        <div class="card" style="text-align:center;min-width:180px;padding:0.45em 0.7em;border-top-color:var(--faint);"><div class="t" style="color:var(--muted)">Control · vigilia</div></div>
+      </div>
+      <div style="font-size:1.6em;color:var(--line-2)">⟶</div>
+      <div class="card" style="border-top-color:var(--indigo);text-align:center;min-width:150px;">
+        <div class="t" style="color:var(--indigo-deep)">TS · Evaluación final</div>
+        <p>Se recompara el recuerdo y el cambio TR→TS.</p>
+      </div>
+    </div>
+    <div class="cols c2" style="margin-top:0.4em">
+      <div class="card"><div class="t">Variable de interés</div><p>Cambio TR→TS y desempeño final en la tarea de memoria declarativa.</p></div>
+      <div class="card coral"><div class="t">Alcance inferencial</div><p>El grupo sueño tiene <b>n = 1</b>: reportamos un patrón descriptivo, no estadística fuerte.</p></div>
+    </div>
+    <aside class="notes">
+      El diseño es simple: todos aprenden 20 asociaciones en la línea de base, TR. Después una condición duerme una siesta de unos 90 minutos y la otra queda despierta. Y se vuelve a evaluar, TS. Miramos el desempeño final y el cambio TR a TS. El punto honesto: el grupo que durmió es una sola persona, así que esto es un patrón descriptivo, no una prueba estadística.
+    </aside>
+  </section>
+
+  <!-- ============ 7 · FUENTES / LA REGLA ============ -->
+  <section data-sec="Fuentes de datos" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Procedencia de los datos</span>
+      <h2>Tres fuentes de datos independientes</h2>
+    </div>
+    <div class="cols c2-fig">
+      <div class="col">
+        <table>
+          <thead><tr><th>Fuente</th><th>Uso y restricción</th></tr></thead>
+          <tbody>
+            <tr><td><b>Memoria</b></td><td>Planilla propia de palabras: 4 sujetos (3 vigilia, 1 sueño). Da TR/TS.</td></tr>
+            <tr><td><b>EEG</b></td><td>Dataset BrainVision <b>secundario</b> de una persona que <b>sí durmió</b>. Da hipnograma y bandas.</td></tr>
+            <tr><td><b>OpenBCI</b></td><td>Sujeto propio que <b>no durmió</b>. Se usa como limitación y discusión.</td></tr>
+          </tbody>
+        </table>
+        <div class="callout cuidado">
+          <span class="lbl">Regla metodológica</span>
+          Memoria y EEG corresponden a sujetos y sesiones distintos. La relación memoria–fisiología se plantea como integración teórica, no como correlación directa.
+        </div>
+      </div>
+      <div class="col">
+        <figure class="photo">
+          <img src="assets/fotos/colocando-electrodos.jpg" alt="Colocación de electrodos en el sujeto" style="max-height:300px;width:auto;margin:0 auto;">
+          <figcaption>Procedimiento propio: colocación de electrodos. No es el EEG de sueño analizado.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">
+      Esto es lo más importante metodológicamente. Tenemos tres fuentes. La memoria sale de nuestra planilla, cuatro sujetos. El EEG de sueño es un dataset secundario de la cátedra, de una persona que sí durmió. Y nuestro propio registro con OpenBCI, donde el sujeto no durmió. La regla de oro: jamás mezclamos memoria y EEG como si fueran la misma persona. Si alguien pregunta "¿el del EEG es uno de los de memoria?", la respuesta es no.
+    </aside>
+  </section>
+
+  <!-- ============ 8 · PROCEDIMIENTO (FOTOS) ============ -->
+  <section data-sec="Procedimiento" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Registro del procedimiento</span>
+      <h2>El procedimiento, paso a paso</h2>
+      <div class="subhead">Montaje de polisomnografía reducida, preparación del sujeto y entorno de siesta.</div>
+    </div>
+    <div class="cols c3" style="gap:16px;">
+      <figure class="photo"><img src="assets/fotos/colocando-electrodos.jpg" alt="Colocando electrodos" style="height:300px;width:100%;object-fit:cover;"><figcaption>1 · Colocación de electrodos (montaje central C3/C4, EOG, EMG).</figcaption></figure>
+      <figure class="photo"><img src="assets/fotos/pre-siesta.jpg" alt="Preparación pre-siesta" style="height:300px;width:100%;object-fit:cover;"><figcaption>2 · Preparación del entorno antes de la siesta.</figcaption></figure>
+      <figure class="photo"><img src="assets/fotos/pre-siesta-listo.jpg" alt="Sujeto listo para la siesta" style="height:300px;width:100%;object-fit:cover;"><figcaption>3 · Sujeto listo para iniciar el registro (OpenBCI propio).</figcaption></figure>
+    </div>
+    <p class="xsmall mt">Polisomnografía estándar = EEG + EOG + EMG (electrooculograma y electromiograma de mentón).</p>
+    <aside class="notes">
+      Acá mostramos el procedimiento real, que la consigna pide explícitamente. Primero colocamos los electrodos: un montaje central, C3 y C4, más electrooculograma y electromiograma de mentón —eso es una polisomnografía reducida, la misma idea de la clase 9. Preparamos el entorno y el sujeto queda listo para la siesta. Este registro propio, con OpenBCI, es el que después no logró dormir.
+    </aside>
+  </section>
+
+  <!-- ============ 9 · MARCO TEÓRICO ============ -->
+  <section data-sec="Marco teórico" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">El mecanismo de la consolidación</span>
+      <h2>Consolidación activa de sistemas durante el NREM</h2>
+    </div>
+    <div class="mecanismo">
+      <div class="meca-item">
+        <div class="meca-label" style="color:#312E81">Ondas lentas</div>
+        <div class="meca-wave"><canvas data-eeg-wave="slow"></canvas></div>
+        <div class="meca-sub">delta · SWS</div>
+      </div>
+      <div class="meca-arrow">→</div>
+      <div class="meca-item">
+        <div class="meca-label" style="color:#0E7C7B">Husos</div>
+        <div class="meca-wave"><canvas data-eeg-wave="spindle"></canvas></div>
+        <div class="meca-sub">sigma · 12–15 Hz</div>
+      </div>
+      <div class="meca-arrow">→</div>
+      <div class="meca-item">
+        <div class="meca-label" style="color:#4338CA">Ripples</div>
+        <div class="meca-wave"><canvas data-eeg-wave="ripple"></canvas></div>
+        <div class="meca-sub">hipocampales</div>
+      </div>
+      <div class="meca-arrow">⟹</div>
+      <div class="meca-result">Consolidación activa</div>
+    </div>
+    <p class="meca-caption">Diálogo hipocampo–cortical: el acople de estos tres ritmos reactiva memorias dependientes del hipocampo y favorece su integración en la neocorteza.</p>
+    <div class="cols c2" style="margin-top:0.55em;">
+      <div class="col"><div class="card teal"><div class="t">Husos / sigma</div><p>Ritmos talamocorticales; se emplean como <b>proxy</b> de husos, sin detección formal.</p></div></div>
+      <div class="col"><div class="card"><div class="t">Homeostasis sináptica</div><p>El sueño mejora la relación señal/ruido mediante el reajuste sináptico (downscaling).</p></div></div>
+    </div>
+    <aside class="notes">
+      El marco teórico es la consolidación activa de sistemas. Durante el sueño profundo se acoplan tres ritmos —ondas lentas (delta), husos (sigma) y ripples hipocampales—, y ese acople reactiva memorias dependientes del hipocampo para integrarlas a la corteza: es el diálogo hipocampo-cortical. En paralelo, la homeostasis sináptica mejora la relación señal-ruido. Conviene precisar que la sigma se emplea como proxy de husos, no como detección individual; y que lo determinante no es la mayor profundidad del sueño, sino el acople fino entre estos ritmos.
+    </aside>
+  </section>
+
+  <!-- ============ 10 · MÉTODOS DE ANÁLISIS ============ -->
+  <section data-sec="Métodos" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Dos análisis complementarios</span>
+      <h2>Métodos: conducta para memoria, EEG para fisiología</h2>
+    </div>
+    <div class="cols c2">
+      <div class="col">
+        <h3>Tarea de palabras</h3>
+        <ul class="tight">
+          <li>20 asociaciones palabra rara–definición.</li>
+          <li>TR (línea de base) y TS (test final).</li>
+          <li>Dos puntajes: <b>palabra objetivo</b> (forma exacta) y <b>definición</b> (semántico).</li>
+        </ul>
+        <p class="xsmall">Recuperar la forma exacta de una pseudopalabra es más exigente que su significado: separa la dificultad de la tarea.</p>
+      </div>
+      <div class="col">
+        <h3>EEG secundario (MNE)</h3>
+        <ul class="tight">
+          <li>BrainVision, 10 canales, 250 Hz.</li>
+          <li>Filtros <b>antes</b> del análisis: notch 50 Hz + pasa banda 0.3–35 Hz.</li>
+          <li>Épocas de 30 s alineadas 1:1 al scoring.</li>
+        </ul>
+        <div class="callout"><span class="lbl">Decisión crítica</span> C4 se descartó por artefactos; el análisis espectral se reporta sobre <b>C3</b>, que pasó el control de calidad.</div>
+      </div>
+    </div>
+    <aside class="notes">
+      Dos análisis en paralelo, en carriles separados. Para memoria, la tarea de 20 palabras, con dos puntajes: la forma exacta de la pseudopalabra, que es lo difícil, y la definición, que es lo semántico. Para fisiología, el EEG en MNE: filtramos primero —notch de 50 y pasabanda 0.3 a 35— y cortamos en épocas de 30 segundos alineadas al scoring. Una decisión clave que adelanto: el canal C4 estaba arruinado por artefactos, así que todo el análisis espectral va sobre C3.
+    </aside>
+  </section>
+
+  <!-- ============ 11 · RESULTADO MEMORIA ============ -->
+  <section data-sec="Resultado · memoria" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Resultado conductual</span>
+      <h2>Resultado conductual: mayor desempeño en sueño sobre una base elevada</h2>
+    </div>
+    <div class="cols c2-fig">
+      <div class="col">
+        <figure><img src="assets/figuras/memoria-tr-ts.png" alt="Cambio TR a TS en palabra objetivo por sujeto" class="fig-fit"></figure>
+      </div>
+      <div class="col">
+        <div class="card teal"><div class="t">Resultado principal</div><p>Condición de sueño: 15/20 en TR y <b>17/20</b> en TS.</p></div>
+        <div class="card" style="margin-top:10px;"><div class="t">Interpretación descriptiva</div><p>Desempeño final alto e incremento de +2: compatible con la hipótesis.</p></div>
+        <div class="card coral" style="margin-top:10px;"><div class="t">Limitaciones</div><p>No establece causalidad: n = 1, línea de base elevada y un sujeto en vigilia con mayor incremento (+4).</p></div>
+      </div>
+    </div>
+    <aside class="notes">
+      El resultado conductual. El sujeto que durmió terminó con 17 sobre 20 en recuerdo formal, el desempeño final más alto. Pero hay que ser honesto: partía de 15, así que la mejora real fue de solo dos puntos, y de hecho un sujeto en vigilia mejoró más, de 10 a 14. Entonces: es compatible con la hipótesis, el patrón apunta en la dirección esperada, pero con n igual a uno y base alta no podemos hablar de causa.
+    </aside>
+  </section>
+
+  <!-- ============ RESULTADO CONDUCTUAL · DETALLE (barras) ============ -->
+  <section data-sec="Memoria · detalle" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Resultado conductual · detalle</span>
+      <h2>Desempeño por sujeto y por métrica</h2>
+    </div>
+    <div class="cols c2-fig">
+      <div class="col"><figure><img src="assets/figuras/memoria-barras.png" alt="Desempeño por sujeto: palabra objetivo y definición" class="fig-fit"></figure></div>
+      <div class="col">
+        <div class="card"><div class="t">Dos métricas</div><p><b>Palabra objetivo:</b> coincidencia formal exacta de la pseudopalabra (exigente). <b>Definición:</b> scoring semántico, próximo al techo en todos los sujetos.</p></div>
+        <div class="card coral" style="margin-top:12px;"><div class="t">Lectura</div><p>La métrica semántica no discrimina condiciones (efecto techo); la señal recae en la palabra objetivo, con n = 4 y elevada heterogeneidad.</p></div>
+      </div>
+    </div>
+    <aside class="notes">
+      Detalle conductual: el desempeño de cada sujeto en las dos métricas. La definición está próxima al techo en todos, de modo que no discrimina entre condiciones. La palabra objetivo, más exigente, es la que aporta señal, aunque con pocos sujetos y dispersión considerable.
+    </aside>
+  </section>
+
+  <!-- ============ 12 · EEG PIPELINE / QC ============ -->
+  <section data-sec="EEG · calidad" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Preprocesamiento y control de calidad</span>
+      <h2>EEG: preprocesamiento y control de calidad por canal</h2>
+    </div>
+    <div class="cols c2">
+      <div class="col">
+        <div class="pipe">
+          <div class="card" style="border-top-color:var(--indigo);padding:0.4em 0.7em;margin-bottom:8px;"><div class="t" style="color:var(--indigo-deep)">1 · Lectura BrainVision con MNE</div></div>
+          <div class="card" style="border-top-color:var(--indigo);padding:0.4em 0.7em;margin-bottom:8px;"><div class="t" style="color:var(--indigo-deep)">2 · Notch 50 Hz + pasa banda 0.3–35 Hz</div></div>
+          <div class="card" style="border-top-color:var(--indigo);padding:0.4em 0.7em;margin-bottom:8px;"><div class="t" style="color:var(--indigo-deep)">3 · Épocas de 30 s alineadas al scoring</div></div>
+          <div class="card teal" style="padding:0.4em 0.7em;"><div class="t">4 · Control de calidad: C3 usado, C4 descartado</div></div>
+        </div>
+      </div>
+      <div class="col">
+        <table>
+          <thead><tr><th>Canal</th><th>std (µV)</th><th>Saturación</th><th>Decisión</th></tr></thead>
+          <tbody>
+            <tr class="hi"><td>C3</td><td>28</td><td>0 %</td><td><b style="color:var(--green)">usar</b></td></tr>
+            <tr><td>C4</td><td>513</td><td>0.71 %</td><td><b style="color:var(--coral)">descartar</b></td></tr>
+          </tbody>
+        </table>
+        <div class="callout cuidado"><span class="lbl">Justificación</span> El promedio con C4 contaminaba el espectro (desviación 18× mayor). La señal fisiológica se interpreta sobre C3.</div>
+      </div>
+    </div>
+    <aside class="notes">
+      Antes de interpretar nada, limpiamos. Leemos con MNE, aplicamos los filtros, cortamos en épocas de 30 segundos y revisamos canal por canal. C3 estaba bien, desviación de 28 microvoltios. C4 estaba 18 veces peor, con saturación: si lo promediábamos, nos arruinaba el espectro. Por eso descartamos C4 y reportamos C3. Esto es exactamente lo que recomendaba la profe: si una señal es mala, descartala y explicá por qué.
+    </aside>
+  </section>
+
+  <!-- ============ 13 · SCORING (HONESTO) ============ -->
+  <section data-sec="Scoring" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Codificación de fases (clave de la cátedra)</span>
+      <h2>Estadificación del sueño: el registro alcanzó S4</h2>
+    </div>
+    <div class="cols c2-wide">
+      <div class="col">
+        <table>
+          <thead><tr><th>Código</th><th>Fase (clave cátedra)</th><th>Épocas</th></tr></thead>
+          <tbody>
+            <tr><td>0</td><td>Vigilia / transición</td><td>22</td></tr>
+            <tr><td>1</td><td>S1 — sueño liviano</td><td>28</td></tr>
+            <tr class="hi"><td>2</td><td><b>S3</b> — sueño profundo</td><td>65</td></tr>
+            <tr class="hi"><td>3</td><td><b>S4</b> — el más profundo (SWS)</td><td>44</td></tr>
+          </tbody>
+        </table>
+        <p class="xsmall">Códigos 4 (—), 5 (REM) y 8 (MT) <b>no aparecen</b> en el registro: no hubo REM ni movement time.</p>
+      </div>
+      <div class="col">
+        <div class="callout"><span class="lbl">Qué implica</span> Solo la columna 1 del .txt; 159 épocas de 30 s = 79.5 min útiles. Descenso NREM hasta SWS profundo (S3+S4 = <b>68.6 %</b> del registro).</div>
+        <div class="callout cuidado"><span class="lbl">Sobre la codificación</span> La clave de la cátedra no codifica S2 por separado y rotula 2=S3, 3=S4. Se emplea tal cual; en consecuencia, se evita afirmar la detección de husos de N2.</div>
+      </div>
+    </div>
+    <aside class="notes">
+      El scoring viene en la primera columna del txt, una fase por época de 30 segundos. La clave de la cátedra es la que confirmamos: 0 vigilia, 1 es S1, el código 2 es S3 y el 3 es S4, el sueño más profundo. No aparecen los códigos 4, 5 ni 8, así que no hubo REM. Esto es importante y lo decimos abierto: esta clave no separa un S2 propio y rotula así; por eso, cuando hablemos de husos, no vamos a afirmar que detectamos un huso de N2, porque la clave no tiene esa fase. El registro descendió hasta SWS profundo: S3 más S4 son casi el 69% del registro.
+    </aside>
+  </section>
+
+  <!-- ============ 14 · HIPNOGRAMA ============ -->
+  <section data-sec="Hipnograma" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Arquitectura del sueño</span>
+      <h2>Hipnograma: un descenso NREM sostenido hasta S4</h2>
+    </div>
+    <div class="cols c2-fig">
+      <div class="col"><figure><img src="assets/figuras/hipnograma.png" alt="Hipnograma del registro" class="fig-fit"></figure></div>
+      <div class="col">
+        <div class="stats s3" style="grid-template-columns:1fr;gap:12px;">
+          <div class="stat"><div class="n">4 min</div><div class="l">Latencia de sueño</div></div>
+          <div class="stat"><div class="n">45.5 min</div><div class="l">Latencia a S4 (más profundo)</div></div>
+          <div class="stat"><div class="n teal">45.5–68 min</div><div class="l">Bloque de sueño profundo sostenido</div></div>
+          <div class="stat"><div class="n">No</div><div class="l">REM no observado</div></div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">
+      El hipnograma cuenta la historia en el tiempo. Se durmió rápido, a los 4 minutos. Bajó por las fases y llegó al sueño más profundo, S4, recién a los 45 minutos y medio, y sostuvo ese bloque profundo hasta el minuto 68. No hubo REM. Esto encaja con lo que esperábamos de una siesta: domina el NREM, y en este caso llegó muy profundo.
+    </aside>
+  </section>
+
+  <!-- ============ 15 · TIEMPO POR FASE ============ -->
+  <section data-sec="Tiempo por fase" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Distribución de fases</span>
+      <h2>Predomina el NREM, con casi 28 % en el sueño más profundo</h2>
+    </div>
+    <div class="cols c2-fig">
+      <div class="col"><figure><img src="assets/figuras/fases-distribucion.png" alt="Distribución de fases del sueño" class="fig-fit"></figure></div>
+      <div class="col">
+        <div class="stats" style="grid-template-columns:1fr 1fr;">
+          <div class="stat"><div class="n">40.9 %</div><div class="l">S3 (32.5 min) — fase más larga</div></div>
+          <div class="stat"><div class="n teal">27.7 %</div><div class="l">S4 (22 min) — sueño más profundo</div></div>
+          <div class="stat"><div class="n">68.5 min</div><div class="l">Sueño total</div></div>
+          <div class="stat"><div class="n">86 %</div><div class="l">Eficiencia del registro</div></div>
+        </div>
+        <p class="xsmall mt">Sueño profundo (S3+S4) = 54.5 min. Vigilia 13.8 % + S1 17.6 % = transición.</p>
+      </div>
+    </div>
+    <aside class="notes">
+      En porcentajes: la fase más larga fue S3, casi 41%, y el sueño más profundo, S4, otro 28%. Sumando, casi el 69% del registro fue sueño profundo, lo cual es bastante para una siesta. El sueño total fue 68 minutos con una eficiencia del 86%. Es un registro de muy buena calidad para discutir la arquitectura.
+    </aside>
+  </section>
+
+  <!-- ============ 16 · FIRMA ESPECTRAL ============ -->
+  <section data-sec="Firma espectral" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Potencia por banda y fase (C3)</span>
+      <h2>La delta aumenta con la profundidad; la sigma se concentra en NREM</h2>
+    </div>
+    <div class="cols c2" style="gap:18px;">
+      <div class="col"><figure><img src="assets/figuras/delta-por-fase.png" alt="Delta relativa por fase" style="max-height:330px;"></figure></div>
+      <div class="col"><figure><img src="assets/figuras/sigma-por-fase.png" alt="Sigma absoluta por fase" style="max-height:330px;"></figure></div>
+    </div>
+    <div class="callout cuidado"><span class="lbl">Interpretación</span> La delta relativa asciende hasta <b>91.6 % en S4</b>. La sigma (proxy de husos) es máxima en <b>S3</b> y se reporta como potencia de banda, no como detección formal de husos. Los husos talamocorticales son, teóricamente, típicos de N2; esta clave de estadificación no codifica un N2 separado.</div>
+    <aside class="notes">
+      La firma espectral. La potencia delta, las ondas lentas, crece monótonamente con la profundidad y llega al 91% en S4: justo lo que predice la teoría del sueño profundo. La banda sigma, que usamos como proxy de husos, tiene su pico en S3. Acá soy explícito: la teoría dice que los husos son típicos del N2, pero esta clave de scoring no tiene un N2 separado, así que reportamos sigma elevada en NREM y no afirmamos "huso confirmado". Es un proxy, no un detector.
+    </aside>
+  </section>
+
+  <!-- ============ 16b · ONDAS POR FASE (animadas) ============ -->
+  <section data-sec="Ondas por fase" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Ondas sintetizadas desde la potencia medida</span>
+      <h2>Morfología del EEG según la fase</h2>
+      <div class="subhead">Cada traza se sintetiza a partir de la potencia de banda real (C3) de la fase: a mayor potencia delta, ondas más lentas y de mayor amplitud.</div>
+    </div>
+    <div class="ondas">
+      <div class="fase-wave">
+        <div class="lbl"><span class="dot" style="background:#8A8F9C"></span>Vigilia</div>
+        <div class="wave-box"><canvas data-eeg-stage="Vigilia"></canvas></div>
+        <div class="desc">Actividad mixta, rápida y de baja amplitud (alfa/beta presentes).</div>
+      </div>
+      <div class="fase-wave">
+        <div class="lbl"><span class="dot" style="background:#0E7C7B"></span>S1</div>
+        <div class="wave-box"><canvas data-eeg-stage="S1"></canvas></div>
+        <div class="desc">Transición: amplitud baja y enlentecimiento (theta).</div>
+      </div>
+      <div class="fase-wave">
+        <div class="lbl"><span class="dot" style="background:#4338CA"></span>S3</div>
+        <div class="wave-box"><canvas data-eeg-stage="S3"></canvas></div>
+        <div class="desc">Ondas lentas con <b>husos</b> (sigma) superpuestos — corresponde al máximo de sigma registrado.</div>
+      </div>
+      <div class="fase-wave">
+        <div class="lbl"><span class="dot" style="background:#312E81"></span>S4</div>
+        <div class="wave-box"><canvas data-eeg-stage="S4"></canvas></div>
+        <div class="desc">Ondas lentas (delta) de gran amplitud que dominan el trazado.</div>
+      </div>
+    </div>
+    <p class="xsmall mt">Trazas ilustrativas reconstruidas desde la potencia de banda por fase; no es el registro crudo. <span class="muted">Husos = proxy de sigma, sin detección formal.</span></p>
+    <aside class="notes">
+      Para que se vea, no solo se diga: estas cuatro trazas están sintetizadas a partir de la potencia de banda real de cada fase. En vigilia, actividad rápida y de baja amplitud. En S1, baja y enlentecida. En S3 aparecen las ondas lentas con husos montados encima —es donde la sigma fue máxima en nuestros datos—. Y en S4, las ondas lentas grandes dominan todo. Es una forma visual de mostrar la misma firma espectral de la slide anterior.
+    </aside>
+  </section>
+
+  <!-- ============ 16c · ESPECTROGRAMA ============ -->
+  <section data-sec="Espectrograma" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Análisis tiempo–frecuencia</span>
+      <h2>Espectrograma de C3 con hipnograma alineado</h2>
+      <div class="subhead">La distribución de potencia a lo largo del registro confirma el predominio de la actividad lenta en el bloque de sueño profundo.</div>
+    </div>
+    <div class="cols c2-fig">
+      <div class="col"><figure><img src="assets/figuras/espectrograma.png" alt="Espectrograma de C3 con hipnograma alineado" class="fig-fit"></figure></div>
+      <div class="col">
+        <div class="card"><div class="t">Lectura</div><p>La banda lenta (0.5–4 Hz) concentra su potencia en el bloque profundo S3/S4 (~45–68 min); la actividad rápida se atenúa con la profundidad.</p></div>
+        <div class="callout cuidado" style="margin-top:12px;"><span class="lbl">Alcance</span> Representación descriptiva sobre C3; la potencia sigma se reporta como proxy de husos, sin detección formal.</div>
+      </div>
+    </div>
+    <aside class="notes">
+      El espectrograma representa la potencia por frecuencia a lo largo del tiempo, con el hipnograma alineado en la parte superior. Se observa que la potencia lenta se concentra en el bloque de sueño profundo, entre los minutos 45 y 68, mientras la actividad rápida se atenúa. Es la misma firma espectral, ahora sobre el eje temporal.
+    </aside>
+  </section>
+
+  <!-- ============ ANÁLISIS ESPECTRAL · DETALLE (PSD + bandas) ============ -->
+  <section data-sec="Espectral · detalle" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Análisis espectral · detalle</span>
+      <h2>Densidad espectral y composición de bandas</h2>
+    </div>
+    <div class="cols c2" style="gap:18px;">
+      <div class="col"><figure><img src="assets/figuras/psd-por-fase.png" alt="Densidad espectral de potencia por fase, C3" style="max-height:340px;"><figcaption>Densidad espectral de potencia (Welch) por fase, canal C3. La banda sigma (12–15 Hz) aparece sombreada.</figcaption></figure></div>
+      <div class="col"><figure><img src="assets/figuras/bandas-composicion.png" alt="Composición espectral relativa por fase" style="max-height:340px;"><figcaption>Composición espectral relativa por fase: el predominio de delta aumenta con la profundidad.</figcaption></figure></div>
+    </div>
+    <aside class="notes">
+      A la izquierda, la densidad espectral de potencia por fase: en S3 se aprecia un realce en la banda sigma, y en S4 el predominio de las frecuencias lentas. A la derecha, la composición relativa de bandas, que muestra cómo la delta domina progresivamente al profundizarse el sueño.
+    </aside>
+  </section>
+
+  <!-- ============ FICHA TÉCNICA ============ -->
+  <section data-sec="Ficha técnica" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Ficha técnica</span>
+      <h2>Parámetros del análisis EEG</h2>
+    </div>
+    <div class="cols c2">
+      <div class="col">
+        <h3>EEG</h3>
+        <ul class="tight small">
+          <li>BrainVision, 10 canales, 250 Hz.</li>
+          <li>Canal usado <b>C3</b>; C4 descartado por artefactos.</li>
+          <li>Notch 50 Hz + pasa banda 0.3–35 Hz (FIR).</li>
+          <li>159 épocas de 30 s, sin solapamiento (columna 1 del scoring).</li>
+        </ul>
+        <h3>Bandas y fases</h3>
+        <ul class="tight small">
+          <li>Delta 0.5–4 · theta 4–8 · alfa 8–12 · sigma 12–15 · beta 15–30 Hz.</li>
+          <li>Fases observadas: Vigilia, S1, S3, S4 (clave cátedra; sin REM ni MT).</li>
+        </ul>
+      </div>
+      <div class="col">
+        <figure class="plain"><img src="assets/web/eeg-10-20-electrodes.png" alt="Sistema 10-20 de electrodos EEG" style="max-height:300px;margin:0 auto;"><figcaption>Sistema internacional 10–20 de colocación de electrodos. Fuente: Tomaton124, dominio público, vía Wikimedia Commons.</figcaption></figure>
+      </div>
+    </div>
+    <aside class="notes">
+      Ficha técnica para defender la metodología: parámetros del EEG, filtros, bandas y fases observadas, y un recordatorio del lenguaje adoptado. El esquema del sistema 10-20 es de dominio público.
+    </aside>
+  </section>
+
+  <!-- ============ 17 · QUÉ SÍ / QUÉ NO ============ -->
+  <section data-sec="Alcance" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Alcance de las conclusiones</span>
+      <h2>Conclusiones sostenibles y no sostenibles</h2>
+    </div>
+    <div class="cols c2">
+      <div class="col">
+        <div class="card teal"><div class="t">Lo que los datos permiten afirmar</div><ul>
+          <li>El EEG muestra NREM con sueño profundo S3/S4.</li>
+          <li>Delta máxima en S4 y sigma elevada en NREM.</li>
+          <li>El patrón fisiológico es <b>compatible</b> con ritmos de consolidación.</li>
+        </ul></div>
+      </div>
+      <div class="col">
+        <div class="card coral"><div class="t">Lo que los datos no permiten afirmar</div><ul>
+          <li>Que la sigma de este EEG explique la memoria de esos sujetos.</li>
+          <li>Que haya prueba estadística o causal fuerte.</li>
+          <li>Que la sigma sea un huso confirmado (sin detector formal).</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="band">La relación memoria–EEG se presenta como integración teórica, no como correlación directa.</div>
+    <aside class="notes">
+      Resumimos el alcance. Sí podemos decir: el EEG llegó a sueño profundo, la delta es máxima en S4, la sigma está elevada en NREM, y todo eso es compatible con los ritmos de consolidación que vimos en clase. No podemos decir: que los husos de este EEG expliquen la memoria de nuestros sujetos —son personas distintas—, ni que tengamos prueba causal, ni que la sigma sea un huso confirmado. La relación memoria-EEG es integración teórica, no una correlación que medimos.
+    </aside>
+  </section>
+
+  <!-- ============ 18 · POR QUÉ NO DURMIÓ ============ -->
+  <section data-sec="Moduladores" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Discusión de factores contextuales</span>
+      <h2>Factores que pudieron impedir la conciliación del sueño</h2>
+    </div>
+    <div class="cols c2-fig">
+      <div class="col">
+        <div class="cards two" style="gap:12px;">
+          <div class="card"><div class="t">Proceso C / cronotipo</div><p>Siesta ~16:00: posible contrafase circadiana individual.</p></div>
+          <div class="card teal"><div class="t">Cafeína</div><p>Antagoniza adenosina (Proceso S); podría elevar la latencia.</p></div>
+          <div class="card coral"><div class="t">Estrés</div><p>Activación simpática/HPA y cortisol dificultan conciliar.</p></div>
+          <div class="card"><div class="t">Pantallas / luz</div><p>La luz puede retrasar la fase circadiana.</p></div>
+        </div>
+        <p class="xsmall mt"><b>Ambiente y dispositivo:</b> dormir en laboratorio, con electrodos, aumenta incomodidad y vigilancia. <em>Variables plausibles, no causas confirmadas.</em></p>
+      </div>
+      <div class="col"><figure class="photo"><img src="assets/fotos/siesta-entorno.png" alt="Entorno de la siesta experimental" class="fig-fit"><figcaption>Contexto de la siesta experimental (sujeto propio, OpenBCI).</figcaption></figure></div>
+    </div>
+    <aside class="notes">
+      La consigna pregunta por qué el sujeto pudo no dormir, y acá integramos varias clases. Por la clase 7, ritmos: una siesta a las 4 de la tarde puede caer en contrafase según el cronotipo, y la luz de pantallas retrasa la fase. Por las clases 7 y 8, la cafeína bloquea la adenosina, que es la señal de presión de sueño, y sube la latencia. Por la clase 6, el estrés activa el eje HPA y el cortisol dificulta conciliar. Y lo más simple: dormir con electrodos en un laboratorio es incómodo. Son variables plausibles, no causas que hayamos medido.
+    </aside>
+  </section>
+
+  <!-- ============ 18b · ESTRÉS / EJE HPA ============ -->
+  <section data-sec="Estrés y memoria" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Un modulador clave: el cortisol</span>
+      <h2>Estrés, eje HPA y consolidación</h2>
+      <div class="subhead">Cómo un evento estresante previo al sueño podría degradar la consolidación — pregunta explícita de la consigna.</div>
+    </div>
+    <div class="cols c2-fig">
+      <div class="col">
+        <figure><img src="assets/web/hpa-axis.jpg" alt="Eje hipotálamo–hipófisis–suprarrenal (HPA)" style="max-height:330px;width:auto;margin:0 auto;">
+          <figcaption>Eje HPA: Hipotálamo → CRH → Hipófisis → ACTH → Corteza suprarrenal → Cortisol, con retroalimentación negativa. Imagen: Shana Cannella, CC BY 3.0, vía Wikimedia Commons.</figcaption></figure>
+      </div>
+      <div class="col">
+        <div class="card"><div class="t">La cascada</div><p>El estrés activa el eje: el hipotálamo libera <b>CRH</b>; la hipófisis, <b>ACTH</b>; y la corteza suprarrenal, <b>cortisol</b>, que ejerce retroalimentación negativa sobre el sistema.</p></div>
+        <div class="card coral" style="margin-top:10px;"><div class="t">Efecto sobre la memoria</div><p>El cortisol elevado durante el <b>SWS temprano</b> perjudica la consolidación declarativa dependiente del hipocampo (Plihal &amp; Born).</p></div>
+        <div class="callout integracion" style="margin-top:10px;"><span class="lbl">En este trabajo</span> Un evento estresante previo a la siesta elevaría el cortisol, dificultaría la conciliación y degradaría el sueño profundo y los husos que sostienen la consolidación.</div>
+      </div>
+    </div>
+    <aside class="notes">
+      La consigna pregunta por el efecto de un evento estresante antes de dormir, y aquí lo desarrollamos. El estrés activa el eje hipotálamo–hipófisis–suprarrenal: el hipotálamo libera CRH, la hipófisis ACTH y la suprarrenal cortisol. El punto clave para la memoria es que el cortisol elevado durante el sueño profundo temprano perjudica la consolidación declarativa dependiente del hipocampo, según Plihal y Born. En nuestro caso, un evento estresante previo a la siesta no solo dificultaría conciliar el sueño, sino que degradaría el sueño profundo y los husos sobre los que se apoya la consolidación.
+    </aside>
+  </section>
+
+  <!-- ============ CONCLUSIÓN ============ -->
+  <section data-sec="Conclusión" data-transition="fade">
+    <div class="slide-head">
+      <span class="kicker">Respuesta directa a la pregunta inicial</span>
+      <h2>Conclusión</h2>
+    </div>
+    <div class="band" style="font-size:1.25em;">Compatible con la hipótesis; no es una demostración causal.</div>
+    <div class="cols c2" style="margin-top:0.5em;">
+      <div class="card teal"><div class="t">Apoyo descriptivo</div><p>Condición de sueño: mayor desempeño final. EEG secundario: NREM con sueño profundo S3/S4 y sigma elevada.</p></div>
+      <div class="card coral"><div class="t">Requisitos para una afirmación más sólida</div><p>Mismo sujeto con memoria + EEG, mayor n, control de moduladores y un detector formal de husos.</p></div>
+    </div>
+    <p class="center mt" style="font-family:var(--r-heading-font);font-size:0.95em;color:var(--indigo-deep);">El sueño se asocia a la consolidación de la memoria declarativa; la afirmación se sostiene con las reservas que los datos imponen.</p>
+    <aside class="notes">
+      Conclusión y respuesta directa: compatible con la hipótesis, no una demostración causal. Lo que apoya descriptivamente: el sujeto que durmió tuvo el mejor desempeño y el EEG mostró sueño profundo con sigma elevada. Lo que falta para afirmar más: medir memoria y EEG en la misma persona, más sujetos, controlar los moduladores y usar un detector formal de husos. Cierre: el sueño aparece como aliado de la memoria, y lo decimos con la cautela que los datos exigen. Gracias.
+    </aside>
+  </section>
+
+  <!-- ============ GRACIAS ============ -->
+  <section class="cover" data-sec="Gracias" data-transition="fade">
+    <div class="eyebrow">Sueño, memoria y señales fisiológicas</div>
+    <h1>Gracias</h1>
+    <p class="q">¿Preguntas?</p>
+    <div class="byline">
+      <div class="names">Keoni Dubovitsky&nbsp;&nbsp;·&nbsp;&nbsp;Joaquín Pelufo&nbsp;&nbsp;·&nbsp;&nbsp;Sergio Tenoch Sil Cruz</div>
+      <div class="meta">Trabajo práctico · Neurociencias del Desarrollo Productivo · 18/6/2026</div>
+    </div>
+    <canvas class="cover-eeg" data-eeg-stage="S4" data-eeg-mode="cover" data-eeg-color="#6366F1" aria-hidden="true"></canvas>
+    <aside class="notes">Cierre: agradecer y abrir a preguntas. Recordar el reparto de quién responde cada tema.</aside>
+  </section>
+
+  </div>
+</div>
+
+<script src="js/reveal.js"></script>
+<script src="js/plugin/notes/notes.js"></script>
+<script src="js/plugin/highlight/highlight.js"></script>
+<script src="js/plugin/zoom/zoom.js"></script>
+<script src="js/eeg-waves.js"></script>
+<script>
+  // Footer dinámico: sección (izq) + número de slide (der)
+  (function () {
+    var slides = Array.prototype.slice.call(document.querySelectorAll('.reveal .slides > section'));
+    var total = slides.length;
+    slides.forEach(function (s, i) {
+      if (s.querySelector('.footer')) return;
+      var sec = s.getAttribute('data-sec') || '';
+      var f = document.createElement('div');
+      f.className = 'footer';
+      f.innerHTML = '<span>Sueño, memoria y EEG · <span class="sec">' + sec + '</span></span><span>' + (i + 1) + ' / ' + total + '</span>';
+      s.appendChild(f);
+    });
+    // Las diapositivas tipo portada (Portada y Gracias) no llevan footer
+    document.querySelectorAll('section.cover .footer').forEach(function (f) { f.style.display = 'none'; });
+  })();
+
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0.035,
+    minScale: 0.2,
+    maxScale: 2.0,
+    center: false,
+    hash: true,
+    progress: true,
+    slideNumber: false,
+    transition: 'fade',
+    transitionSpeed: 'default',
+    backgroundTransition: 'fade',
+    controlsTutorial: false,
+    plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
+  }).then(function () {
+    if (window.EEGWaves) { EEGWaves.initAll(); EEGWaves.activate(Reveal.getCurrentSlide()); }
+    // En modo impresión (?print-pdf) dibujar todas las ondas como frame estático.
+    if (/print-pdf/.test(window.location.search)) {
+      [300, 900, 1800, 3000].forEach(function (t) {
+        setTimeout(function () { if (window.EEGWaves) EEGWaves.drawAllStatic(); }, t);
+      });
+    }
+  });
+
+  function refreshWaves(slide) {
+    if (!window.EEGWaves) return;
+    EEGWaves.initAll();
+    EEGWaves.activate(slide || Reveal.getCurrentSlide());
+  }
+  Reveal.on('slidechanged', function (e) { refreshWaves(e.currentSlide); });
+  Reveal.on('resize', function () { refreshWaves(); });
+  window.addEventListener('resize', function () { refreshWaves(); });
+</script>
+</body>
+</html>

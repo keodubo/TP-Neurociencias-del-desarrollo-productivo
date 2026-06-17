@@ -1,0 +1,238 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\geometry{left=2.1cm,right=2.1cm,top=2.0cm,bottom=2.2cm}
+
+\definecolor{Ink}{HTML}{16213E}
+\definecolor{Muted}{HTML}{64748B}
+\definecolor{Paper}{HTML}{FAF7F0}
+\definecolor{Blue}{HTML}{2F6690}
+\definecolor{Orange}{HTML}{D97706}
+\definecolor{Green}{HTML}{2F7D6D}
+\definecolor{LightBlue}{HTML}{DDEAF6}
+\definecolor{LightOrange}{HTML}{FDEBD3}
+\definecolor{LightGreen}{HTML}{E0F1EC}
+\definecolor{Line}{HTML}{D6DEE8}
+
+\hypersetup{colorlinks=true,linkcolor=Blue,urlcolor=Blue,citecolor=Blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{topsep=0.2em,itemsep=0.15em,leftmargin=1.4em}
+\setlist[enumerate]{topsep=0.2em,itemsep=0.15em,leftmargin=1.6em}
+\titleformat{\section}{\Large\bfseries\color{Ink}}{\thesection}{0.6em}{}[\titlerule]
+\titleformat{\subsection}{\large\bfseries\color{Blue}}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{Ink}}{}{0em}{}
+
+\newcommand{\boxnote}[2]{%
+\vspace{0.2em}\noindent\fcolorbox{Line}{#1}{\parbox{0.965\linewidth}{#2}}\vspace{0.2em}}
+\newcommand{\slidehead}[3]{%
+\subsection*{Slide #1 - #2}\textbf{Idea que debe quedar:} #3\par}
+\newcommand{\decir}{\textbf{Qué decir.} }
+\newcommand{\cuidado}{\textbf{Cuidado metodológico.} }
+
+\begin{document}
+
+\begin{titlepage}
+\pagecolor{Paper}
+\vspace*{1cm}
+{\Huge\bfseries\color{Ink} Guion de exposición}\par\vspace{0.25cm}
+{\LARGE\color{Blue} Sueño, memoria y análisis de señales fisiológicas}\par\vspace{0.45cm}
+{\Large Consolidación de memoria declarativa durante el sueño}\par\vspace{1.0cm}
+\boxnote{LightBlue}{\Large\textbf{Tesis oral.} El sueño mejora la consolidación de la memoria declarativa. En este TP, los datos son compatibles con la hipótesis de forma descriptiva y parcial; no permiten una demostración estadística ni causal.}
+\vfill
+\textbf{Integrantes:} Keoni Dubovitsky, Joaquín Pelufo, Sergio Tenoch Sil Cruz.\par
+\textbf{Fecha de exposición:} 18/6/2026.\par
+\textbf{Duración objetivo:} 12-15 minutos.\par
+\textbf{Documento asociado:} \texttt{presentacion\_sueno\_memoria\_latex\_v1.tex}.\par
+\end{titlepage}
+\nopagecolor
+
+\tableofcontents
+\newpage
+
+\section{Objetivo y alcance}
+
+El objetivo de la presentación es estudiar la relación entre sueño y consolidación de memoria declarativa a partir de dos niveles de evidencia: una tarea conductual de asociaciones palabra-definición y un análisis fisiológico de sueño con EEG/EOG/EMG sobre un dataset secundario. La exposición debe funcionar como un mini-paper oral: pregunta, hipótesis, método, resultados, discusión teórica, limitaciones y conclusión.
+
+\boxnote{LightOrange}{\textbf{Restricción central.} El sujeto propio registrado con OpenBCI no concilió el sueño. Por indicación de la cátedra, el análisis fisiológico se realiza con datos secundarios de una persona que sí durmió. Por lo tanto, memoria y EEG se presentan como fuentes separadas. No se calcula correlación directa entre husos/sigma y desempeño de memoria.}
+
+\section{Tesis, hipótesis y criterio de decisión}
+
+\textbf{Hipótesis principal.} El sueño mejora la consolidación de la memoria declarativa.
+
+\textbf{Predicción conductual.} La condición sueño debería mostrar mejor desempeño final o mayor retención TR$\rightarrow$TS que la condición vigilia.
+
+\textbf{Predicción fisiológica.} El registro de sueño debería mostrar arquitectura NREM con sueño profundo, idealmente sueño de ondas lentas (SWS).
+
+\textbf{Predicción mecanística.} Ondas lentas, husos de sueño/sigma y ripples hipocampales son el marco fisiológico esperado para la consolidación activa.
+
+\textbf{Criterio de decisión.} La hipótesis queda apoyada si el patrón conductual y el patrón fisiológico son compatibles. No se afirma demostración causal porque: (1) la condición sueño tiene $n=1$, (2) el EEG y la memoria no provienen del mismo sujeto ni de la misma sesión, y (3) el scoring del dataset secundario llega hasta S3/SWS pero no incluye S4 ni REM.
+
+\section{Resumen ejecutivo por slide}
+
+\begin{longtable}{>{\bfseries}p{1.1cm}p{4.1cm}p{8.7cm}}
+\toprule
+Slide & Título & Mensaje central \\
+\midrule
+1 & Portada & Pregunta, tesis oral e integrantes. \\
+2 & Respuesta en 30 segundos & Compatible con la hipótesis, con cautela. \\
+3 & Diseño & TR $\rightarrow$ siesta/vigilia $\rightarrow$ TS; lectura descriptiva. \\
+4 & Fuentes & Memoria y EEG no se mezclan como si fueran mismo sujeto. \\
+5 & Predicciones & Qué esperábamos observar en conducta, fisiología y mecanismo. \\
+6 & Marco teórico & Consolidación activa, ondas lentas, sigma/husos y homeostasis sináptica. \\
+7 & Métodos & Tarea de palabras y procesamiento EEG. \\
+8 & Memoria & Sueño tuvo mayor TS; mejora +2, pero base alta. \\
+9 & EEG & Filtros, épocas, scoring y control de calidad de canal. \\
+10 & Scoring & Códigos 0-3: vigilia, S1, S2, S3/SWS; sin REM ni S4. \\
+11 & Hipnograma & Descenso NREM con bloque S3/SWS de 45.5 a 68 min. \\
+12 & Tiempo por fase & S2 domina; S3/SWS ocupa casi 28\% del registro. \\
+13 & Espectro & Delta sube hacia S3; sigma tiene pico descriptivo en S2. \\
+14 & Alcance & Qué se puede y qué no se puede concluir. \\
+15 & No-sueño propio & Cronotipo, cafeína, estrés, luz, ambiente y dispositivo como moduladores plausibles. \\
+16 & Discusión & Integración de resultados, teoría y límites. \\
+17 & Conclusión & Apoyo descriptivo y parcial; no prueba causal. \\
+18 & Apéndice técnico & Datos de reproducibilidad y lenguaje recomendado. \\
+\bottomrule
+\end{longtable}
+
+\newpage
+\section{Guion detallado por slide}
+
+\slidehead{1}{Portada}{La pregunta central del trabajo es si el sueño mejora la consolidación de la memoria declarativa.}
+\decir Buenos días. Somos Keoni, Joaquín y Sergio. Vamos a presentar el trabajo práctico sobre sueño, memoria y señales fisiológicas. La pregunta que organiza toda la exposición es: ¿mejora el sueño la consolidación de la memoria declarativa? La respuesta que vamos a sostener es prudente: los datos son compatibles con la hipótesis, pero no permiten demostrarla causal o estadísticamente.
+
+\slidehead{2}{Respuesta en 30 segundos}{El estudio integra conducta y fisiología, pero la conclusión es descriptiva.}
+\decir En una síntesis rápida: aprendimos asociaciones palabra-definición, comparamos una condición sueño con un grupo en vigilia y analizamos un EEG de sueño secundario. El sujeto en sueño tuvo 17 sobre 20 palabras en el test final y mejoró 2 puntos desde la línea de base. El EEG secundario muestra arquitectura NREM con sueño profundo. Esto apoya la hipótesis, pero solo de forma descriptiva.
+
+\cuidado No decir ``queda demostrado''. Usar ``compatible con'', ``apoya descriptivamente'' o ``apoyo parcial''.
+
+\slidehead{3}{Diseño: aprender, esperar y volver a evaluar}{La comparación relevante es TR$\rightarrow$TS entre sueño y vigilia.}
+\decir El diseño tiene tres etapas. Primero está TR, que funciona como línea de base: todos aprenden y recuerdan las asociaciones. Después viene el intervalo: una condición duerme una siesta prevista de alrededor de 90 minutos y el grupo control permanece despierto. Finalmente se toma TS, el test final. En un diseño más grande esto permitiría estimar el efecto del sueño; acá lo leemos descriptivamente.
+
+\slidehead{4}{Dos fuentes de datos: una regla}{La procedencia de los datos define qué inferencias son válidas.}
+\decir Tenemos dos fuentes. La Fuente A es la planilla de memoria, con 4 sujetos: 3 en vigilia y 1 en sueño. La Fuente B es el EEG BrainVision secundario, de una persona que sí durmió. Nuestro sujeto propio con OpenBCI no logró dormir. Por eso no se usa para estadificar sueño, sino como limitación experimental y como material de discusión.
+
+\cuidado Este es el punto que más protege la exposición. Si preguntan si el EEG corresponde al sujeto de memoria, responder que no: se integran teóricamente, no como correlación directa.
+
+\slidehead{5}{Qué esperábamos encontrar}{Las predicciones se definieron antes de interpretar los resultados.}
+\decir Antes de mostrar resultados, fijamos qué hubiera apoyado la hipótesis. En conducta: más retención o mejor desempeño final tras dormir. En fisiología: arquitectura NREM con sueño profundo. En mecanismo: ritmos ligados a consolidación activa, sobre todo ondas lentas y sigma/husos. Si esos tres niveles son compatibles, la hipótesis se apoya de manera descriptiva.
+
+\slidehead{6}{Marco teórico aplicado}{El sueño se interpreta como ventana activa de consolidación.}
+\decir La teoría de consolidación activa propone que durante el sueño NREM se reactivan memorias dependientes del hipocampo y se integran con la neocorteza. Esto se apoya en el acople de ondas lentas corticales, husos talamocorticales y ripples hipocampales. Además, la hipótesis de homeostasis sináptica sugiere que el sueño mejora la relación señal/ruido al reajustar pesos sinápticos.
+
+\cuidado No extenderse demasiado: esta slide debe conectar teoría con predicciones, no reemplazar una clase teórica.
+
+\slidehead{7}{Métodos: dos análisis complementarios}{La tarea mide memoria; el EEG describe fisiología del sueño.}
+\decir En la tarea conductual, cada participante trabaja con 20 asociaciones entre una palabra rara y una definición. Medimos por separado la palabra exacta y la definición semántica, porque recuperar la forma exacta es más exigente que recordar el significado. En EEG leímos BrainVision con MNE, filtramos antes de medir, cortamos en épocas de 30 segundos y alineamos esas épocas con el scoring.
+
+\slidehead{8}{Resultado conductual: memoria}{El sujeto sueño tiene el mayor test final, pero el resultado requiere cautela.}
+\decir El resultado conductual se lee en dos niveles. En desempeño final, el sujeto en sueño obtuvo 17 de 20 palabras, que es el valor más alto. Si miramos consolidación como cambio TR a TS, pasó de 15 a 17, es decir +2. Esto es compatible con la hipótesis, pero el sujeto ya partía alto y la condición sueño tiene un solo participante.
+
+\cuidado Si preguntan por el sujeto 2 en vigilia, reconocer que mejoró +4. Por eso no conviene vender el resultado como ``el mayor cambio'', sino como ``mayor desempeño final y mejora descriptiva''.
+
+\slidehead{9}{EEG: limpieza antes de interpretación}{Filtrar y controlar canales evita convertir artefactos en resultados.}
+\decir En EEG aplicamos un notch de 50 Hz para ruido de línea y un pasa banda 0.3-35 Hz para quitar deriva y ruido de alta frecuencia. El scoring se trabaja en épocas de 30 segundos sin solapamiento. Además comparamos C3 y C4: C4 tenía un desvío muy alto y saturación, así que lo descartamos. Analizamos C3.
+
+\slidehead{10}{Scoring de sueño}{El archivo observado permite comparar vigilia, S1, S2 y S3/SWS.}
+\decir Para este análisis usamos la primera columna del archivo de scoring. Los códigos observados son 0, 1, 2 y 3, que interpretamos como vigilia, S1, S2 y S3/SWS. El registro llegó a sueño profundo, pero no aparecen S4 ni REM. Por eso no hacemos comparación NREM versus REM; nos centramos en profundidad NREM y SWS.
+
+\cuidado Aclarar que es un scoring descriptivo, no una polisomnografía clínica definitiva.
+
+\slidehead{11}{Hipnograma: arquitectura NREM}{El dataset secundario sí muestra sueño profundo sostenido.}
+\decir El hipnograma muestra un descenso NREM: vigilia, S1, S2 y luego S3. La latencia de sueño fue de 4 minutos, la latencia a S3 fue de 45.5 minutos y el bloque principal de S3/SWS va de 45.5 a 68 minutos. No hay REM en el tramo scoreado.
+
+\slidehead{12}{Tiempo por fase}{El registro tiene una proporción relevante de S3/SWS.}
+\decir En la distribución por fase, S2 es la fase más larga, con 32.5 minutos o 40.9\% del registro. S3/SWS ocupa 22 minutos, casi 28\%. La eficiencia de sueño es 86.2\%. Esto es compatible con una siesta con NREM y sueño profundo suficiente para discutir consolidación.
+
+\slidehead{13}{Firma espectral: delta y sigma}{La señal tiene el patrón esperado por profundidad de sueño.}
+\decir En la potencia por banda, delta crece hacia S3: pasa de 57\% en vigilia a aproximadamente 92\% en S3. La sigma absoluta, entre 12 y 15 Hz, tiene su pico en S2. Como no corrimos un detector formal de husos, no decimos que haya husos confirmados: decimos que hay potencia sigma compatible con husos.
+
+\slidehead{14}{Qué podemos decir y qué no}{El análisis es fuerte cuando no sobre-afirma.}
+\decir Podemos decir que el EEG secundario muestra NREM con SWS, potencia delta alta en S3 y sigma elevada en S2. También podemos decir que eso es compatible con los ritmos que la teoría asocia a consolidación. Lo que no podemos decir es que los husos de este EEG expliquen la memoria de esos sujetos, porque no son el mismo sujeto ni la misma sesión.
+
+\slidehead{15}{Por qué el sujeto propio pudo no dormir}{La no conciliación se discute con variables moduladoras.}
+\decir Nuestro sujeto propio no durmió, y eso no invalida el trabajo: abre la discusión. Posibles factores son cronotipo y proceso circadiano, porque una siesta a las 16:00 puede no coincidir con la fase adecuada; cafeína, que puede bloquear adenosina; estrés, que aumenta activación; pantallas o luz, que pueden retrasar fase; y el ambiente del laboratorio con electrodos, que puede generar incomodidad.
+
+\cuidado Decir ``posibles'' o ``plausibles''. No decir que alguna fue la causa si no se midió directamente.
+
+\slidehead{16}{Discusión integrada}{Conducta, fisiología y teoría convergen, pero con límites.}
+\decir Integrando todo: en conducta, el sujeto sueño tuvo el mayor desempeño final y una mejora TR a TS. En fisiología, el EEG secundario muestra NREM con SWS y sigma elevada en S2. En teoría, esto encaja con consolidación activa y homeostasis sináptica. Las limitaciones son claras: $n=1$, fuentes separadas, sin REM/S4 y sigma como proxy.
+
+\slidehead{17}{Conclusión}{La respuesta final es afirmativa, pero prudente.}
+\decir Cerramos con una respuesta directa. Los resultados son compatibles con la hipótesis de que el sueño favorece la consolidación declarativa. El apoyo es descriptivo y parcial: el sujeto sueño tuvo mejor desempeño final, y el EEG secundario mostró una arquitectura compatible con mecanismos de consolidación. Pero no es una demostración causal.
+
+\slidehead{18}{Apéndice técnico}{Tener a mano datos de reproducibilidad y lenguaje recomendado.}
+\decir Esta slide se usa solo si preguntan por detalles. El EEG era BrainVision de 10 canales a 250 Hz; usamos C3; filtros notch 50 Hz y pasa banda 0.3-35 Hz; 159 épocas de 30 segundos; bandas delta, theta, alfa, sigma y beta. Las fases observadas fueron vigilia, S1, S2 y S3/SWS.
+
+\newpage
+\section{Preguntas esperables y respuestas}
+
+\textbf{P. ¿La hipótesis se acepta o se rechaza?}\par
+R. Se apoya de forma descriptiva y parcial. El patrón es compatible con la hipótesis, pero no se confirma causal ni estadísticamente.
+
+\textbf{P. ¿Por qué no pueden correlacionar directamente sigma/husos con memoria?}\par
+R. Porque el EEG con sueño proviene de un dataset secundario y la memoria proviene de otros sujetos. Correlacionarlos como si fueran la misma persona sería metodológicamente incorrecto.
+
+\textbf{P. ¿Qué significa SWS y por qué importa?}\par
+R. SWS es sueño de ondas lentas, equivalente a sueño profundo NREM. Importa porque la teoría de consolidación activa ubica ahí la reactivación hipocampo-cortical de memorias declarativas.
+
+\textbf{P. ¿La sigma demuestra que hubo husos?}\par
+R. No. Sigma 12-15 Hz es una banda compatible con husos, especialmente en S2, pero para afirmar husos habría que aplicar un detector formal de eventos.
+
+\textbf{P. ¿Por qué el sujeto propio no durmió?}\par
+R. No se puede afirmar una causa única. Se discuten variables plausibles: cronotipo/fase circadiana, cafeína, estrés, pantallas/luz, ambiente experimental e incomodidad del dispositivo.
+
+\textbf{P. ¿Qué cambiarían en una próxima versión?}\par
+R. Registrar memoria y EEG en el mismo sujeto, aumentar el tamaño muestral, controlar cafeína/estrés/cronotipo, mejorar condiciones ambientales y aplicar detectores formales de husos y ondas lentas.
+
+\section{Cierre metodológico: reglas que no se negocian}
+
+\begin{itemize}
+\item No afirmar que el sujeto OpenBCI propio durmió.
+\item No presentar el dataset BrainVision secundario como si fuera del mismo sujeto o sesión que la tarea de memoria.
+\item No afirmar causalidad fuerte con $n=1$ en condición sueño.
+\item No decir ``husos confirmados'' si solo se midió potencia sigma.
+\item No comparar NREM versus REM porque REM no aparece en el scoring utilizado.
+\item Usar lenguaje prudente: ``compatible con'', ``apoyo descriptivo'', ``apoyo parcial'', ``proxy de sigma''.
+\end{itemize}
+
+\section{Material de cátedra usado}
+
+\begin{itemize}
+\item Consigna oficial: \textit{Trabajo práctico 2026: sueño, memoria y análisis de señales fisiológicas}.
+\item Clase 3 - Sueño y Memoria: fases de sueño, hipnograma, consolidación activa, ondas lentas, husos, ripples e hipótesis de homeostasis sináptica.
+\item Clase 6 - Estrés: activación fisiológica, sistema nervioso autónomo, eje HPA y efectos del estrés sobre sueño y memoria.
+\item Clase 7 - Ritmos circadianos e higiene de sueño: Proceso S, Proceso C, cronotipo, zeitgebers, luz y hábitos de sueño.
+\item Clase 8 - Fármacos: cafeína, adenosina y modulación de sueño/consolidación.
+\item Clase 9 - EEG: EEG/EOG/EMG, filtros, densidad espectral de potencia, método de Welch, épocas de 30 segundos y bandas de frecuencia.
+\end{itemize}
+
+
+\section{Checklist de ensayo}
+
+Antes de exponer, verificar que el equipo pueda responder en una frase cada punto:
+
+\begin{itemize}
+\item Pregunta: si el sueño mejora la consolidación de la memoria declarativa.
+\item Respuesta: los datos son compatibles, pero el apoyo es descriptivo y parcial.
+\item Resultado de memoria: sujeto sueño 15$\rightarrow$17, TS final 17/20.
+\item Resultado EEG: NREM con S3/SWS; S2 dominante; sigma elevada en S2.
+\item Límite central: memoria y EEG son fuentes distintas.
+\item Lenguaje final: ``compatible'', ``proxy'', ``no causal'', ``no demostrado''.
+\end{itemize}
+
+\end{document}
