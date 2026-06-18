@@ -1,12 +1,12 @@
 """Genera figuras editoriales (estilo Nature, tema claro) para la presentacion.
 
-Etiquetas de fase CORREGIDAS por la catedra (codigos 0/1/2/3):
+Etiquetas de fase (escala estandar de estadificacion, codigos 0/1/2/3):
     0 = Vigilia
     1 = S1
-    2 = S3      (NO S2)
-    3 = S4      (sueno de ondas lentas mas profundo)
-No hay S2 ni REM en este registro. SWS profundo = S3 + S4.
-Orden por profundidad: Vigilia -> S1 -> S3 -> S4.
+    2 = S2      (fase mas frecuente del registro)
+    3 = S3      (sueno de ondas lentas; lo mas profundo alcanzado)
+El registro no llega al codigo 4 (S4) ni 5 (REM): no hubo S4 ni REM.
+Sueno profundo (SWS) alcanzado = S3. Orden: Vigilia -> S1 -> S2 -> S3.
 
 Figs 1-7: datos provistos (numeros exactos, sin recomputar).
 Fig 8 (best effort): PSD y espectrograma re-corriendo MNE sobre la senal real (C3).
@@ -51,21 +51,21 @@ COL = {
     "sigma": "#0E7C7B",   # teal (banda destacada = proxy de husos)
     "beta": "#9CA3AF",    # gris
 }
-# Rampa de profundidad Vigilia -> S4
+# Rampa de profundidad Vigilia -> S3 (lo mas profundo alcanzado)
 DEPTH = {
     "Vigilia": "#B8B5AD",
     "S1": "#7FB5B4",
-    "S3": "#4338CA",
-    "S4": "#312E81",
+    "S2": "#4338CA",
+    "S3": "#312E81",
 }
 ACCENT = "#4338CA"   # indigo de acento
 TEAL = "#0E7C7B"
 CORAL = "#C2410C"
 GRAY = "#9CA3AF"
 
-# Etiquetas CORREGIDAS por codigo
-STAGE_LABEL = {0: "Vigilia", 1: "S1", 2: "S3", 3: "S4"}
-STAGE_ORDER = ["Vigilia", "S1", "S3", "S4"]
+# Etiquetas por codigo (escala estandar de estadificacion)
+STAGE_LABEL = {0: "Vigilia", 1: "S1", 2: "S2", 3: "S3"}
+STAGE_ORDER = ["Vigilia", "S1", "S2", "S3"]
 
 plt.rcParams.update({
     "figure.facecolor": PAPER,
@@ -112,8 +112,8 @@ def save(fig, name):
 STAGES = [
     (0, "Vigilia", 22, 11.0, 13.84, 56.97, 8.59, 15.38, 2.31, 14.33, 4.32),
     (1, "S1", 28, 14.0, 17.61, 55.09, 18.56, 9.18, 2.54, 11.27, 2.56),
-    (2, "S3", 65, 32.5, 40.88, 68.63, 15.49, 4.93, 5.22, 2.51, 11.63),
-    (3, "S4", 44, 22.0, 27.67, 91.59, 4.98, 1.66, 0.59, 0.20, 5.00),
+    (2, "S2", 65, 32.5, 40.88, 68.63, 15.49, 4.93, 5.22, 2.51, 11.63),
+    (3, "S3", 44, 22.0, 27.67, 91.59, 4.98, 1.66, 0.59, 0.20, 5.00),
 ]
 LABELS = [s[1] for s in STAGES]
 PCT = [s[4] for s in STAGES]
@@ -128,7 +128,7 @@ SIGMA_ABS = [s[10] for s in STAGES]
 # Arquitectura
 LUZ_OFF = 1.05
 LUZ_ON = 79.68
-S4_BLOCK = (45.5, 68.0)
+DEEP_BLOCK = (45.5, 68.0)
 EPOCH_SEC = 30
 
 # Tarea de memoria (por sujeto, /20)
@@ -152,9 +152,9 @@ def fig_hipnograma():
     fig, ax = plt.subplots(figsize=(12, 3.8))
     # y = codigo (0..3); con eje invertido, mayor codigo (mas profundo) queda abajo
     ax.step(t, codes.astype(float), where="post", color=INK, linewidth=1.3, zorder=3)
-    # Sombrear bloque S4
-    ax.axvspan(S4_BLOCK[0], S4_BLOCK[1], color=ACCENT, alpha=0.12, zorder=1,
-               label="Bloque S4 (45.5-68.0 min)")
+    # Sombrear bloque profundo (S3)
+    ax.axvspan(DEEP_BLOCK[0], DEEP_BLOCK[1], color=ACCENT, alpha=0.12, zorder=1,
+               label="Bloque S3 (45.5-68.0 min)")
     # Lineas de luz
     for x, lab in [(LUZ_OFF, "Luz OFF"), (LUZ_ON, "Luz ON")]:
         ax.axvline(x, color=CORAL, linestyle="--", linewidth=1.0, zorder=2)
@@ -162,9 +162,9 @@ def fig_hipnograma():
                 fontsize=8, color=CORAL)
 
     ax.set_yticks([0, 1, 2, 3])
-    ax.set_yticklabels(["Vigilia", "S1", "S3", "S4"])
+    ax.set_yticklabels(["Vigilia", "S1", "S2", "S3"])
     ax.set_ylim(-0.6, 3.4)
-    ax.invert_yaxis()   # profundo (S4) abajo
+    ax.invert_yaxis()   # profundo (S3) abajo
     ax.set_xlim(0, 79.5)
     ax.set_xlabel("Minutos desde el inicio del registro")
     ax.set_ylabel("Fase del sueño")
@@ -216,7 +216,7 @@ def fig_delta_por_fase():
                  fontweight="bold")
     style_axes(ax)
     # Anotacion coral cerca de S4
-    ax.annotate("máxima en S4 (91.6%)",
+    ax.annotate("máxima en S3 (91.6%)",
                 xy=(3, DELTA_REL[3]), xytext=(2.05, 86),
                 fontsize=9.5, color=CORAL, ha="left", va="center",
                 arrowprops=dict(arrowstyle="->", color=CORAL, lw=1.3))
@@ -229,10 +229,10 @@ def fig_delta_por_fase():
 # ---------------------------------------------------------------------------
 def fig_sigma_por_fase():
     fig, ax = plt.subplots(figsize=(8.4, 4.8))
-    colors = [TEAL if l == "S3" else GRAY for l in LABELS]
+    colors = [TEAL if l == "S2" else GRAY for l in LABELS]
     bars = ax.bar(LABELS, SIGMA_ABS, color=colors, width=0.62, zorder=3)
     ax.set_ylabel("Potencia sigma 12–15 Hz (µV²)")
-    ax.set_title("Sigma: máximo en S3", loc="left", fontweight="bold")
+    ax.set_title("Sigma: máximo en S2", loc="left", fontweight="bold")
     ax.set_ylim(0, max(SIGMA_ABS) * 1.22)
     style_axes(ax)
     for bar, v in zip(bars, SIGMA_ABS):
@@ -423,9 +423,9 @@ def fig_mne():
         gridspec_kw={"height_ratios": [1, 4], "hspace": 0.08})
     th = np.arange(n_ep) * EPOCH_SEC / 60.0
     axh.step(th, codes.astype(float), where="post", color=INK, linewidth=1.2)
-    axh.axvspan(S4_BLOCK[0], S4_BLOCK[1], color=ACCENT, alpha=0.12)
+    axh.axvspan(DEEP_BLOCK[0], DEEP_BLOCK[1], color=ACCENT, alpha=0.12)
     axh.set_yticks([0, 1, 2, 3])
-    axh.set_yticklabels(["Vigilia", "S1", "S3", "S4"], fontsize=8)
+    axh.set_yticklabels(["Vigilia", "S1", "S2", "S3"], fontsize=8)
     axh.set_ylim(-0.5, 3.5)
     axh.invert_yaxis()
     axh.set_ylabel("Fase", fontsize=9)

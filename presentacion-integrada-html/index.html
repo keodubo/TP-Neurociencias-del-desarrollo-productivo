@@ -144,7 +144,7 @@
         <h3>Bandas y fases</h3>
         <ul class="tight small">
           <li>Delta 0.5–4 · theta 4–8 · alfa 8–12 · sigma 12–15 · beta 15–30 Hz.</li>
-          <li>Fases observadas: Vigilia, S1, S3, S4 (clave cátedra; sin REM ni MT).</li>
+          <li>Fases observadas: Vigilia, S1, S2, S3 (escala estándar; sin S4, REM ni MT).</li>
         </ul>
       </div>
       <div class="col">
@@ -286,30 +286,31 @@
             <tr><td>C4</td><td>513</td><td>0.71 %</td><td><b style="color:var(--coral)">descartar</b></td></tr>
           </tbody>
         </table>
+        <p class="xsmall mt">La columna <b>std</b> es la desviación estándar de cada canal por separado, obtenida con <code>raw.get_data().std(axis=1)</code> sobre la señal: mide la amplitud típica del canal y expone que C4 está ~18× por encima de C3.</p>
       </div>
     </div>
     <aside class="notes">
-      Antes de interpretar nada, limpiamos. Leemos con MNE, aplicamos los filtros, cortamos en épocas de 30 segundos y revisamos canal por canal. Justificación del descarte: C3 estaba bien, desviación de 28 microvoltios; C4 estaba 18 veces peor, con saturación, así que promediarlo contaminaba el espectro. Por eso reportamos solo C3.
+      Antes de interpretar nada, limpiamos. Leemos con MNE, aplicamos los filtros, cortamos en épocas de 30 segundos y revisamos canal por canal. El número de cada canal es su desviación estándar, calculada con get_data().std() sobre la señal de ese canal individual: C3 dio 28 microvoltios y C4 dio 513 —unas 18 veces más, con saturación—, así que promediarlo contaminaba el espectro. Por eso reportamos solo C3.
     </aside>
   </section>
 
   <!-- ============ 13 · SCORING ============ -->
   <section data-sec="Scoring" data-transition="fade">
     <div class="slide-head">
-      <span class="kicker">Codificación de fases (clave de la cátedra)</span>
-      <h2>Estadificación del sueño: el registro alcanzó S4</h2>
+      <span class="kicker">Codificación de fases por época</span>
+      <h2>Estadificación del sueño: el registro alcanzó S3</h2>
     </div>
     <table style="max-width:32em;">
-      <thead><tr><th>Código</th><th>Fase (clave cátedra)</th><th>Épocas</th></tr></thead>
+      <thead><tr><th>Código</th><th>Fase</th><th>Épocas</th></tr></thead>
       <tbody>
         <tr><td>0</td><td>Vigilia / transición</td><td>22</td></tr>
         <tr><td>1</td><td>S1 — sueño liviano</td><td>28</td></tr>
-        <tr class="hi"><td>2</td><td><b>S3</b> — sueño profundo</td><td>65</td></tr>
-        <tr class="hi"><td>3</td><td><b>S4</b> — el más profundo (SWS)</td><td>44</td></tr>
+        <tr class="hi"><td>2</td><td><b>S2</b> — sueño intermedio (husos)</td><td>65</td></tr>
+        <tr class="hi"><td>3</td><td><b>S3</b> — sueño profundo (SWS)</td><td>44</td></tr>
       </tbody>
     </table>
     <aside class="notes">
-      El scoring viene en la primera columna del txt, una fase por época de 30 segundos. La clave de la cátedra es la que confirmamos: 0 vigilia, 1 es S1, el código 2 es S3 y el 3 es S4, el sueño más profundo. No aparecen los códigos 4, 5 ni 8, así que no hubo REM ni movement time. Son 159 épocas, 79.5 minutos útiles. Importante decirlo abierto: esta clave no separa un S2 propio y rotula 2 igual S3, 3 igual S4; por eso, con los husos, no afirmamos que detectamos un huso de N2. El registro descendió hasta SWS profundo: S3 más S4 son casi el 69% del registro.
+      El scoring viene en la primera columna del txt, una fase por época de 30 segundos, en la escala estándar de estadificación: 0 vigilia, 1 es S1, el código 2 es S2 y el 3 es S3, el sueño más profundo del registro. El código solo llega hasta 3: no aparecen el 4 —que sería S4—, el 5 ni el 8, así que no hubo S4, REM ni movement time. Son 159 épocas, 79.5 minutos útiles. La fase más frecuente fue S2, con 65 épocas, y el registro descendió hasta sueño de ondas lentas, S3. Sumando S2 y S3, casi el 69% del registro fue NREM consolidado.
     </aside>
   </section>
 
@@ -324,14 +325,14 @@
       <div class="col">
         <div class="stats s3" style="grid-template-columns:1fr;gap:12px;">
           <div class="stat"><div class="n">4 min</div><div class="l">Latencia de sueño</div></div>
-          <div class="stat"><div class="n">45.5 min</div><div class="l">Latencia a S4 (más profundo)</div></div>
+          <div class="stat"><div class="n">45.5 min</div><div class="l">Latencia a S3 (más profundo)</div></div>
           <div class="stat"><div class="n teal">45.5–68 min</div><div class="l">Bloque de sueño profundo sostenido</div></div>
           <div class="stat"><div class="n">No</div><div class="l">REM no observado</div></div>
         </div>
       </div>
     </div>
     <aside class="notes">
-      El hipnograma cuenta la historia en el tiempo. Se durmió rápido, a los 4 minutos. Bajó por las fases y llegó al sueño más profundo, S4, recién a los 45 minutos y medio, y sostuvo ese bloque profundo hasta el minuto 68. No hubo REM. Domina el NREM, y en este caso llegó muy profundo.
+      El hipnograma cuenta la historia en el tiempo. Se durmió rápido, a los 4 minutos. Bajó por las fases y llegó al sueño más profundo del registro, S3, recién a los 45 minutos y medio, y sostuvo ese bloque profundo hasta el minuto 68. No hubo S4 ni REM. Domina el NREM, con buena profundidad.
     </aside>
   </section>
 
@@ -339,22 +340,22 @@
   <section data-sec="Tiempo por fase" data-transition="fade">
     <div class="slide-head">
       <span class="kicker">Distribución de fases</span>
-      <h2>Predomina el NREM, con casi 28 % en el sueño más profundo</h2>
+      <h2>Predomina el NREM, con casi 28 % de sueño profundo (S3)</h2>
     </div>
     <div class="cols c2-fig">
       <div class="col"><figure><img src="assets/figuras/fases-distribucion.png" alt="Distribución de fases del sueño" class="fig-fit"></figure></div>
       <div class="col">
         <div class="stats" style="grid-template-columns:1fr 1fr;">
-          <div class="stat"><div class="n">40.9 %</div><div class="l">S3 (32.5 min) — fase más larga</div></div>
-          <div class="stat"><div class="n teal">27.7 %</div><div class="l">S4 (22 min) — sueño más profundo</div></div>
+          <div class="stat"><div class="n">40.9 %</div><div class="l">S2 (32.5 min) — fase más larga</div></div>
+          <div class="stat"><div class="n teal">27.7 %</div><div class="l">S3 (22 min) — sueño más profundo</div></div>
           <div class="stat"><div class="n">68.5 min</div><div class="l">Sueño total</div></div>
           <div class="stat"><div class="n">86 %</div><div class="l">Eficiencia del registro</div></div>
         </div>
-        <p class="xsmall mt">Sueño profundo (S3+S4) = 54.5 min. Vigilia 13.8 % + S1 17.6 % = transición.</p>
+        <p class="xsmall mt">NREM consolidado (S2+S3) = 54.5 min; de ese total, sueño profundo (S3) = 22 min. Vigilia 13.8 % + S1 17.6 % = transición.</p>
       </div>
     </div>
     <aside class="notes">
-      En porcentajes: la fase más larga fue S3, casi 41%, y el sueño más profundo, S4, otro 28%. Sumando, casi el 69% del registro fue sueño profundo, lo cual es bastante para una siesta. El sueño total fue 68 minutos con una eficiencia del 86%. Un registro de muy buena calidad.
+      En porcentajes: la fase más frecuente fue S2, casi 41%, y el sueño más profundo, S3, otro 28%. Sumando S2 y S3, casi el 69% del registro fue NREM consolidado, lo cual es bastante para una siesta. El sueño total fue 68 minutos con una eficiencia del 86%. Un registro de muy buena calidad.
     </aside>
   </section>
 
@@ -369,7 +370,7 @@
       <div class="col"><figure><img src="assets/figuras/sigma-por-fase.png" alt="Sigma por fase" style="max-height:400px;"></figure></div>
     </div>
     <aside class="notes">
-      La firma espectral. La potencia delta, las ondas lentas, crece monótonamente con la profundidad y llega al 91.6% en S4: justo lo que predice la teoría del sueño profundo. La banda sigma, que usamos como proxy de husos, tiene su pico en S3. Acá soy explícito: la teoría dice que los husos son típicos del N2, pero esta clave de scoring no tiene un N2 separado, así que reportamos sigma elevada en NREM y no afirmamos "huso confirmado". Es potencia de banda, no un detector formal de husos.
+      La firma espectral. La potencia delta, las ondas lentas, crece monótonamente con la profundidad y llega al 91.6% en S3, la fase más profunda del registro: justo lo que predice la teoría del sueño profundo. La banda sigma, que usamos como proxy de husos, tiene su pico en S2, que es la fase donde clásicamente aparecen los husos. Aun así soy explícito: reportamos potencia de banda sigma elevada, no un detector formal de husos; para afirmar "huso confirmado" haría falta un detector específico.
     </aside>
   </section>
 
@@ -392,18 +393,18 @@
         <div class="desc">Transición: amplitud baja y enlentecimiento (theta).</div>
       </div>
       <div class="fase-wave">
-        <div class="lbl"><span class="dot" style="background:#4338CA"></span>S3</div>
-        <div class="wave-box"><canvas data-eeg-stage="S3"></canvas></div>
-        <div class="desc">Ondas lentas con husos (sigma) superpuestos — corresponde al máximo de sigma registrado.</div>
+        <div class="lbl"><span class="dot" style="background:#4338CA"></span>S2</div>
+        <div class="wave-box"><canvas data-eeg-stage="S2"></canvas></div>
+        <div class="desc">Husos (sigma) sobre actividad intermedia — corresponde al máximo de sigma registrado.</div>
       </div>
       <div class="fase-wave">
-        <div class="lbl"><span class="dot" style="background:#312E81"></span>S4</div>
-        <div class="wave-box"><canvas data-eeg-stage="S4"></canvas></div>
-        <div class="desc">Ondas lentas (delta) de gran amplitud que dominan el trazado.</div>
+        <div class="lbl"><span class="dot" style="background:#312E81"></span>S3</div>
+        <div class="wave-box"><canvas data-eeg-stage="S3"></canvas></div>
+        <div class="desc">Ondas lentas (delta) de gran amplitud que dominan el trazado — máximo de delta (91.6%).</div>
       </div>
     </div>
     <aside class="notes">
-      Estas cuatro trazas están sintetizadas a partir de la potencia de banda real de cada fase, no son el registro crudo. En vigilia, actividad rápida y de baja amplitud. En S1, baja y enlentecida. En S3 aparecen las ondas lentas con husos montados encima —es donde la sigma fue máxima—. Y en S4, las ondas lentas grandes dominan todo. Es una forma visual de mostrar la misma firma espectral de la slide anterior.
+      Estas cuatro trazas están sintetizadas a partir de la potencia de banda real de cada fase, no son el registro crudo. En vigilia, actividad rápida y de baja amplitud. En S1, baja y enlentecida. En S2 aparecen los husos montados sobre la actividad de fondo—es donde la sigma fue máxima—. Y en S3, las ondas lentas grandes dominan todo. Es una forma visual de mostrar la misma firma espectral de la slide anterior.
     </aside>
   </section>
 
@@ -417,7 +418,7 @@
     <div class="cols c2-fig">
       <div class="col"><figure><img src="assets/figuras/espectrograma.png" alt="Espectrograma de C3 con hipnograma alineado" class="fig-fit"></figure></div>
       <div class="col">
-        <div class="card"><div class="t">Lectura</div><p>La banda lenta (0.5–4 Hz) concentra su potencia en el bloque profundo S3/S4 (~45–68 min); la actividad rápida se atenúa con la profundidad.</p></div>
+        <div class="card"><div class="t">Lectura</div><p>La banda lenta (0.5–4 Hz) concentra su potencia en el bloque profundo S3 (~45–68 min); la actividad rápida se atenúa con la profundidad.</p></div>
         <div class="callout cuidado" style="margin-top:12px;"><span class="lbl">Alcance</span> Representación descriptiva sobre C3 a lo largo de todo el registro.</div>
       </div>
     </div>
@@ -437,7 +438,7 @@
       <div class="col"><figure><img src="assets/figuras/bandas-composicion.png" alt="Composición espectral relativa por fase" style="max-height:340px;"><figcaption>Composición espectral relativa por fase: el predominio de delta aumenta con la profundidad.</figcaption></figure></div>
     </div>
     <aside class="notes">
-      A la izquierda, la densidad espectral de potencia por fase: en S3 se aprecia un realce en la banda sigma, y en S4 el predominio de las frecuencias lentas. A la derecha, la composición relativa de bandas, que muestra cómo la delta domina progresivamente al profundizarse el sueño.
+      A la izquierda, la densidad espectral de potencia por fase: en S2 se aprecia un realce en la banda sigma, y en S3 el predominio de las frecuencias lentas. A la derecha, la composición relativa de bandas, que muestra cómo la delta domina progresivamente al profundizarse el sueño.
     </aside>
   </section>
 
@@ -448,7 +449,7 @@
       <h2>Conclusión</h2>
     </div>
     <div class="cols c2">
-      <div class="card teal"><div class="t">Qué encontramos</div><p>El sujeto que durmió recordó mejor, y el EEG mostró sueño profundo (S3–S4). Las dos cosas apuntan en la dirección que esperábamos.</p></div>
+      <div class="card teal"><div class="t">Qué encontramos</div><p>El sujeto que durmió recordó mejor, y el EEG mostró sueño profundo (S3). Las dos cosas apuntan en la dirección que esperábamos.</p></div>
       <div class="card coral"><div class="t">Qué nos falta</div><p>Es un solo sujeto, y la memoria y el EEG son de personas distintas. Para afirmarlo con fuerza haría falta más gente y medir ambas cosas en la misma persona.</p></div>
     </div>
     <p class="center mt" style="font-family:var(--r-heading-font);font-size:1.0em;color:var(--indigo-deep);">En resumen: dormir parece ayudar a fijar lo aprendido, aunque con esta evidencia solo podemos decirlo como una tendencia.</p>
@@ -466,7 +467,7 @@
       <div class="names">Keoni Dubovitsky&nbsp;&nbsp;·&nbsp;&nbsp;Joaquín Pelufo&nbsp;&nbsp;·&nbsp;&nbsp;Sergio Tenoch Sil Cruz</div>
       <div class="meta">Trabajo práctico · Neurociencias del Desarrollo Productivo · 18/06/2026</div>
     </div>
-    <canvas class="cover-eeg" data-eeg-stage="S4" data-eeg-mode="cover" data-eeg-color="#6366F1" aria-hidden="true"></canvas>
+    <canvas class="cover-eeg" data-eeg-stage="S3" data-eeg-mode="cover" data-eeg-color="#6366F1" aria-hidden="true"></canvas>
     <aside class="notes">Cierre: agradecer y abrir a preguntas. Recordar el reparto de quién responde cada tema.</aside>
   </section>
 

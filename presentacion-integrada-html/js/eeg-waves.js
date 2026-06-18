@@ -7,12 +7,12 @@
   "use strict";
 
   // Potencia absoluta de banda por fase (C3), de outputs/2026-06-11_eeg-resultados-mne_v3.json
-  // Clave de scoring de la cátedra: 2 = S3, 3 = S4 (sin S2 separado, sin REM).
+  // Escala estándar de estadificación: 2 = S2, 3 = S3 (sin S4 ni REM en el registro).
   var STAGES = {
     "Vigilia": { delta: 534.5, theta: 11.4, alpha: 18.8, sigma: 4.3,  beta: 19.8, color: "#8A8F9C" },
     "S1":      { delta: 57.0,  theta: 16.7, alpha: 7.1,  sigma: 2.6,  beta: 10.4, color: "#0E7C7B" },
-    "S3":      { delta: 192.8, theta: 36.3, alpha: 11.5, sigma: 11.6, beta: 4.7,  color: "#4338CA" },
-    "S4":      { delta: 840.2, theta: 43.3, alpha: 14.4, sigma: 5.0,  beta: 1.7,  color: "#312E81" }
+    "S2":      { delta: 192.8, theta: 36.3, alpha: 11.5, sigma: 11.6, beta: 4.7,  color: "#4338CA" },
+    "S3":      { delta: 840.2, theta: 43.3, alpha: 14.4, sigma: 5.0,  beta: 1.7,  color: "#312E81" }
   };
   // Frecuencia representativa por banda (Hz aproximado, usado para el nº de ciclos y la velocidad)
   var FREQ = { delta: 1.1, theta: 4, alpha: 7, sigma: 13, beta: 20 };
@@ -113,7 +113,7 @@
         var ph = 2 * Math.PI * cyc * u + t * FREQ[b] * 0.0016;
         var amp = amps[b];
         if (b === "sigma") {
-          // envolvente de husos: ráfagas ocasionales (más visibles donde sigma es alta, p. ej. S3)
+          // envolvente de husos: ráfagas ocasionales (más visibles donde sigma es alta, p. ej. S2)
           var burst = Math.pow(Math.max(0, Math.sin(u * Math.PI * 3 + t * 0.0006)), 6);
           amp *= (0.35 + 1.9 * burst);
         }

@@ -195,26 +195,28 @@ exacta, que es más exigente. Con cuatro sujetos y mucha dispersión, lo leemos 
 \subsection{Slide 12 · EEG: control de calidad.}
 \lab{Idea.} Preprocesamiento; justificación del descarte de C4.
 \begin{guion}
-«La justificación del descarte: C3 estaba bien, con una desviación de 28 microvoltios; C4 estaba
-dieciocho veces peor y con saturación, de modo que promediarlo contaminaba el espectro. Por eso
-reportamos únicamente C3.»
+«El número que reportamos por canal es su desviación estándar, calculada con get\_data().std() sobre la
+señal de ese canal individual: C3 estaba bien, con 28 microvoltios; C4 estaba unas dieciocho veces peor
+y con saturación, de modo que promediarlo contaminaba el espectro. Por eso reportamos únicamente C3.»
 \end{guion}
 
 \subsection{Slide 13 · Estadificación del sueño.}
-\lab{Idea.} Clave de la cátedra; el registro alcanzó S4.
+\lab{Idea.} Escala estándar de estadificación; el registro alcanzó S3.
 \begin{guion}
-«Conforme a la clave de la cátedra, el código 2 corresponde a S3 y el 3 a S4, la fase más profunda. No
-figuran los códigos 4, 5 ni 8: no hubo REM ni movement time. Son 159 épocas, 79,5 minutos útiles. Lo
-decimos abierto: esta clave no separa un S2 propio; por eso, con los husos, no afirmamos su detección en
-N2. El registro descendió hasta SWS profundo: S3 más S4 son cerca del 69\,\% del registro.»
+«En la escala estándar, el código 0 es vigilia, 1 es S1, 2 es S2 y 3 es S3, la fase más profunda del
+registro. El código solo llega hasta 3: no figuran el 4 ---que sería S4---, el 5 ni el 8, así que no hubo
+S4, REM ni movement time. Son 159 épocas, 79,5 minutos útiles. La fase más frecuente fue S2, con 65
+épocas, y el registro descendió hasta sueño de ondas lentas, S3. Sumando S2 y S3, cerca del 69\,\% del
+registro fue NREM consolidado.»
 \end{guion}
-\lab{Cuidado.} No afirmar husos de N2.
+\lab{Cuidado.} El registro llega a S3 (no a S4); la sigma es proxy de husos, no detección formal.
 
 \subsection{Slide 14 · Hipnograma.}
-\lab{Idea.} Descenso NREM sostenido hasta S4; ausencia de REM.
+\lab{Idea.} Descenso NREM sostenido hasta S3; ausencia de S4 y REM.
 \begin{guion}
-«Latencia de sueño de cuatro minutos; el registro alcanzó S4 a los 45,5 minutos y sostuvo ese bloque
-profundo hasta el minuto 68. No se observó REM. Predomina el NREM, con notable profundidad.»
+«Latencia de sueño de cuatro minutos; el registro alcanzó S3, la fase más profunda, a los 45,5 minutos y
+sostuvo ese bloque profundo hasta el minuto 68. No se observó S4 ni REM. Predomina el NREM, con buena
+profundidad.»
 \end{guion}
 
 % ================= BLOQUE 3 =================
@@ -223,18 +225,18 @@ profundo hasta el minuto 68. No se observó REM. Predomina el NREM, con notable 
 \subsection{Slide 15 · Distribución de fases.}
 \lab{Idea.} Cerca del 28\,\% en la fase más profunda; eficiencia del 86\,\%.
 \begin{guion}
-«S3 fue la fase predominante, con un 41\,\%, y S4 aportó un 28\,\% adicional; en conjunto, cerca del
-69\,\% correspondió a sueño profundo. El sueño total fue de 68 minutos, con una eficiencia del 86\,\%:
-un registro de buena calidad.»
+«S2 fue la fase más frecuente, con un 41\,\%, y S3 ---el sueño profundo--- aportó un 28\,\% adicional; en
+conjunto, cerca del 69\,\% correspondió a NREM consolidado. El sueño total fue de 68 minutos, con una
+eficiencia del 86\,\%: un registro de buena calidad.»
 \end{guion}
 
 \subsection{Slide 16 · Delta y sigma por fase.}
 \lab{Idea.} La delta aumenta con la profundidad; la sigma se concentra en NREM.
 \begin{guion}
-«La interpretación: la potencia delta aumenta con la profundidad y alcanza el 91,6\,\% en S4, en
-concordancia con la teoría. La sigma, proxy de husos, presenta su máximo en S3. Como esta clave no
-codifica un N2 independiente, reportamos sigma elevada en NREM como potencia de banda, no como detección
-formal de husos.»
+«La interpretación: la potencia delta aumenta con la profundidad y alcanza el 91,6\,\% en S3, la fase más
+profunda del registro, en concordancia con la teoría. La sigma, proxy de husos, presenta su máximo en S2,
+que es justamente la fase donde clásicamente aparecen los husos. Aun así reportamos sigma elevada como
+potencia de banda, no como detección formal de husos.»
 \end{guion}
 \lab{Cuidado.} «Potencia de banda, no detección formal de husos».
 
@@ -242,8 +244,8 @@ formal de husos.»
 \lab{Idea.} Representar la firma espectral como forma de onda.
 \begin{guion}
 «Estas cuatro trazas están sintetizadas a partir de la potencia de banda real de cada fase. En vigilia,
-actividad rápida y de baja amplitud; en S1, amplitud reducida; en S3, ondas lentas con husos
-superpuestos; y en S4, ondas lentas de gran amplitud que dominan el trazado.»
+actividad rápida y de baja amplitud; en S1, amplitud reducida; en S2, husos sobre la actividad de fondo
+---donde la sigma fue máxima---; y en S3, ondas lentas de gran amplitud que dominan el trazado.»
 \end{guion}
 \lab{Cuidado.} Son trazas reconstruidas, no el registro crudo.
 
@@ -258,7 +260,7 @@ misma firma espectral, ahora sobre el eje temporal.»
 \subsection{Slide 19 · Análisis espectral — detalle.}
 \lab{Idea.} PSD por fase y composición de bandas.
 \begin{guion}
-«La densidad espectral de potencia por fase muestra, en S3, un realce en la banda sigma y, en S4, el
+«La densidad espectral de potencia por fase muestra, en S2, un realce en la banda sigma y, en S3, el
 predominio de las frecuencias lentas. La composición relativa de bandas confirma que el predominio de
 delta aumenta progresivamente con la profundidad.»
 \end{guion}
@@ -293,13 +295,14 @@ Sí, y se asume explícitamente: por eso se habla de un patrón descriptivo «co
 Son los tres sujetos que permanecieron en vigilia: constituyen el grupo control, con sus valores
 individuales de TR y TS en la tarea de palabras.
 
-\item \textbf{¿Por qué la clave indica $2=$S3 y $3=$S4, si lo habitual es $2=$S2, $3=$S3?}\\
-Se emplea la clave confirmada por la cátedra, que no codifica un S2 independiente. La conclusión se
-sostiene: se alcanzó sueño profundo y no se registró REM.
+\item \textbf{¿Por qué la fase más profunda es S3 y no S4?}\\
+Se usa la escala estándar (0 vigilia, 1 S1, 2 S2, 3 S3, 4 S4). La primera columna del scoring solo llega
+hasta el código 3: el registro descendió hasta S3 ---sueño de ondas lentas--- pero no alcanzó S4. La
+conclusión se sostiene: se alcanzó sueño profundo (S3) y no se registró REM.
 
-\item \textbf{¿Husos en S3? ¿No deberían situarse en N2?}\\
-Teóricamente son propios de N2. Como esta clave no contempla un N2 independiente, la sigma se reporta
-como potencia de banda elevada en NREM —un proxy—, no como husos detectados.
+\item \textbf{¿La sigma máxima en S2 confirma husos?}\\
+El pico de sigma cae en S2, la fase donde clásicamente aparecen los husos, así que es coherente con la
+teoría. Aun así, lo que medimos es potencia de banda ---un proxy---, no husos detectados con un algoritmo.
 
 \item \textbf{¿Por qué se descartó C4?}\\
 Presentó una desviación dieciocho veces superior a la de C3 y saturación; su promedio contaminaba el
