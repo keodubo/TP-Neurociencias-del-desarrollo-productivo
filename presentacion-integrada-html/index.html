@@ -661,6 +661,10 @@
     controlsTutorial: false,
     plugins: [ RevealNotes, RevealHighlight, RevealZoom ]
   }).then(function () {
+    // Modo exportación: oculta controles y barra de progreso.
+    if (/[?&]export/.test(window.location.search)) {
+      var rv = document.querySelector('.reveal'); if (rv) rv.classList.add('hide-ui');
+    }
     if (window.EEGWaves) { EEGWaves.initAll(); EEGWaves.activate(Reveal.getCurrentSlide()); }
     // En modo impresión (?print-pdf) dibujar todas las ondas como frame estático.
     if (/print-pdf/.test(window.location.search)) {

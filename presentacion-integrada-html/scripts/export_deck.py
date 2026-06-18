@@ -9,7 +9,7 @@ import glob
 import os
 import sys
 
-from PIL import Image
+import img2pdf
 from pptx import Presentation
 from pptx.util import Inches
 
@@ -20,11 +20,12 @@ pngs = sorted(glob.glob(os.path.join(SRC, "slide_*.png")))
 if not pngs:
     sys.exit("No se encontraron PNGs en %s" % SRC)
 
-# ---------- PDF (una imagen por página, A-prueba-de-fuentes) ----------
-imgs = [Image.open(p).convert("RGB") for p in pngs]
+# ---------- PDF (PNG embebido sin pérdida, página 16:9) ----------
 pdf_path = os.path.join(DEST, "presentacion.pdf")
-imgs[0].save(pdf_path, save_all=True, append_images=imgs[1:], resolution=192.0)
-print("PDF  ->", pdf_path, "|", len(imgs), "páginas")
+layout = img2pdf.get_layout_fun((img2pdf.in_to_pt(13.333), img2pdf.in_to_pt(7.5)))
+with open(pdf_path, "wb") as f:
+    f.write(img2pdf.convert(pngs, layout_fun=layout))
+print("PDF  ->", pdf_path, "|", len(pngs), "páginas")
 
 # ---------- PPTX (16:9, imagen a sangre completa por slide) ----------
 prs = Presentation()

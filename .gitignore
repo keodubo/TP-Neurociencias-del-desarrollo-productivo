@@ -24,3 +24,11 @@ tmp/
 .idea/
 .vscode/
 *.swp
+
+# LaTeX auxiliares
+*.aux
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz

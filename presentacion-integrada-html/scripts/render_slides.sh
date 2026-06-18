@@ -20,7 +20,7 @@ for i in $(seq 0 "$last"); do
     --user-data-dir="$PROF" --window-size=1280,720 --force-device-scale-factor=2 \
     --virtual-time-budget=4500 \
     --screenshot="$OUT/slide_$N.png" \
-    "file://$HTML#/$i" >/dev/null 2>&1 &
+    "file://$HTML?export#/$i" >/dev/null 2>&1 &
   CPID=$!
   ( sleep 18; kill -9 "$CPID" 2>/dev/null ) &
   WPID=$!

@@ -352,6 +352,10 @@ section.divider p { color: var(--muted); font-size: 0.8em; max-width: 28em; }
 .fase-wave canvas { display: block; width: 100%; height: 100%; }
 .fase-wave .desc { font-size: 0.66em; color: var(--muted); line-height: 1.25; }
 
+/* ---------- Modo exportación (oculta controles/progreso para PDF/PPTX) ---------- */
+.reveal.hide-ui .controls,
+.reveal.hide-ui .progress { display: none !important; }
+
 /* ---------- Diagrama de mecanismo (ondas lentas → husos → ripples) ---------- */
 .mecanismo {
   display: flex; align-items: center; justify-content: center;
