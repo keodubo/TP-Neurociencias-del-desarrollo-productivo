@@ -372,8 +372,8 @@ section.divider p { color: var(--muted); font-size: 0.8em; max-width: 28em; }
 .meca-arrow { font-size: 1.4em; color: var(--line-2); padding-bottom: 0.6em; }
 .meca-result {
   background: #ECEDFA; border: 1px solid var(--indigo); color: var(--indigo-deep);
-  border-radius: 8px; padding: 0.7em 0.8em; font-weight: 700; font-size: 0.78em;
-  text-align: center; max-width: 120px; line-height: 1.15;
+  border-radius: 8px; padding: 0.7em 0.7em; font-weight: 700; font-size: 0.68em;
+  text-align: center; width: 130px; line-height: 1.2; box-sizing: border-box;
 }
 .meca-caption { font-size: 0.66em; color: var(--muted); text-align: center; margin: 0.3em auto 0; max-width: 44em; }
 

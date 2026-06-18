@@ -1,0 +1,67 @@
+1. Modificar "Sueño, memoria y señales fisiológicas" para solo diga "Sueno y memoria". Modificar "Fecha de exposición: 18/6/2026" para que solo diga DD/MM/AAAA
+
+2. Quitar completamente la diapositiva 2 (Síntesis del estudio).
+
+3. Quitar todo el card de "Criterio de decision"
+
+4. Quitar "El sujeto propio no concilió el sueño; se analiza como limitación y como ilustración de los moduladores del descanso."
+
+5. CAmbiar titulo a "Diseno del experimento", y sacar card "Alcance inferencial".
+
+6. Quitar "OpenBCI" ya que como el sujeto no durmio no utilizamos estos datos y quitar card "regla metodologica"
+
+7. Esta bien
+
+8. "consolidacion activa" quedo afuera del box. Quitar card "Husos / sigma". Modificar la card de homeostasis sinaptica para explicar porque hubo homeostasis sinaptica o porque no hubo.
+
+9. quitar por completo esta diapostivia (Métodos: conducta para memoria, EEG para fisiología).
+
+10. No enteindo de donde sale la linea punteada de control (que datos se tomaron?). Quitar card de "Limitaciones"
+
+11. Quitar card de "lectura" y dejar una oracion clave en el guion sobre la lectura.
+
+12. Quitar la card de "justificacion" y dejarla en el guion. 
+
+13. Quitar "Códigos 4 (—), 5 (REM) y 8 (MT) no aparecen en el registro: no hubo REM ni movement time." Quitar las cards de "Qué implica
+Solo la columna 1 del .txt; 159 épocas de 30 s = 79.5 min útiles. Descenso NREM hasta SWS profundo (S3+S4 = 68.6 % del registro).
+Sobre la codificación
+La clave de la cátedra no codifica S2 por separado y rotula 2=S3, 3=S4. Se emplea tal cual; en consecuencia, se evita afirmar la detección de husos de N2." y que quede solo la tabla 
+
+14. modificar titulo a solo "Hipnograma"
+
+15. Esta bien
+
+16. Cambiar titulo a algo mas corto y simple. Quitar "(proxy de husos)" del grafico. Quitar la interpretacion y dejarla en el guion nada mas. 
+
+17. Quitar "Trazas ilustrativas reconstruidas desde la potencia de banda por fase; no es el registro crudo. Husos = proxy de sigma, sin detección formal."
+
+18. Cambiar titulo a algo mas corto y simple. modificar card de "alcance" apra que no diga proxy.
+
+19. esta bien
+
+20. mover esta diapositiva (Parámetros del análisis EEG) a la 6 entre "Tres fuentes de datos independientes" y "Procedimiento paso a paso" 
+
+21. borrar esta diapositiva "Conclusiones sostenibles y no sostenibles"
+
+22. achicar la imagen, quedo muy grande y el texto quedo muy arriba. ademas mover esta diapostiva (Factores que pudieron impedir la conciliación del sueño) luego de "El procedimiento, paso a paso" y antes de "Consolidación activa de sistemas durante el NREM". Modificar este titulo "Proceso C / cronotipo" a "Cronotipo". 
+
+23. Borrar diapostiva "Estrés, eje HPA y consolidación"
+
+24. Quitar "Compatible con la hipótesis; no es una demostración causal." y modificar todo el wording, para que sea mas simple ya que actualmente no se enteiende, y cambiar el titulo de las cards.
+
+25. esta bien
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

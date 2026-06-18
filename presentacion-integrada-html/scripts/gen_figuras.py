@@ -232,16 +232,12 @@ def fig_sigma_por_fase():
     colors = [TEAL if l == "S3" else GRAY for l in LABELS]
     bars = ax.bar(LABELS, SIGMA_ABS, color=colors, width=0.62, zorder=3)
     ax.set_ylabel("Potencia sigma 12–15 Hz (µV²)")
-    ax.set_title("Sigma (proxy de husos): máximo en S3", loc="left",
-                 fontweight="bold")
+    ax.set_title("Sigma: máximo en S3", loc="left", fontweight="bold")
     ax.set_ylim(0, max(SIGMA_ABS) * 1.22)
     style_axes(ax)
     for bar, v in zip(bars, SIGMA_ABS):
         ax.text(bar.get_x() + bar.get_width() / 2, v + max(SIGMA_ABS) * 0.02,
                 f"{v:.2f}", ha="center", va="bottom", fontsize=9.5, color=INK)
-    ax.text(0.99, 0.97, "husos = proxy; sin detector formal",
-            transform=ax.transAxes, ha="right", va="top",
-            fontsize=8, color=CORAL, style="italic")
     fig.tight_layout()
     return save(fig, "sigma-por-fase.png")
 
@@ -288,19 +284,10 @@ def fig_memoria_tr_ts():
     # Sujetos individuales del grupo control (vigilia)
     vig = [(tr, ts) for _suj, cond, tr, ts, _d in MEM if cond != "SUEÑO"]
     for k, (tr, ts) in enumerate(vig):
-        ax.plot(xpos, [tr, ts], color=GRAY, linewidth=1.4, marker="o",
-                markersize=5, markerfacecolor=GRAY, markeredgecolor=PAPER,
-                markeredgewidth=1.0, zorder=2, alpha=0.5,
-                label="Vigilia · sujetos (control, n=3)" if k == 0 else None)
-    # Promedio del grupo control
-    tr_m = sum(t for t, _ in vig) / len(vig)
-    ts_m = sum(s for _, s in vig) / len(vig)
-    ax.plot(xpos, [tr_m, ts_m], color=CTRL, linewidth=2.6, marker="s",
-            markersize=8, markerfacecolor=CTRL, markeredgecolor=PAPER,
-            markeredgewidth=1.2, linestyle=(0, (5, 2)), zorder=3,
-            label="Control · promedio")
-    ax.text(1.05, ts_m, "Control %.1f→%.1f" % (tr_m, ts_m), color=CTRL,
-            fontsize=10, fontweight="bold", va="center", ha="left")
+        ax.plot(xpos, [tr, ts], color=CTRL, linewidth=1.8, marker="o",
+                markersize=6, markerfacecolor=CTRL, markeredgecolor=PAPER,
+                markeredgewidth=1.0, zorder=2, alpha=0.75,
+                label="Vigilia · control (n=3)" if k == 0 else None)
     # Condición sueño
     for _suj, cond, tr, ts, _d in MEM:
         if cond == "SUEÑO":
